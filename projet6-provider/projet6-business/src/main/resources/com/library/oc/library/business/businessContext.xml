@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jaxws="http://cxf.apache.org/jaxws"
+       xmlns:soap="http://cxf.apache.org/bindings/soap"
+       xmlns:cxf="http://cxf.apache.org/core"
+
+
+       xsi:schemaLocation="
+            http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context.xsd
+            http://cxf.apache.org/jaxws
+            http://cxf.apache.org/schemas/jaxws.xsd
+            http://cxf.apache.org/bindings/soap
+            http://cxf.apache.org/schemas/configuration/soap.xsd
+            http://cxf.apache.org/core
+            http://cxf.apache.org/schemas/core.xsd ">
+    <cxf:bus/>
+    <!-- ===== Fonctionnement avec les annotations ===== -->
+
+    <!-- Prend en compte la configuration des injections (@Inject...) -->
+    <context:annotation-config/>
+
+    <!-- Scanne les packages pour trouver les beans qui se déclarent (@Named...) -->
+    <context:component-scan base-package="com.library.oc.library"/>
+
+    <!-- ===== Fonctionnement avec les annotations ===== -->
+
+    <!-- Prend en compte la configuration des injections (@Inject...) -->
+    <context:annotation-config/>
+
+    <!-- Scanne les packages pour trouver les beans qui se déclarent (@Named...) -->
+    <context:component-scan base-package="com.library.oc"/>
+
+    <!-- ===== Déclaration des Managers ===== -->
+
+    <!--   <bean id="abstractManager">
+           <property name="daoFactory" ref="daoFactory" />
+       </bean>-->
+
+    <!-- <bean id="bookManager" class="com.library.oc.library.business.impl.manager.BookManagerImpl" parent="abstractManager" />
+     <bean id="userManager" class="com.library.oc.library.business.impl.manager.UserManagerImpl" parent="abstractManager" />
+ -->
+
+
+    <!-- ===== Manager factory ==== -->
+    <!--
+
+        <bean id="managerFactory" class="com.library.oc.library.business.impl.ManagerFactoryImpl" >
+            <property name="userManager" ref="userManager"/>
+            <property name="bookManager" ref="bookManager"/>
+        </bean>
+    -->
+    <!--
+    <jaxws:endpoint
+        id="userService" address="/UserService" implementorClass="com.library.oc.library.business.contract.manager.UserManager"
+    implementor="#userManager"/>
+    -->
+
+
+    <jaxws:server id="userService"
+                  serviceClass="com.library.oc.library.business.contract.manager.UserManager" address="/UserService"
+                  serviceBean="#userManager">
+    </jaxws:server>
+    <jaxws:server id="bookService"
+                  serviceClass="com.library.oc.library.business.contract.manager.BookManager" address="/BookService"
+                  serviceBean="#bookManager">
+    </jaxws:server>
+    <jaxws:server id="authorService"
+                  serviceClass="com.library.oc.library.business.contract.manager.AuthorManager" address="/AuthorService"
+                  serviceBean="#authorManager">
+    </jaxws:server>
+    <!--<jaxws:server id="bookStatutService"
+                  serviceClass="com.library.oc.library.business.contract.manager.BookStatutManager" address="/BookStatutService"
+                  serviceBean="#bookStatutManager">
+    </jaxws:server>-->
+
+    <bean id="userManager" class="com.library.oc.library.business.impl.manager.UserManagerImpl"/>
+
+    <bean id="bookManager" class="com.library.oc.library.business.impl.manager.BookManagerImpl"/>
+
+    <bean id="authorManager" class="com.library.oc.library.business.impl.manager.AuthorManagerImpl"/>
+
+<!--
+    <bean id="bookStatutManager" class="com.library.oc.library.business.impl.manager.BookStatutManagerImpl"/>
+-->
+
+
+
+    <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="targetClass" value="com.library.oc.library.business.impl.manager.AbstractManager"/>
+        <property name="targetMethod" value="setDaoFactory"/>
+        <property name="arguments" ref="daoFactory"/>
+    </bean>
+
+
+</beans>

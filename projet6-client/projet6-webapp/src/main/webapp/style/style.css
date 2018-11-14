@@ -1,0 +1,106 @@
+.footer {
+    color: #9d9d9d;
+}
+
+@media only screen and (max-width: 768px) {
+    #navbar{
+        background-color: #333;
+    }
+}
+
+#main-content  {
+    margin-top: 70px;
+
+}
+
+.navbar-fixed-top {
+    height: 50px !important;
+}
+
+.errorMessage ul li {
+    margin-top: 50px;
+}
+
+.my-profil {
+    background-color: #1ABC9C;
+    color: white !important;
+}
+
+.search {
+    height: 20%;
+    align-items: center;
+}
+
+#conteneur {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex-wrap: nowrap;
+}
+.element:nth-child(1)
+{
+    flex: 1;
+    background-color: white;
+    height: 300px;
+    text-decoration: none;
+    list-style-type: none !important;
+}
+.element li
+{
+    text-decoration: none !important;
+    list-style-type: none !important;
+    color: black !important;
+}
+.element {
+    border: solid 2px black;
+}
+.element:nth-child(2)
+{
+    flex: 1;
+    background-color: white;
+    height: 300px;
+
+}
+.element:nth-child(3)
+{
+    flex: 1;
+    background-color: white;
+    height: 300px;
+
+}
+
+#colonne1 {
+    display: flex;
+}
+
+
+body {
+
+    /*background-image: url(../img/image.jpg);*/
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    /*background: #2575fc;
+    background: -webkit-linear-gradient(left, #6a11cb, #2575fc);
+    background: -o-linear-gradient(left, #6a11cb, #2575fc);
+    background: -moz-linear-gradient(left, #6a11cb, #2575fc);
+    background: linear-gradient(left, #6a11cb, #2575fc);*/
+    color: black;
+}
+
+.white a {
+    color: white !important;
+}
+
+.black a  {
+    color: black !important;
+}
+
+.limit-width {
+    max-width: 20px;
+}
+
+#table {
+    margin: 20px 0 100px 0;
+}

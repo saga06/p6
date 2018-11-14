@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- ===== Fonctionnement avec les annotations ===== -->
+
+    <!-- Prend en compte la configuration des injections (@Inject...) -->
+    <context:annotation-config/>
+
+    <!-- Scanne les packages pour trouver les beans qui se déclarent (@Named...) -->
+    <context:component-scan base-package="com.library.oc.library"/>
+
+    <bean id="vParams" class="org.springframework.jdbc.core.namedparam.MapSqlParameterSource"/>
+
+    <bean id="vNamedParameterJdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+        <constructor-arg ref="dataSourceLibrary"></constructor-arg>
+    </bean>
+<!--
+    <bean id="daoFactory" class="com.library.oc.consumer.contract.DaoFactory" />
+-->
+</beans>

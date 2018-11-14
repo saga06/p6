@@ -1,0 +1,27 @@
+
+#vid{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: 100%;
+    z-index: -1000;
+    overflow: hidden;
+    opacity: 0.5;
+}
+
+
+#num2 {
+    z-index: 2;
+    position: fixed;
+    left: 35%;
+    right: 35%;
+    top: 40%;
+    color: black;
+    text-align: center;
+    background-color: rgba(204, 255, 255, 0.4);
+}
