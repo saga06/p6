@@ -1,6 +1,7 @@
 package com.library.oc.consumer.contract;
 
 import com.library.oc.consumer.contract.dao.*;
+import com.library.oc.consumer.impl.rowmapper.BookBorrowedRM;
 
 
 public interface DaoFactory {
@@ -13,10 +14,13 @@ public interface DaoFactory {
     BookDao getBookDao();
     void setBookDao(BookDao pBookDao);
 
-    //----- BOOK -----
+    //----- BOOK Borrowed -----
     BookBorrowedDao getBookBorrowedDao();
     void setBookBorrowedDao(BookBorrowedDao pBookBorrowedDao);
 
+    //----- BOOK Reserved -----
+    BookReservedDao getBookReservedDao();
+    void setBookReservedDao(BookReservedDao pBookReservedDao);
 
     //------Author ------
     AuthorDao getAuthorDao();
@@ -25,9 +29,5 @@ public interface DaoFactory {
     //------Theme -----
     ThemeDao getThemeDao();
     void setThemeDao (ThemeDao pThemeDao);
-
-
-
-
 
 }

@@ -130,6 +130,30 @@ public class GestionBookAction extends ActionSupport {
         return (this.hasErrors()) ? ActionSupport.ERROR : ActionSupport.SUCCESS;
     }
 
+    public String doReservation() {
+
+        //Par défaut, le result est "input"
+        String vResult = ActionSupport.INPUT;
+
+        if (id == null) {
+            this.addActionError("livre non renseigné");
+        } else {
+            if (idUser == null) {
+                this.addActionError("identifiant utilisateur non renseigné");
+            }
+            else {
+                try {
+                    book = bookClient.getBook(id);
+                    user = userClient.getUser(idUser);
+                    bookClient.ReserveBook(user,book);
+                } catch ( NotFoundException_Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return (this.hasErrors()) ? ActionSupport.ERROR : ActionSupport.SUCCESS;
+    }
+
     /**
      * Action permettant de prolonger un prêt d'un {@link Book}
      * @return input / success / erreur

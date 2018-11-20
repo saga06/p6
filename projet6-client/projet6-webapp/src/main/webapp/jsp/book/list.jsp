@@ -76,7 +76,11 @@
                                 </s:a>
                             </s:if>
                             <s:else>
-                                <p>Plus aucun exemplaire disponible</p>
+                                <s:a cssClass="btn btn-warning" action="reservation_new">
+                                    <s:param name="id" value="id" />
+                                    <s:param name="idUser" value="#session.user.id" />
+                                    Réserver
+                                </s:a>
                             </s:else>
                         </s:if>
                         <s:else>

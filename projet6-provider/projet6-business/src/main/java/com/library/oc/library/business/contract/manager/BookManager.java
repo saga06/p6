@@ -34,6 +34,8 @@ public interface BookManager {
     void buildBookBorrowedDependencies(@WebParam(name = "borrowedBook") BookBorrowed bookBorrowed);
     void borrowBook(@WebParam(name = "user") User user,
                     @WebParam(name = "book") Book book);
+    void reserveBook(@WebParam(name = "user") User user,
+                    @WebParam(name = "book") Book book);
     void extendBorrow(@WebParam(name = "id") Integer id);
     int getNbOfCopiesAvailableForABookBorrowed(@WebParam(name = "bookBorrowed") BookBorrowed bookBorrowed);
     int getNbOfCopiesAvailableForABook(@WebParam(name = "book") Book book);

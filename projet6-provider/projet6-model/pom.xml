@@ -7,13 +7,13 @@
 
     <parent>
         <groupId>com.library.oc</groupId>
-        <artifactId>projet4-provider</artifactId>
+        <artifactId>projet6-provider</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <groupId>com.library.oc</groupId>
-    <artifactId>projet4-model</artifactId>
+    <artifactId>projet6-model</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>projet4-model</name>
+    <name>projet6-model</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
