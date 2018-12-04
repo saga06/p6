@@ -18,11 +18,11 @@
                 <th scope="col">Auteur(s)</th>
                 <th scope="col">Editeur</th>
                 <th scope="col">Thème(s)</th>
+                <th scope="col">ISBN</th>
                 <th scope="col">Nb d'exemplaire(s) total</th>
                 <th scope="col">Nb d'exemplaire(s) déjà emprunté(s)</th>
                 <th scope="col">Nb d'exemplaire(s) disponible(s)</th>
-                <th scope="col">ISBN</th>
-                <th scope="col"></th>
+                <th scope="col" style="text-align:center">Vous souhaitez l'emprunter ?</th>
             </tr>
         </thead>
         <tbody>
@@ -54,18 +54,35 @@
                             </s:else>
                         </s:iterator>
                     </td>
+                    <td>
+                        <s:property value="isbn"/>
+                    </td>
                     <td style="text-align: center">
                          <s:property value="numberOfCopies"/>
                     </td>
                     <td style="text-align: center">
                         <s:property value="nbOfCopiesAlreadyBorrowed"/>
                     </td>
-                    <td style="text-align: center">
-                        <s:property value="nbOfCopiesAvailable"/>
-                    </td>
-                    <td>
-                        <s:property value="isbn"/>
-                    </td>
+                    <s:if test="nbOfCopiesAvailable >= 4">
+                        <td style="text-align: center; color:limegreen">
+                            <b><s:property value="nbOfCopiesAvailable"/></b>
+                        </td>
+                    </s:if>
+                    <s:elseif test="nbOfCopiesAvailable >= 3 && nbOfCopiesAvailable < 4">
+                        <td style="text-align: center; color:gold">
+                            <b><s:property value="nbOfCopiesAvailable"/></b>
+                        </td>
+                    </s:elseif>
+                    <s:elseif test="nbOfCopiesAvailable > 0 && nbOfCopiesAvailable < 3">
+                        <td style="text-align: center; color:orange">
+                            <b><s:property value="nbOfCopiesAvailable"/></b>
+                        </td>
+                    </s:elseif>
+                    <s:elseif test="nbOfCopiesAvailable == 0">
+                        <td style="text-align: center; color:red">
+                            <b><s:property value="nbOfCopiesAvailable"/></b>
+                        </td>
+                    </s:elseif>
                     <td style="text-align: center">
                         <s:if test="#session.user">
                             <s:if test="%{nbOfCopiesAvailable!=0}">
@@ -79,7 +96,7 @@
                                 <s:a cssClass="btn btn-warning" action="reservation_new">
                                     <s:param name="id" value="id" />
                                     <s:param name="idUser" value="#session.user.id" />
-                                    Réserver
+                                    Réserver*
                                 </s:a>
                             </s:else>
                         </s:if>
@@ -91,6 +108,8 @@
         </s:iterator>
         </tbody>
     </table>
+    <div>* = Cet ouvrage n'est actuellement pas disponible, mais vous pouvez le réserver et ainsi vous inscrire dans une liste d'attente.</br>
+    Vous serez alors averti dès qu'il sera disponible par email, et vous aurez 48H pour venir le récupérer</div>
 </div>
 <%@ include file="../_include/footer.jsp" %>
 </body>

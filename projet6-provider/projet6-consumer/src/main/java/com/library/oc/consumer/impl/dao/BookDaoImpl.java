@@ -88,7 +88,7 @@ public class BookDaoImpl extends AbstractDao implements BookDao {
 
     @Override
     public int getNbOfCopiesAlreadyBorrowed(Book book) {
-        String sql = "SELECT COUNT(*) FROM borrow WHERE id_book=:book";
+        String sql = "SELECT COUNT(*) FROM borrow WHERE id_book=:book AND is_returned = false ";
         getvParams().addValue("book", book.getId(), Types.INTEGER);
         Integer vNbrBook = getvNamedParameterJdbcTemplate().queryForObject(sql,getvParams(), Integer.class);
         return vNbrBook.intValue();

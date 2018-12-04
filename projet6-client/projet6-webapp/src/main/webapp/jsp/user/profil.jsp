@@ -1,4 +1,4 @@
-<%--
+<%@ page import="java.util.Date" %><%--
   Created by IntelliJ IDEA.
   User: sgahama
   Date: 10/05/2018
@@ -17,22 +17,19 @@
     <table id="table" class="table table-dark">
         <thead class="thead-dark">
         <tr>
-            <th scope="col">id</th>
             <th scope="col">Titre</th>
             <th scope="col">Auteur(s)</th>
             <th scope="col">Editeur</th>
             <th scope="col">Thème(s)</th>
             <th scope="col" style="text-align: center">Date début d'emprunt</th>
             <th scope="col" style="text-align: center">Date limite de retour</th>
-            <th scope="col" style="text-align: center">Prolonger</th>
+            <th scope="col" style="text-align: center; min-width:80px">État du prêt</th>
+            <th scope="col" style="text-align: center">Vous souhaitez prolonger votre prêt ?</th>
         </tr>
         </thead>
         <tbody>
         <s:iterator value="listBookBorrowedByUser">
             <tr class="table-primary">
-                <td>
-                    <s:property value="idBorrow"/>
-                </td>
                 <td>
                     <s:property value="title"/>
                 </td>
@@ -60,21 +57,46 @@
                     </s:iterator>
                 </td>
                 <td style="text-align: center">
-                    <s:date name="dateStart" format="dd/MM/yyyy" />
+                    <s:date name="dateStart.toGregorianCalendar.time" format="dd/MM/yyyy" />
                 </td>
                 <td style="text-align: center">
-                    <s:date name="dateEnd" format="dd/MM/yyyy" />
+                    <s:date name="dateEnd.toGregorianCalendar.time" format="dd/MM/yyyy" />
                 </td>
                 <td style="text-align: center">
-                    <%--TO DO : implémenter méthode prolongation--%>
-                    <s:if test="%{alreadyExtended==false}">
-                        <s:a cssClass="btn btn-warning" action="borrow_extend">
-                            <s:param name="id" value="idBorrow" />
-                            Prolonger
-                        </s:a>
+                    <s:set var="currentDate" value="currentDate"/>
+                    <s:set var="dateEnd" value="dateEnd"/>
+                    <s:if test="%{returned==false}">
+                            <s:if test="%{#dateEnd.toGregorianCalendar.time > #currentDate.toGregorianCalendar.time}">
+                                <div>En cours</div>
+                            </s:if>
+                            <s:else>
+                                <div style="color:red"><b>En retard !</b></div>
+                            </s:else>
                     </s:if>
                     <s:else>
-                        <p>Emprunt déjà prolongé</p>
+                        <p>Ouvrage rendu
+                        <s:if test="%{returnedOnTime==false}">
+                            (en retard)</p>
+                        </s:if>
+                        <s:else>
+                            (dans les temps)</p>
+                        </s:else>
+                    </s:else>
+                </td>
+                <td style="text-align: center">
+                    <s:if test="%{alreadyExtended==false}">
+                        <s:if test="%{#dateEnd.toGregorianCalendar.time > #currentDate.toGregorianCalendar.time}">
+                            <s:a cssClass="btn btn-warning" action="borrow_extend">
+                                <s:param name="id" value="idBorrow" />
+                                Prolonger
+                            </s:a>
+                        </s:if>
+                        <s:else>
+                            <div style="color:red"><b>Impossible, vous avez dépassé la date butoire</b></div>
+                        </s:else>
+                    </s:if>
+                    <s:else>
+                        <span>Vous avez déjà prolongé votre prêt une fois</span>
                     </s:else>
                 </td>
             </tr>
