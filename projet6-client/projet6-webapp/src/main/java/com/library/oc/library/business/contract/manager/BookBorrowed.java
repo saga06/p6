@@ -6,7 +6,9 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
@@ -22,8 +24,8 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="alreadyExtended" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
  *         &lt;element name="authors" type="{http://manager.contract.business.library.oc.library.com/}author" maxOccurs="unbounded" minOccurs="0"/&gt;
  *         &lt;element name="books" type="{http://manager.contract.business.library.oc.library.com/}bookBorrowed" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="dateEnd" type="{http://manager.contract.business.library.oc.library.com/}date" minOccurs="0"/&gt;
- *         &lt;element name="dateStart" type="{http://manager.contract.business.library.oc.library.com/}date" minOccurs="0"/&gt;
+ *         &lt;element name="dateEnd" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
+ *         &lt;element name="dateStart" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
  *         &lt;element name="editorId" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
  *         &lt;element name="editorName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
@@ -77,8 +79,10 @@ public class BookBorrowed {
     protected List<Author> authors;
     @XmlElement(nillable = true)
     protected List<BookBorrowed> books;
-    protected Date dateEnd;
-    protected Date dateStart;
+    @XmlSchemaType(name = "dateTime")
+    protected XMLGregorianCalendar dateEnd;
+    @XmlSchemaType(name = "dateTime")
+    protected XMLGregorianCalendar dateStart;
     protected Integer editorId;
     protected String editorName;
     protected Integer id;
@@ -175,10 +179,10 @@ public class BookBorrowed {
      * 
      * @return
      *     possible object is
-     *     {@link Date }
+     *     {@link XMLGregorianCalendar }
      *     
      */
-    public Date getDateEnd() {
+    public XMLGregorianCalendar getDateEnd() {
         return dateEnd;
     }
 
@@ -187,10 +191,10 @@ public class BookBorrowed {
      * 
      * @param value
      *     allowed object is
-     *     {@link Date }
+     *     {@link XMLGregorianCalendar }
      *     
      */
-    public void setDateEnd(Date value) {
+    public void setDateEnd(XMLGregorianCalendar value) {
         this.dateEnd = value;
     }
 
@@ -199,10 +203,10 @@ public class BookBorrowed {
      * 
      * @return
      *     possible object is
-     *     {@link Date }
+     *     {@link XMLGregorianCalendar }
      *     
      */
-    public Date getDateStart() {
+    public XMLGregorianCalendar getDateStart() {
         return dateStart;
     }
 
@@ -211,10 +215,10 @@ public class BookBorrowed {
      * 
      * @param value
      *     allowed object is
-     *     {@link Date }
+     *     {@link XMLGregorianCalendar }
      *     
      */
-    public void setDateStart(Date value) {
+    public void setDateStart(XMLGregorianCalendar value) {
         this.dateStart = value;
     }
 

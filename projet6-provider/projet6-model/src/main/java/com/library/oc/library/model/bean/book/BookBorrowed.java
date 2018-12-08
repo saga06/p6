@@ -1,7 +1,7 @@
 package com.library.oc.library.model.bean.book;
 
 import javax.validation.constraints.NotNull;
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;

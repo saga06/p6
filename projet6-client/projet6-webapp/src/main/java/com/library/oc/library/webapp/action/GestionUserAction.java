@@ -4,6 +4,10 @@ package com.library.oc.library.webapp.action;
 import com.library.oc.library.business.contract.manager.*;
 import com.opensymphony.xwork2.ActionSupport;
 
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 
@@ -27,7 +31,15 @@ public class GestionUserAction extends ActionSupport {
     private List<Author> authors;
     private List<Theme> themes;
 
+    /*Get current date in Date Format*/
+    Date dateToday = new Date();
+    /*Get current Date in XmlGregorianFormat*/
+    GregorianCalendar gregorianCalendar = new GregorianCalendar();
+    DatatypeFactory datatypeFactory = DatatypeFactory.newInstance();
+    XMLGregorianCalendar currentDate = datatypeFactory.newXMLGregorianCalendar(gregorianCalendar);
+
     private List<BookBorrowed> listBookBorrowedByUser;
+
 
     private BookService bookService = new BookService();
     private BookClient bookClient = bookService.getBookPort();
@@ -35,6 +47,8 @@ public class GestionUserAction extends ActionSupport {
     private UserService userService = new UserService();
     private UserClient userClient = userService.getUserPort();
 
+    public GestionUserAction() throws DatatypeConfigurationException {
+    }
 
     // ==================== Getters/Setters ====================
     public Integer getId() {
@@ -101,13 +115,14 @@ public class GestionUserAction extends ActionSupport {
         this.themes = themes;
     }
 
-    public List<BookBorrowed> getListBookBorrowedByUser() {
-        return listBookBorrowedByUser;
-    }
+    public Date getDateToday() { return dateToday; }
+    public void setDateToday(Date dateToday) { this.dateToday = dateToday; }
 
-    public void setListBookBorrowedByUser(List<BookBorrowed> listBookBorrowedByUser) {
-        this.listBookBorrowedByUser = listBookBorrowedByUser;
-    }
+    public XMLGregorianCalendar getCurrentDate() { return currentDate; }
+    public void setCurrentDate(XMLGregorianCalendar currentDate) { this.currentDate = currentDate; }
+
+    public List<BookBorrowed> getListBookBorrowedByUser() { return listBookBorrowedByUser; }
+    public void setListBookBorrowedByUser(List<BookBorrowed> listBookBorrowedByUser) { this.listBookBorrowedByUser = listBookBorrowedByUser; }
 
 
     // ==================== Méthodes ====================

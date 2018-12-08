@@ -8,11 +8,11 @@
     <parent>
         <groupId>com.library.oc</groupId>
         <artifactId>projet6-provider</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0.1-SNAPSHOT</version>
     </parent>
     <groupId>com.library.oc</groupId>
     <artifactId>projet6-model</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
     <name>projet6-model</name>
 
     <properties>
