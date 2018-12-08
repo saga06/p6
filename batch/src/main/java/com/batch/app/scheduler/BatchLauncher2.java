@@ -13,26 +13,26 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
-public class BatchLauncher {
- 
-  @Autowired
-  @Qualifier("scheduledJob")
-  private Job job;
- 
-  @Autowired
-  private JobLauncher jobLauncher;
- 
-  public void run() {
-    JobParameters parameters = new JobParametersBuilder()
-        .addLong("currentTime", new Long(System.currentTimeMillis()))
-        .toJobParameters();
-    try {
-      jobLauncher.run(job, parameters);
+public class BatchLauncher2 {
 
-    } catch (JobExecutionAlreadyRunningException e) {
-    } catch (JobRestartException e) {
-    } catch (JobInstanceAlreadyCompleteException e) {
-    } catch (JobParametersInvalidException e) {
+    @Autowired
+    @Qualifier("scheduledJob2")
+    private Job scheduledJob2;
+
+    @Autowired
+    private JobLauncher jobLauncher;
+
+    public void run() {
+        JobParameters parameters = new JobParametersBuilder()
+                .addLong("currentTime", new Long(System.currentTimeMillis()))
+                .toJobParameters();
+        try {
+            jobLauncher.run(scheduledJob2, parameters);
+
+        } catch (JobExecutionAlreadyRunningException e) {
+        } catch (JobRestartException e) {
+        } catch (JobInstanceAlreadyCompleteException e) {
+        } catch (JobParametersInvalidException e) {
+        }
     }
-  }
 }

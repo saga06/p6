@@ -1,10 +1,8 @@
 package com.batch.app.scheduler;
 
-import com.batch.app.mail.ApacheMail;
+import com.batch.app.mail.MailLate;
 import com.batch.app.mail.MailBookAvailable;
-import com.library.oc.library.business.contract.manager.User;
-import com.library.oc.library.business.contract.manager.UserClient;
-import com.library.oc.library.business.contract.manager.UserService;
+import com.library.oc.library.business.contract.manager.*;
 import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.scope.context.ChunkContext;
 import org.springframework.batch.core.step.tasklet.Tasklet;
@@ -28,15 +26,15 @@ public class BatchTaskletReservation implements Tasklet {
     public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
         System.out.println(message);
 
-        UserService userService = new UserService();
-        UserClient userClient = userService.getUserPort();
+        BookService bookService = new BookService();
+        BookClient bookClient = bookService.getBookPort();
 
-        List<User> listUser = userClient.getListUserLateReturn();
+        List<ReservationWithEmail> listResa = bookClient.getListReservationWithEmailAndBook();
 
-        Iterator<User> it2 = listUser.iterator();
+        Iterator<ReservationWithEmail> it2 = listResa.iterator();
         while (it2.hasNext()) {
-            User user = it2.next();
-            mail.send(user);
+            ReservationWithEmail resa = it2.next();
+            mail.send(resa);
         }
 
         return RepeatStatus.FINISHED;

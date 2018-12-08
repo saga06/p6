@@ -61,6 +61,7 @@ public class BookManagerImpl extends AbstractManager implements BookManager {
     public List<ReservationWithEmail> getListReservationWithEmailAndBook() {
         // Reservation active list (with active status)
         List<Reservation> reservationsActive = getDaoFactory().getBookDao().findAllActiveReservation();
+        System.out.println("il y a " + reservationsActive.size() + " reservation(s) active(s)");
         // Reservation active list with available book initialisation
         List<Reservation> reservationsAvailable = new ArrayList<>();
         for(Reservation reservation : reservationsActive)
@@ -71,11 +72,18 @@ public class BookManagerImpl extends AbstractManager implements BookManager {
             Book bookReserved = getDaoFactory().getBookDao().read(idBook);
             // we get the number of book available
             buildBookDependencies(bookReserved);
+
             Integer nbAvailable = bookReserved.getNbOfCopiesAvailable();
+
+            if (nbAvailable > 0 ){
+            System.out.println("il y a une réservation pour le livre " + bookReserved.getTitle() + " qui est disponible");}
+            else { System.out.println("il n'y a pas d'exemplaire disponible de " + bookReserved.getTitle());}
+
             // if the book is available, we add the reservation in the list of reservationsAvailable
             if (nbAvailable > 0) {
                 int idUser = reservation.getIdUser();
                 reservationsAvailable.add(reservation);
+                System.out.println("il y a une réservation qui peut etre honoree");
             }
         }
         // For each active reservation with newly available book, we are looking for the oldest reservation information:
@@ -93,6 +101,7 @@ public class BookManagerImpl extends AbstractManager implements BookManager {
                 finalList.add(finalResa);
             }
         }
+        System.out.println("il y a au total " + finalList.size() + " email(s) à envoyer");
         return finalList;
     }
 

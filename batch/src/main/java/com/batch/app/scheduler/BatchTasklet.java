@@ -1,6 +1,6 @@
 package com.batch.app.scheduler;
 
-import com.batch.app.mail.ApacheMail;
+import com.batch.app.mail.MailLate;
 import com.library.oc.library.business.contract.manager.User;
 import com.library.oc.library.business.contract.manager.UserClient;
 import com.library.oc.library.business.contract.manager.UserService;
@@ -22,7 +22,7 @@ public class BatchTasklet implements Tasklet {
     private String message;
 
     @Autowired
-    private ApacheMail mail;
+    private MailLate mail;
 
     public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
         System.out.println(message);

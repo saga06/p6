@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class ApacheMail {
+public class MailLate {
 	
 	@Value("${batch.mail}") 
 	private String mail;
@@ -36,13 +36,14 @@ public class ApacheMail {
 		  try {
 			  email.addTo(user.getEmail(), user.getSurname());
 			  email.setFrom(mail, "Moi");
-			  email.setSubject("Fin de location");
+			  email.setSubject("Retard emprunt ouvrage");
 
 			  // set the html message
-			  
+
 			  String message = "<html>Bonjour "+user.getSurname();
-			  message+="<br>Vous recevez cet email suite à/aux emprunt(s) effectué(s) auprès de notre Bibliothèque.<br>";
-			  message+="<br>Merci de restituer le(s) ouvrage(s) concerné(s) par un retard.<br>";
+			  message+="<br><br>Vous recevez cet email suite &agrave; un retard constat&eacute;  &agrave; l'emprunt d'un ouvrage effectu&eacute; aupr&egrave;s de notre Biblioth&egrave;que.";
+			  message+="<br>Vous pouvez obtenir plus d'informations en vous connectant &agrave; votre espace personnel sur notre site";
+			  message+="<br>Merci de restituer l'ouvrage concern&eacute; par ce retard.<br>";
 			  message+="<br>Cordialement<br>";
 
 			  email.setHtmlMsg(message);
