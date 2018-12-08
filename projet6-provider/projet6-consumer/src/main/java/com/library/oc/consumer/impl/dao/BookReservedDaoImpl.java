@@ -8,8 +8,13 @@ import com.library.oc.library.model.bean.book.Book;
 import com.library.oc.library.model.bean.user.User;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 import java.sql.Types;
 
+/**
+ * Classe d'implémentation de {@link BookReservedDaoImpl}.
+ */
+@Named
 public class BookReservedDaoImpl extends AbstractDao implements BookReservedDao {
 
     //----- INJECTION OF DEPENDENCIES -----
