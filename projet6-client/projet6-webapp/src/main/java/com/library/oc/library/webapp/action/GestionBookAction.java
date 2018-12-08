@@ -145,7 +145,7 @@ public class GestionBookAction extends ActionSupport {
                 try {
                     book = bookClient.getBook(id);
                     user = userClient.getUser(idUser);
-                    bookClient.ReserveBook(user,book);
+                    bookClient.reserveBook(user,book);
                 } catch ( NotFoundException_Exception e) {
                     e.printStackTrace();
                 }
