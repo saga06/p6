@@ -1,14 +1,15 @@
 package com.library.oc.library.business.impl.manager;
 
-import java.util.List;
-import javax.inject.Named;
-import javax.jws.WebMethod;
-import javax.jws.WebService;
-
 import com.library.oc.library.business.contract.manager.BookManager;
-import com.library.oc.library.model.bean.book.BookBorrowed;
 import com.library.oc.library.model.bean.book.Book;
+import com.library.oc.library.model.bean.book.BookBorrowed;
+import com.library.oc.library.model.bean.book.Reservation;
+import com.library.oc.library.model.bean.book.ReservationWithEmail;
 import com.library.oc.library.model.bean.user.User;
+
+import javax.inject.Named;
+import java.util.ArrayList;
+import java.util.List;
 
 @Named
 public class BookManagerImpl extends AbstractManager implements BookManager {
@@ -57,6 +58,45 @@ public class BookManagerImpl extends AbstractManager implements BookManager {
     }
 
     @Override
+    public List<ReservationWithEmail> getListReservationWithEmailAndBook() {
+        // Reservation active list (with active status)
+        List<Reservation> reservationsActive = getDaoFactory().getBookDao().findAllActiveReservation();
+        // Reservation active list with available book initialisation
+        List<Reservation> reservationsAvailable = new ArrayList<>();
+        for(Reservation reservation : reservationsActive)
+        {
+            // we get the id of the book reserved
+            int idBook = reservation.getIdBook();
+            // we get the object book with the id (bc we need the objet for the method getNbOfCopie...)
+            Book bookReserved = getDaoFactory().getBookDao().read(idBook);
+            // we get the number of book available
+            buildBookDependencies(bookReserved);
+            Integer nbAvailable = bookReserved.getNbOfCopiesAvailable();
+            // if the book is available, we add the reservation in the list of reservationsAvailable
+            if (nbAvailable > 0) {
+                int idUser = reservation.getIdUser();
+                reservationsAvailable.add(reservation);
+            }
+        }
+        // For each active reservation with newly available book, we are looking for the oldest reservation information:
+        // user, user email, and id book
+        List <ReservationWithEmail> finalList = new ArrayList<>();
+        List<Integer> idsBook = new ArrayList<>();
+        for (Reservation reservationsAvailableWithInfo : reservationsAvailable) {
+            // we get the id of the reservation
+            int idBook = reservationsAvailableWithInfo.getIdBook();
+            // we use the superExtraGigaMethod to get ONLY the oldest reservation information
+            ReservationWithEmail finalResa = getOldestUserReservationForABook(idBook);
+            int idBook2 = finalResa.getIdBook();
+            if (!idsBook.contains(idBook2)){
+                idsBook.add(idBook2);
+                finalList.add(finalResa);
+            }
+        }
+        return finalList;
+    }
+
+    @Override
     public void borrowBook (User user, Book book) { getDaoFactory().getBookBorrowedDao().borrowBook(user, book); }
 
     @Override
@@ -67,6 +107,9 @@ public class BookManagerImpl extends AbstractManager implements BookManager {
 
     @Override
     public Book getBook(Integer pId) { return getDaoFactory().getBookDao().read(pId); }
+
+    @Override
+    public ReservationWithEmail getOldestUserReservationForABook(Integer id) { return getDaoFactory().getBookDao().getOldestUserReservationForABook(id);}
 
 
     @Override
@@ -90,10 +133,4 @@ public class BookManagerImpl extends AbstractManager implements BookManager {
         c = a - b;
         return c;
     }
-
-
-
-
-
-
 }

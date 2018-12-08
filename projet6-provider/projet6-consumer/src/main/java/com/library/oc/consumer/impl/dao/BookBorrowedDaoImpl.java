@@ -51,6 +51,7 @@ public class BookBorrowedDaoImpl extends AbstractDao implements BookBorrowedDao 
 
     //----- IMPLEMENTATION DES METHODES -----
 
+
     @Override
     public List<BookBorrowed> findAllBooksBorrowed(int id) {
         try {
@@ -87,7 +88,6 @@ public class BookBorrowedDaoImpl extends AbstractDao implements BookBorrowedDao 
     }
 
 
-
     @Override
     public void extendBorrow(int id) {
         try {
@@ -107,8 +107,18 @@ public class BookBorrowedDaoImpl extends AbstractDao implements BookBorrowedDao 
     public int getNbOfCopiesAlreadyBorrowed(BookBorrowed bookBorrowed) {
         JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
         Integer vNbrBook = vJdbcTemplate.queryForObject(
-                "SELECT COUNT(id_book) FROM borrow WHERE id_book =?", Integer.class, bookBorrowed.getId());
+                "SELECT COUNT(id_book) FROM borrow WHERE id_book =? AND is_returned = FALSE", Integer.class, bookBorrowed.getId());
         return vNbrBook;
+    }
+
+
+    // Method for book retuned (not implemented in the webapp interface)
+
+    @Override
+    public void returnBorrow(int id) {
+        String vSQL = "UPDATE borrow SET is_returned = TRUE, is_returned_on_time = TRUE WHERE id_borrow = :borrow_id";
+        getvParams().addValue("borrow_id", id, Types.INTEGER);
+        getvNamedParameterJdbcTemplate().update(vSQL, getvParams());
     }
 
 

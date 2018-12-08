@@ -1,6 +1,7 @@
 package com.batch.app.scheduler;
 
 import com.batch.app.mail.ApacheMail;
+import com.batch.app.mail.MailBookAvailable;
 import com.library.oc.library.business.contract.manager.User;
 import com.library.oc.library.business.contract.manager.UserClient;
 import com.library.oc.library.business.contract.manager.UserService;
@@ -16,13 +17,13 @@ import java.util.Iterator;
 import java.util.List;
 
 @Component
-public class BatchTasklet implements Tasklet {
+public class BatchTaskletReservation implements Tasklet {
 
     @Value("${batch.message}")
     private String message;
 
     @Autowired
-    private ApacheMail mail;
+    private MailBookAvailable mail;
 
     public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
         System.out.println(message);

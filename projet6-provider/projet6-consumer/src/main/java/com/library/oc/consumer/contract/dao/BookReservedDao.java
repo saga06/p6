@@ -10,5 +10,6 @@ import java.util.List;
 public interface BookReservedDao {
 
     public void reserveBook(User user, Book book);
+    public int getNbOfExistenceOfReservationForABook(int id);
 
 }

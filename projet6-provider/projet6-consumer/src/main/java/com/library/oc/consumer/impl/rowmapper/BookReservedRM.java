@@ -23,6 +23,9 @@ public class BookReservedRM implements RowMapper<BookReserved> {
         BookReservedRM.setIdBook(pRS.getInt("id_book"));
         BookReservedRM.setIdUser(pRS.getInt("id_user"));
         BookReservedRM.setDateOfReservation(pRS.getTimestamp("date_of_reservation"));
+        BookReservedRM.setActive(pRS.getBoolean("is_active"));
+        BookReservedRM.setEmailSend(pRS.getBoolean("email_send"));
+        BookReservedRM.setDateOfEmail(pRS.getTimestamp("datetime_email_send"));
 
         return BookReservedRM;
 

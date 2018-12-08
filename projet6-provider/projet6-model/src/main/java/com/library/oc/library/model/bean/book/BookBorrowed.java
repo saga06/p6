@@ -16,21 +16,13 @@ public class BookBorrowed {
 
     // ==================== Attributs ====================
     private Integer idBorrow;
-
     private Date dateStart;
-
     private Date dateEnd;
-
     private boolean alreadyExtended;
-
     private Integer idBorrower;
-
     private Integer idBook;
-
     private boolean returned;
-
     private boolean returnedOnTime;
-
 
     private List<BookBorrowed> books = new ArrayList<BookBorrowed>();
 
@@ -131,7 +123,6 @@ public class BookBorrowed {
     public boolean isReturned() { return returned; }
     public void setReturned(boolean returned) { this.returned = returned; }
 
-
     public boolean isReturnedOnTime() { return returnedOnTime; }
     public void setReturnedOnTime(boolean returnedOnTime) { this.returnedOnTime = returnedOnTime; }
 
@@ -197,7 +188,5 @@ public class BookBorrowed {
     public void setThemes(List<Theme> themes) {
         this.themes = themes;
     }
-
-
 
 }

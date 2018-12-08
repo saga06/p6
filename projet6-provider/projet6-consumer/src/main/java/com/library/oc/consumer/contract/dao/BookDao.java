@@ -3,7 +3,8 @@ import java.util.List;
 
 import com.library.oc.library.model.bean.book.Book;
 import com.library.oc.library.model.bean.book.BookBorrowed;
-import com.library.oc.library.model.bean.user.User;
+import com.library.oc.library.model.bean.book.Reservation;
+import com.library.oc.library.model.bean.book.ReservationWithEmail;
 
 /**
  * Les méthodes CRUD nécessaires pour manipuler le bean "Book" / La table "book"
@@ -20,12 +21,14 @@ public interface BookDao {
      */
     Book read(int id);
     List<Book> findAllBooks();
+    List<Reservation> findAllActiveReservation();
+    ReservationWithEmail getOldestUserReservationForABook(int id);
     List<BookBorrowed> findAllBooksBorrowed(int id);
     int getNbOfCopiesAlreadyBorrowed(Book book);
 
     /**
      * Retourne le nombre de Book
-     * @param pRechercheBook
+     * @param
      * @return Le nombre de Book
      */
     int getCountBook();

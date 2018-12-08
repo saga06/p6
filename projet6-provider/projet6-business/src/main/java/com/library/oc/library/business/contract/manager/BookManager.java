@@ -2,10 +2,13 @@ package com.library.oc.library.business.contract.manager;
 
 import com.library.oc.library.model.bean.book.Book;
 import com.library.oc.library.model.bean.book.BookBorrowed;
+import com.library.oc.library.model.bean.book.Reservation;
+import com.library.oc.library.model.bean.book.ReservationWithEmail;
 import com.library.oc.library.model.bean.user.User;
 
 import javax.jws.WebParam;
 import javax.jws.WebService;
+import java.util.HashSet;
 import java.util.List;
 
 
@@ -37,7 +40,15 @@ public interface BookManager {
     void reserveBook(@WebParam(name = "user") User user,
                     @WebParam(name = "book") Book book);
     void extendBorrow(@WebParam(name = "id") Integer id);
+/*
+    void checkAvailabilityAndReservation(@WebParam(name = "book") Book book);
+*/
     int getNbOfCopiesAvailableForABookBorrowed(@WebParam(name = "bookBorrowed") BookBorrowed bookBorrowed);
     int getNbOfCopiesAvailableForABook(@WebParam(name = "book") Book book);
-
+    ReservationWithEmail getOldestUserReservationForABook(@WebParam(name = "id") Integer id);
+    List<ReservationWithEmail> getListReservationWithEmailAndBook();
+/*
+    boolean existenceOfReservation(@WebParam(name = "id") int id);
+*/
 }
+

@@ -22,6 +22,12 @@ public class BookReserved {
 
         private Integer idBook;
 
+        private boolean active;
+
+        private boolean emailSend;
+
+        private Timestamp dateOfEmail;
+
 /*
         private List<BookReserved> books = new ArrayList<BookReserved>();
 */
@@ -50,7 +56,6 @@ public class BookReserved {
     public Integer getId() {
         return id;
     }
-
     public void setId(Integer id) {
         this.id = id;
     }
@@ -58,7 +63,6 @@ public class BookReserved {
     public Timestamp getDateOfReservation() {
         return dateOfReservation;
     }
-
     public void setDateOfReservation(Timestamp dateOfReservation) {
         this.dateOfReservation = dateOfReservation;
     }
@@ -66,7 +70,6 @@ public class BookReserved {
     public Integer getIdUser() {
         return idUser;
     }
-
     public void setIdUser(Integer idUser) {
         this.idUser = idUser;
     }
@@ -74,17 +77,17 @@ public class BookReserved {
     public Integer getIdBook() {
         return idBook;
     }
-
     public void setIdBook(Integer idBook) {
         this.idBook = idBook;
     }
 
-/*    public List<BookReserved> getBooks() {
-        return books;
-    }
+    public boolean isActive() { return active; }
+    public void setActive(boolean active) { this.active = active; }
 
-    public void setBooks(List<BookReserved> books) {
-        this.books = books;
-    }*/
+    public boolean isEmailSend() { return emailSend; }
+    public void setEmailSend(boolean emailSend) { this.emailSend = emailSend; }
+
+    public Timestamp getDateOfEmail() { return dateOfEmail; }
+    public void setDateOfEmail(Timestamp dateOfEmail) { this.dateOfEmail = dateOfEmail; }
 }
 

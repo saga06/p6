@@ -60,7 +60,7 @@
                     </s:iterator>
                 </td>
                 <td style="text-align: center">
-                    <s:date name="dateStart" format="dd/MM/yyyy" />
+                    <s:date name="dateStart.toGregorianCalendar.time" format="dd/MM/yyyy"/>
                 </td>
                 <td style="text-align: center">
                     <s:date name="dateEnd" format="dd/MM/yyyy" />
@@ -68,10 +68,20 @@
                 <td style="text-align: center">
                     <%--TO DO : implémenter méthode prolongation--%>
                     <s:if test="%{alreadyExtended==false}">
-                        <s:a cssClass="btn btn-warning" action="borrow_extend">
-                            <s:param name="id" value="idBorrow" />
-                            Prolonger
-                        </s:a>
+                        <s:if test="%{returned==false}">
+                            <s:if test="%{#dateEnd.toGregorianCalendar.time > #currentDate.toGregorianCalendar.time}">
+                                <s:a cssClass="btn btn-warning" action="borrow_extend">
+                                    <s:param name="id" value="idBorrow" />
+                                    Prolonger
+                                </s:a>
+                            </s:if>
+                            <s:else>
+                                <div style="color:red"><b>Impossible, vous avez dépassé la date limite</b></div>
+                            </s:else>
+                        </s:if>
+                        <s:else>
+                            <span>Vous avez déjà rendu votre prêt</span>
+                        </s:else>
                     </s:if>
                     <s:else>
                         <p>Emprunt déjà prolongé</p>
