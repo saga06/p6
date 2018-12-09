@@ -86,7 +86,7 @@
                 <td style="text-align: center">
                     <s:if test="%{alreadyExtended==false}">
                         <s:if test="%{returned==false}">
-                            <s:if test="%{#dateEnd.toGregorianCalendar.time > #currentDate.toGregorianCalendar.time}">
+                            <s:if test="%{#dateEnd.toGregorianCalendar.time >= #currentDate.toGregorianCalendar.time}">
                                 <s:a cssClass="btn btn-warning" action="borrow_extend">
                                     <s:param name="id" value="idBorrow" />
                                     Prolonger

@@ -137,4 +137,23 @@ public class BookDaoImpl extends AbstractDao implements BookDao {
         ReservationWithEmail vReservation = reservationWithEmail.get(0);
         return vReservation;
     }
+
+    @Override
+    public void updateEmailStatus(int id){
+        String vSQL = "UPDATE reservation " +
+                " SET  email_send= TRUE, datetime_email_send=current_timestamp " +
+                " WHERE id = :id;";
+        getvParams().addValue("id", id, Types.INTEGER);
+        getvNamedParameterJdbcTemplate().update(vSQL, getvParams());
+    }
+
+    @Override
+    public  void updateReservationStatusToFalse(int id) {
+        String vSQL = "UPDATE reservation " +
+                " SET is_active = FALSE " +
+                " WHERE id = :id";
+        getvParams().addValue("id",id, Types.INTEGER);
+        getvNamedParameterJdbcTemplate().update(vSQL,getvParams());
+    }
+
 }

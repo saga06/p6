@@ -6,7 +6,9 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
@@ -21,8 +23,8 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence&gt;
  *         &lt;element name="active" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/&gt;
  *         &lt;element name="bookTitle" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *         &lt;element name="dateOfEmail" type="{http://manager.contract.business.library.oc.library.com/}timestamp" minOccurs="0"/&gt;
- *         &lt;element name="dateOfReservation" type="{http://manager.contract.business.library.oc.library.com/}timestamp" minOccurs="0"/&gt;
+ *         &lt;element name="dateOfEmail" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
+ *         &lt;element name="dateOfReservation" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
  *         &lt;element name="email" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="emailSend" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/&gt;
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
@@ -56,8 +58,10 @@ public class ReservationWithEmail {
 
     protected Boolean active;
     protected String bookTitle;
-    protected Timestamp dateOfEmail;
-    protected Timestamp dateOfReservation;
+    @XmlSchemaType(name = "dateTime")
+    protected XMLGregorianCalendar dateOfEmail;
+    @XmlSchemaType(name = "dateTime")
+    protected XMLGregorianCalendar dateOfReservation;
     protected String email;
     protected Boolean emailSend;
     protected Integer id;
@@ -120,10 +124,10 @@ public class ReservationWithEmail {
      * 
      * @return
      *     possible object is
-     *     {@link Timestamp }
+     *     {@link XMLGregorianCalendar }
      *     
      */
-    public Timestamp getDateOfEmail() {
+    public XMLGregorianCalendar getDateOfEmail() {
         return dateOfEmail;
     }
 
@@ -132,10 +136,10 @@ public class ReservationWithEmail {
      * 
      * @param value
      *     allowed object is
-     *     {@link Timestamp }
+     *     {@link XMLGregorianCalendar }
      *     
      */
-    public void setDateOfEmail(Timestamp value) {
+    public void setDateOfEmail(XMLGregorianCalendar value) {
         this.dateOfEmail = value;
     }
 
@@ -144,10 +148,10 @@ public class ReservationWithEmail {
      * 
      * @return
      *     possible object is
-     *     {@link Timestamp }
+     *     {@link XMLGregorianCalendar }
      *     
      */
-    public Timestamp getDateOfReservation() {
+    public XMLGregorianCalendar getDateOfReservation() {
         return dateOfReservation;
     }
 
@@ -156,10 +160,10 @@ public class ReservationWithEmail {
      * 
      * @param value
      *     allowed object is
-     *     {@link Timestamp }
+     *     {@link XMLGregorianCalendar }
      *     
      */
-    public void setDateOfReservation(Timestamp value) {
+    public void setDateOfReservation(XMLGregorianCalendar value) {
         this.dateOfReservation = value;
     }
 

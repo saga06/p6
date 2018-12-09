@@ -40,15 +40,12 @@ public interface BookManager {
     void reserveBook(@WebParam(name = "user") User user,
                     @WebParam(name = "book") Book book);
     void extendBorrow(@WebParam(name = "id") Integer id);
-/*
-    void checkAvailabilityAndReservation(@WebParam(name = "book") Book book);
-*/
+    void updateEmailStatus(@WebParam(name = "id") Integer id);
+    void updateReservationStatusToFalse(@WebParam(name = "id") Integer id);
     int getNbOfCopiesAvailableForABookBorrowed(@WebParam(name = "bookBorrowed") BookBorrowed bookBorrowed);
     int getNbOfCopiesAvailableForABook(@WebParam(name = "book") Book book);
     ReservationWithEmail getOldestUserReservationForABook(@WebParam(name = "id") Integer id);
     List<ReservationWithEmail> getListReservationWithEmailAndBook();
-/*
-    boolean existenceOfReservation(@WebParam(name = "id") int id);
-*/
+
 }
 

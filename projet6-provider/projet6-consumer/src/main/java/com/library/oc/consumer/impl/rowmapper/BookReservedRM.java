@@ -7,6 +7,8 @@ package com.library.oc.consumer.impl.rowmapper;
         import javax.inject.Named;
         import java.sql.ResultSet;
         import java.sql.SQLException;
+        import java.sql.Timestamp;
+        import java.util.Calendar;
 
 @Named
 public class BookReservedRM implements RowMapper<BookReserved> {
@@ -22,10 +24,17 @@ public class BookReservedRM implements RowMapper<BookReserved> {
         BookReservedRM.setId(pRS.getInt("id"));
         BookReservedRM.setIdBook(pRS.getInt("id_book"));
         BookReservedRM.setIdUser(pRS.getInt("id_user"));
-        BookReservedRM.setDateOfReservation(pRS.getTimestamp("date_of_reservation"));
         BookReservedRM.setActive(pRS.getBoolean("is_active"));
         BookReservedRM.setEmailSend(pRS.getBoolean("email_send"));
-        BookReservedRM.setDateOfEmail(pRS.getTimestamp("datetime_email_send"));
+
+        Timestamp dateOfReservation = pRS.getTimestamp("date_of_reservation");
+        Timestamp dateEmailSend = pRS.getTimestamp("datetime_email_send");
+        Calendar calendarDateOfReservation = Calendar.getInstance();
+        Calendar calendarDateEmailSend = Calendar.getInstance();
+        calendarDateOfReservation.setTimeInMillis(dateOfReservation.getTime());
+        calendarDateEmailSend.setTimeInMillis(dateEmailSend.getTime());
+        BookReservedRM.setDateOfReservation(calendarDateOfReservation);
+        BookReservedRM.setDateOfEmail(calendarDateEmailSend);
 
         return BookReservedRM;
 

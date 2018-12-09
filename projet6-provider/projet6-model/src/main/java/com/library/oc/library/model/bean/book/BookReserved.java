@@ -3,6 +3,7 @@ package com.library.oc.library.model.bean.book;
 import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class BookReserved {
@@ -16,7 +17,7 @@ public class BookReserved {
         // ==================== Attributs ====================
         private Integer id;
 
-        private Timestamp dateOfReservation;
+        private Calendar dateOfReservation;
 
         private Integer idUser;
 
@@ -26,7 +27,7 @@ public class BookReserved {
 
         private boolean emailSend;
 
-        private Timestamp dateOfEmail;
+        private Calendar dateOfEmail;
 
 /*
         private List<BookReserved> books = new ArrayList<BookReserved>();
@@ -60,12 +61,8 @@ public class BookReserved {
         this.id = id;
     }
 
-    public Timestamp getDateOfReservation() {
-        return dateOfReservation;
-    }
-    public void setDateOfReservation(Timestamp dateOfReservation) {
-        this.dateOfReservation = dateOfReservation;
-    }
+    public Calendar getDateOfReservation() { return dateOfReservation; }
+    public void setDateOfReservation(Calendar dateOfReservation) { this.dateOfReservation = dateOfReservation; }
 
     public Integer getIdUser() {
         return idUser;
@@ -87,7 +84,7 @@ public class BookReserved {
     public boolean isEmailSend() { return emailSend; }
     public void setEmailSend(boolean emailSend) { this.emailSend = emailSend; }
 
-    public Timestamp getDateOfEmail() { return dateOfEmail; }
-    public void setDateOfEmail(Timestamp dateOfEmail) { this.dateOfEmail = dateOfEmail; }
+    public Calendar getDateOfEmail() { return dateOfEmail; }
+    public void setDateOfEmail(Calendar dateOfEmail) { this.dateOfEmail = dateOfEmail; }
 }
 

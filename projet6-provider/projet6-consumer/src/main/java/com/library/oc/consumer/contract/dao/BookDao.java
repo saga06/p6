@@ -25,6 +25,8 @@ public interface BookDao {
     ReservationWithEmail getOldestUserReservationForABook(int id);
     List<BookBorrowed> findAllBooksBorrowed(int id);
     int getNbOfCopiesAlreadyBorrowed(Book book);
+    void updateEmailStatus(int id);
+    void updateReservationStatusToFalse(int id);
 
     /**
      * Retourne le nombre de Book

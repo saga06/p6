@@ -95,10 +95,12 @@ public class BookManagerImpl extends AbstractManager implements BookManager {
             int idBook = reservationsAvailableWithInfo.getIdBook();
             // we use the superExtraGigaMethod to get ONLY the oldest reservation information
             ReservationWithEmail finalResa = getOldestUserReservationForABook(idBook);
-            int idBook2 = finalResa.getIdBook();
-            if (!idsBook.contains(idBook2)){
-                idsBook.add(idBook2);
-                finalList.add(finalResa);
+            if (finalResa != null) {
+                int idBook2 = finalResa.getIdBook();
+                if (!idsBook.contains(idBook2)){
+                    idsBook.add(idBook2);
+                    finalList.add(finalResa);
+                }
             }
         }
         System.out.println("il y a au total " + finalList.size() + " email(s) à envoyer");
@@ -113,6 +115,12 @@ public class BookManagerImpl extends AbstractManager implements BookManager {
 
     @Override
     public void extendBorrow(Integer id) {getDaoFactory().getBookBorrowedDao().extendBorrow(id);}
+
+    @Override
+    public void updateEmailStatus(Integer id) {getDaoFactory().getBookDao().updateEmailStatus(id);}
+
+    @Override
+    public void updateReservationStatusToFalse(Integer id) {getDaoFactory().getBookDao().updateReservationStatusToFalse(id);}
 
     @Override
     public Book getBook(Integer pId) { return getDaoFactory().getBookDao().read(pId); }
