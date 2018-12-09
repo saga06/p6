@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
 import java.util.*;
@@ -64,12 +65,13 @@ public class BatchTaskletReservation implements Tasklet {
 
                 // check delta time between 1st email send and now
                 TimeUnit timeUnit = null;
-                long deltaNotConverted = currentDate.getTime() - dateSend.getTime();
-                long deltaInDays = timeUnit.convert(deltaNotConverted, TimeUnit.DAYS);
 
-                System.out.println(deltaInDays);
+                long deltaInMilliseconds = currentDate.getTime() - dateSend.getTime();
+                System.out.println(deltaInMilliseconds);
 
-                if (!(deltaInDays > 2)) {
+                // 2 days in milliseconds is 1,728^8, if delta > to this, then the reservation has more than 2 days
+                // -> so the resa is not active anymore
+                if (deltaInMilliseconds > 172800000) {
                     // 1 : update status reservation "active" to "false" => next person on the list
                     bookClient.updateReservationStatusToFalse(reservation.getId());
                 }
