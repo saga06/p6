@@ -3,14 +3,13 @@ package com.library.oc.library.webapp.action;
 
 
 
-import com.library.oc.library.business.contract.manager.User;
-import com.library.oc.library.business.contract.manager.UserClient;
-import com.library.oc.library.business.contract.manager.UserService;
+import com.library.oc.library.business.contract.manager.*;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -34,6 +33,9 @@ public class LoginAction extends ActionSupport implements SessionAware, ServletR
 
     private UserService userService = new UserService();
     private UserClient userClient = userService.getUserPort();
+
+    private BookService bookService = new BookService();
+    private BookClient bookClient = bookService.getBookPort();
 
 
     // ==================== Getters/Setters ====================
@@ -62,13 +64,21 @@ public class LoginAction extends ActionSupport implements SessionAware, ServletR
     public String doLogin()  {
         String vResult = ActionSupport.INPUT;
         if (!StringUtils.isAllEmpty(email,password)) {
-            /*user = managerFactory.getUserManager().getEmailUser(this.email);*/
             user = userClient.getEmailUser(this.email);
+
+
 
             if (user != null && userClient.validateLogin(user, this.password))
             {
+/*
+                List <BookBorrowed> booksBorrowed = bookClient.getListBookBorrowedByUser(user.getId());
+*/
+
                 // Ajout de l'user en session
                 this.session.put("user", getUser());
+                // Ajout des livres déjà empruntés en sessions:
+                /*this.session.put(("listBookBorrowed"),booksBorrowed);*/
+
                 vResult = ActionSupport.SUCCESS;
             }
             else {

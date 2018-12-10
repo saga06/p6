@@ -157,8 +157,6 @@ public class BookManagerImpl extends AbstractManager implements BookManager {
     }
 
 
-
-
     @Override
     public void borrowBook (User user, Book book) { getDaoFactory().getBookBorrowedDao().borrowBook(user, book); }
 

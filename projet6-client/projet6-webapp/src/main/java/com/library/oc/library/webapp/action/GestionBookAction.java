@@ -23,6 +23,8 @@ public class GestionBookAction extends ActionSupport {
     private List<Book> listEditor;
     private List<Author> authors;
     private List<Theme> themes;
+    private List<BookBorrowed> listBookBorrowedByUser;
+    private Boolean error;
 
 
     private BookService bookService = new BookService();
@@ -69,6 +71,12 @@ public class GestionBookAction extends ActionSupport {
     public User getUser() { return user; }
     public void setUser(User user) { this.user = user; }
 
+    public List<BookBorrowed> getListBookBorrowedByUser() { return listBookBorrowedByUser; }
+    public void setListBookBorrowedByUser(List<BookBorrowed> listBookBorrowedByUser) { this.listBookBorrowedByUser = listBookBorrowedByUser; }
+
+    public Boolean getError() { return error; }
+    public void setError(Boolean error) { this.error = error; }
+
     // ==================== Méthodes ====================
     /**
      * Action listant les {@link Book}
@@ -77,13 +85,20 @@ public class GestionBookAction extends ActionSupport {
 
 
     public String doList() {
-/*
-        listBook = managerFactory.getBookManager().displayAllBooks();
-*/
 
-        listBook = bookClient.displayAllBooks();
+        //Par défaut, le result est "input"
+        String vResult = ActionSupport.INPUT;
 
-        return ActionSupport.SUCCESS;
+        if (id == null) {
+            listBook = bookClient.displayAllBooks();
+        }
+        else {
+            listBook = bookClient.displayAllBooks();
+            listBookBorrowedByUser = bookClient.getListBookBorrowedByUser(id);
+
+        }
+
+        return (this.hasErrors()) ? ActionSupport.ERROR : ActionSupport.SUCCESS;
     }
 
 

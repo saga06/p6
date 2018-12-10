@@ -28,6 +28,7 @@
                 </li>
                 <li>
                     <s:a action="book_list">
+                        <s:param name="id" value="#session.user.id"/>
                         <s:text name="nav.listBook" />
                     </s:a>
                 </li>

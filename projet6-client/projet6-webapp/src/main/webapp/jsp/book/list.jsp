@@ -14,6 +14,7 @@
     <table id="table" class="table table-dark">
         <thead class="thead-dark">
         <tr>
+            <th scope="col">Id</th>
             <th scope="col">Titre</th>
             <th scope="col">Auteur(s)</th>
             <th scope="col">Editeur</th>
@@ -27,8 +28,22 @@
         </tr>
         </thead>
         <tbody>
+        <div>
+            <s:if test="#session.user">
+                <u>Pour rappel, voici les ouvrages que vous empruntez actuellement :</u> </br>
+                <s:iterator value="listBookBorrowedByUser">
+                    <s:if test="%{returned==false}">
+                    - <s:property value="title"/>
+                    </s:if>
+                </s:iterator>
+            </s:if>
+            <span style="text-align: center;"><s:fielderror fieldName="statusBorrow" cssClass="col-xs-12 errorMessage"/></span>
+        </div>
         <s:iterator value="listBook">
             <tr class="table-primary">
+                <td>
+                    <s:property value="id"/>
+                </td>
                 <td>
                     <s:property value="title"/>
                 </td>
@@ -88,14 +103,32 @@
                     <s:property value="nbOfActiveReservation"/>
                 </td>
                 <td style="text-align: center">
+
+
+
                     <s:if test="#session.user">
                         <s:if test="%{nbOfCopiesAvailable!=0}">
+                        <s:set var="idBookOftheList" value="id"/>
+                        <s:set var="presentInBoorowedList" value="0"/>
+                        <s:iterator value="listBookBorrowedByUser">
+                            <s:set var="idBookAlreadyBorrowed" value="id"/>
+                            <s:if test="%{#idBookOftheList==#idBookAlreadyBorrowed}">
+                                <s:set var="presentInBoorowedList" value="1"/>
+                            </s:if>
+                        </s:iterator>
+                        <s:if test="%{#presentInBoorowedList==1}">
+                            <p>Vous avez déjà emprunté ce livre</p>
+                        </s:if>
+                        <s:else>
                             <s:a cssClass="btn btn-info" action="borrow_new">
                                 <s:param name="id" value="id" />
                                 <s:param name="idUser" value="#session.user.id" />
                                 Emprunter
                             </s:a>
-                        </s:if>
+                        </s:else>
+                    </s:if>
+
+
                         <s:else>
                             <s:if test="(2*numberOfCopies) > nbOfActiveReservation ">
                                 <s:a cssClass="btn btn-warning" action="reservation_new">
@@ -109,6 +142,12 @@
                             </s:else>
                         </s:else>
                     </s:if>
+
+
+
+
+
+
                     <s:else>
                         <p>Vous devez vous identifiez d'abord !</p>
                     </s:else>

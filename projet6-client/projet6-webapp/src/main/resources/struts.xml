@@ -45,6 +45,7 @@
             <result>/jsp/book/list.jsp</result>
         </action>
 
+
         <!-- Action de recherche d'ouvrage -->
         <action name="book_search"
                 class="com.library.oc.library.webapp.action.GestionBookAction"
