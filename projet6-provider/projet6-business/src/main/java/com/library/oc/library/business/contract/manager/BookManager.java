@@ -44,6 +44,8 @@ public interface BookManager {
     int getNbOfCopiesAvailableForABook(@WebParam(name = "book") Book book);
     ReservationWithEmail getOldestUserReservationForABook(@WebParam(name = "id") Integer id);
     List<ReservationWithEmail> getListReservationWithEmailAndBook();
+    ReservationWithEmail getReservationByUserByBook(@WebParam(name = "idUser") int idUser,
+                                                    @WebParam(name = "idBook") int idBook);
     int getNbOfActiveReservationForABook(@WebParam(name = "id") Integer id);
 
 }

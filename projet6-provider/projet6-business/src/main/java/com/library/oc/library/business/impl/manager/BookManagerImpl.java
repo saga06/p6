@@ -178,6 +178,9 @@ public class BookManagerImpl extends AbstractManager implements BookManager {
     @Override
     public ReservationWithEmail getOldestUserReservationForABook(Integer id) { return getDaoFactory().getBookDao().getOldestUserReservationForABook(id);}
 
+    @Override
+    public ReservationWithEmail getReservationByUserByBook(int idUser, int idBook) { return getDaoFactory().getBookDao().getReservationByUserByBook(idUser,idBook);}
+
 
     @Override
     public int getNbOfCopiesAvailableForABookBorrowed(BookBorrowed bookBorrowed) {

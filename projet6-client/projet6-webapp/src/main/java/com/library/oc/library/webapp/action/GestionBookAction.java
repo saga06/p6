@@ -137,6 +137,10 @@ public class GestionBookAction extends ActionSupport {
                     book = bookClient.getBook(id);
                     user = userClient.getUser(idUser);
                     bookClient.borrowBook(user,book);
+                    ReservationWithEmail resa = bookClient.getReservationByUserByBook(idUser,id);
+                    if ( resa != null){
+                        bookClient.updateReservationStatusToFalse(resa.getId());
+                    }
                 } catch ( NotFoundException_Exception e) {
                     e.printStackTrace();
                 }

@@ -28,6 +28,7 @@ public interface BookDao {
     void updateEmailStatus(int id);
     void updateReservationStatusToFalse(int id);
     int getNbOfActiveReservationForABook(int id);
+    ReservationWithEmail getReservationByUserByBook(int idUser, int idBook);
 
     /**
      * Retourne le nombre de Book

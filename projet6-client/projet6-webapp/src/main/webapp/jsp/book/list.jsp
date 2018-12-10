@@ -29,14 +29,7 @@
         </thead>
         <tbody>
         <div>
-            <s:if test="#session.user">
-                <u>Pour rappel, voici les ouvrages que vous empruntez actuellement :</u> </br>
-                <s:iterator value="listBookBorrowedByUser">
-                    <s:if test="%{returned==false}">
-                    - <s:property value="title"/>
-                    </s:if>
-                </s:iterator>
-            </s:if>
+
             <span style="text-align: center;"><s:fielderror fieldName="statusBorrow" cssClass="col-xs-12 errorMessage"/></span>
         </div>
         <s:iterator value="listBook">
@@ -103,9 +96,6 @@
                     <s:property value="nbOfActiveReservation"/>
                 </td>
                 <td style="text-align: center">
-
-
-
                     <s:if test="#session.user">
                         <s:if test="%{nbOfCopiesAvailable!=0}">
                         <s:set var="idBookOftheList" value="id"/>
@@ -127,8 +117,6 @@
                             </s:a>
                         </s:else>
                     </s:if>
-
-
                         <s:else>
                             <s:if test="(2*numberOfCopies) > nbOfActiveReservation ">
                                 <s:a cssClass="btn btn-warning" action="reservation_new">
@@ -142,12 +130,6 @@
                             </s:else>
                         </s:else>
                     </s:if>
-
-
-
-
-
-
                     <s:else>
                         <p>Vous devez vous identifiez d'abord !</p>
                     </s:else>

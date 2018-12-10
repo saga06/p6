@@ -70,15 +70,8 @@ public class LoginAction extends ActionSupport implements SessionAware, ServletR
 
             if (user != null && userClient.validateLogin(user, this.password))
             {
-/*
-                List <BookBorrowed> booksBorrowed = bookClient.getListBookBorrowedByUser(user.getId());
-*/
-
                 // Ajout de l'user en session
                 this.session.put("user", getUser());
-                // Ajout des livres déjà empruntés en sessions:
-                /*this.session.put(("listBookBorrowed"),booksBorrowed);*/
-
                 vResult = ActionSupport.SUCCESS;
             }
             else {

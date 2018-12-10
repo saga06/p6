@@ -42,7 +42,7 @@ public class BookDaoImpl extends AbstractDao implements BookDao {
     @Override
     public Book read(int numero) {
         String vSQL = "SELECT * FROM book " +
-                " LEFT JOIN editor ON book.editor_id = editor.id WHERE book.id="+numero;
+                " LEFT JOIN editor ON book.editor_id = editor.id WHERE book.id=" + numero;
 
         JdbcTemplate jdbcTemplate = new JdbcTemplate(getDataSource());
         List<Book> listBook = jdbcTemplate.query(vSQL, bookRM);
@@ -50,7 +50,6 @@ public class BookDaoImpl extends AbstractDao implements BookDao {
 
         return vBook;
     }
-
 
 
     @Override
@@ -65,21 +64,20 @@ public class BookDaoImpl extends AbstractDao implements BookDao {
     }
 
     @Override
-    public  List<BookBorrowed> findAllBooksBorrowed(int id) {
-        try
-        {
+    public List<BookBorrowed> findAllBooksBorrowed(int id) {
+        try {
             String vSQL =
                     "SELECT * FROM book " +
-                    "INNER JOIN borrow ON borrow.id_book = book.id \n " +
-                    "LEFT JOIN editor ON book.editor_id = editor.id \n " +
-                    "WHERE id_borrower = id \n" +
-                    "ORDER By book.title" ;
+                            "INNER JOIN borrow ON borrow.id_book = book.id \n " +
+                            "LEFT JOIN editor ON book.editor_id = editor.id \n " +
+                            "WHERE id_borrower = id \n" +
+                            "ORDER By book.title";
 
             JdbcTemplate jdbcTemplate = new JdbcTemplate(getDataSource());
             List<BookBorrowed> vListBook = jdbcTemplate.query(vSQL, bookBorrowedRM);
             return vListBook;
 
-        }catch(EmptyResultDataAccessException e){
+        } catch (EmptyResultDataAccessException e) {
             return null;
         }
     }
@@ -87,7 +85,7 @@ public class BookDaoImpl extends AbstractDao implements BookDao {
     @Override
     public int getCountBook() {
         JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
-        int vNbrBook = vJdbcTemplate.queryForObject( "SELECT COUNT(*) FROM book", Integer.class);
+        int vNbrBook = vJdbcTemplate.queryForObject("SELECT COUNT(*) FROM book", Integer.class);
 
         return vNbrBook;
     }
@@ -97,21 +95,20 @@ public class BookDaoImpl extends AbstractDao implements BookDao {
     public int getNbOfCopiesAlreadyBorrowed(Book book) {
         String sql = "SELECT COUNT(*) FROM borrow WHERE id_book=:book AND is_returned = FALSE";
         getvParams().addValue("book", book.getId(), Types.INTEGER);
-        Integer vNbrBook = getvNamedParameterJdbcTemplate().queryForObject(sql,getvParams(), Integer.class);
+        Integer vNbrBook = getvNamedParameterJdbcTemplate().queryForObject(sql, getvParams(), Integer.class);
         return vNbrBook.intValue();
     }
 
     @Override
     public List<Reservation> findAllActiveReservation() {
-        try
-        {
+        try {
             String vSQL =
                     "SELECT * FROM reservation WHERE is_active = true";
             JdbcTemplate jdbcTemplate = new JdbcTemplate(getDataSource());
             List<Reservation> vListReservation = jdbcTemplate.query(vSQL, reservationRM);
             return vListReservation;
 
-        }catch(EmptyResultDataAccessException e){
+        } catch (EmptyResultDataAccessException e) {
             return null;
         }
     }
@@ -125,7 +122,7 @@ public class BookDaoImpl extends AbstractDao implements BookDao {
                 "LEFT JOIN users AS us " +
                 "ON rs.id_user = us.id " +
                 "WHERE rs.is_active = TRUE " +
-                "AND rs.id_book =" +idBook+  " " +
+                "AND rs.id_book =" + idBook + " " +
                 "ORDER BY rs.date_of_reservation";
         JdbcTemplate jdbcTemplate = new JdbcTemplate(getDataSource());
         List<ReservationWithEmail> reservationWithEmail = jdbcTemplate.query(vSQL, reservationWithEmailRM);
@@ -134,7 +131,7 @@ public class BookDaoImpl extends AbstractDao implements BookDao {
     }
 
     @Override
-    public void updateEmailStatus(int id){
+    public void updateEmailStatus(int id) {
         String vSQL = "UPDATE reservation " +
                 " SET  email_send= TRUE, datetime_email_send=current_timestamp " +
                 " WHERE id = :id;";
@@ -147,15 +144,35 @@ public class BookDaoImpl extends AbstractDao implements BookDao {
         String vSQL = "UPDATE reservation " +
                 " SET is_active = FALSE " +
                 " WHERE id = :id";
-        getvParams().addValue("id",id, Types.INTEGER);
-        getvNamedParameterJdbcTemplate().update(vSQL,getvParams());
+        getvParams().addValue("id", id, Types.INTEGER);
+        getvNamedParameterJdbcTemplate().update(vSQL, getvParams());
     }
 
     @Override
     public int getNbOfActiveReservationForABook(int id) {
         String sql = "SELECT COUNT(*) FROM reservation WHERE id_book=:id AND is_active = TRUE";
         getvParams().addValue("id", id, Types.INTEGER);
-        Integer vNbrResa = getvNamedParameterJdbcTemplate().queryForObject(sql,getvParams(), Integer.class);
+        Integer vNbrResa = getvNamedParameterJdbcTemplate().queryForObject(sql, getvParams(), Integer.class);
         return vNbrResa.intValue();
+    }
+
+    @Override
+    public ReservationWithEmail getReservationByUserByBook(int idUser, int idBook) {
+        String vSQL = "SELECT rs.* ,book.id, book.title, us.email " +
+                "FROM reservation AS rs " +
+                "LEFT JOIN book AS book " +
+                "ON rs.id_book = book.id " +
+                "LEFT JOIN users AS us " +
+                "ON rs.id_user = us.id " +
+                "WHERE rs.is_active = TRUE " +
+                "AND rs.id_book =" + idBook + " " +
+                "AND rs.id_user =" + idUser;
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(getDataSource());
+        List<ReservationWithEmail> reservationWithEmail = jdbcTemplate.query(vSQL, reservationWithEmailRM);
+        if (reservationWithEmail.size() != 0) {
+            ReservationWithEmail vReservation = reservationWithEmail.get(0);
+            return vReservation;
+        }
+        return null;
     }
 }
