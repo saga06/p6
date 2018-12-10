@@ -23,6 +23,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="editorName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
  *         &lt;element name="isbn" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="nbOfActiveReservation" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
  *         &lt;element name="nbOfCopiesAlreadyBorrowed" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
  *         &lt;element name="nbOfCopiesAvailable" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
  *         &lt;element name="numberOfCopies" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
@@ -43,6 +44,7 @@ import javax.xml.bind.annotation.XmlType;
     "editorName",
     "id",
     "isbn",
+    "nbOfActiveReservation",
     "nbOfCopiesAlreadyBorrowed",
     "nbOfCopiesAvailable",
     "numberOfCopies",
@@ -57,6 +59,7 @@ public class Book {
     protected String editorName;
     protected Integer id;
     protected String isbn;
+    protected Integer nbOfActiveReservation;
     protected Integer nbOfCopiesAlreadyBorrowed;
     protected Integer nbOfCopiesAvailable;
     protected Integer numberOfCopies;
@@ -164,6 +167,30 @@ public class Book {
      */
     public void setIsbn(String value) {
         this.isbn = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété nbOfActiveReservation.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getNbOfActiveReservation() {
+        return nbOfActiveReservation;
+    }
+
+    /**
+     * Définit la valeur de la propriété nbOfActiveReservation.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setNbOfActiveReservation(Integer value) {
+        this.nbOfActiveReservation = value;
     }
 
     /**

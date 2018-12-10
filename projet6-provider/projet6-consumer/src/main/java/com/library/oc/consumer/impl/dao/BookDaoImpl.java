@@ -102,7 +102,7 @@ public class BookDaoImpl extends AbstractDao implements BookDao {
     }
 
     @Override
-    public  List<Reservation> findAllActiveReservation() {
+    public List<Reservation> findAllActiveReservation() {
         try
         {
             String vSQL =
@@ -143,7 +143,7 @@ public class BookDaoImpl extends AbstractDao implements BookDao {
     }
 
     @Override
-    public  void updateReservationStatusToFalse(int id) {
+    public void updateReservationStatusToFalse(int id) {
         String vSQL = "UPDATE reservation " +
                 " SET is_active = FALSE " +
                 " WHERE id = :id";
@@ -151,4 +151,11 @@ public class BookDaoImpl extends AbstractDao implements BookDao {
         getvNamedParameterJdbcTemplate().update(vSQL,getvParams());
     }
 
+    @Override
+    public int getNbOfActiveReservationForABook(int id) {
+        String sql = "SELECT COUNT(*) FROM reservation WHERE id_book=:id AND is_active = TRUE";
+        getvParams().addValue("id", id, Types.INTEGER);
+        Integer vNbrResa = getvNamedParameterJdbcTemplate().queryForObject(sql,getvParams(), Integer.class);
+        return vNbrResa.intValue();
+    }
 }

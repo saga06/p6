@@ -22,6 +22,7 @@
             <th scope="col">Nb d'exemplaire(s) total</th>
             <th scope="col">Nb d'exemplaire(s) déjà emprunté(s)</th>
             <th scope="col">Nb d'exemplaire(s) disponible(s)</th>
+            <th scope="col">Nb de réservation(s)</th>
             <th scope="col" style="text-align:center">Vous souhaitez l'emprunter ?</th>
         </tr>
         </thead>
@@ -84,6 +85,9 @@
                     </td>
                 </s:elseif>
                 <td style="text-align: center">
+                    <s:property value="nbOfActiveReservation"/>
+                </td>
+                <td style="text-align: center">
                     <s:if test="#session.user">
                         <s:if test="%{nbOfCopiesAvailable!=0}">
                             <s:a cssClass="btn btn-info" action="borrow_new">
@@ -93,11 +97,16 @@
                             </s:a>
                         </s:if>
                         <s:else>
-                            <s:a cssClass="btn btn-warning" action="reservation_new">
-                                <s:param name="id" value="id" />
-                                <s:param name="idUser" value="#session.user.id" />
-                                Réserver *
-                            </s:a>
+                            <s:if test="(2*numberOfCopies) > nbOfActiveReservation ">
+                                <s:a cssClass="btn btn-warning" action="reservation_new">
+                                    <s:param name="id" value="id" />
+                                    <s:param name="idUser" value="#session.user.id" />
+                                    Réserver *
+                                </s:a>
+                            </s:if>
+                            <s:else>
+                                <p>Nb de réservation maximum atteint pour cet ouvrage</p>
+                            </s:else>
                         </s:else>
                     </s:if>
                     <s:else>

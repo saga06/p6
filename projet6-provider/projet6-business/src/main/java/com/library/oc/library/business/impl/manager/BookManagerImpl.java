@@ -12,9 +12,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 @Named
 public class BookManagerImpl extends AbstractManager implements BookManager {
@@ -48,6 +46,7 @@ public class BookManagerImpl extends AbstractManager implements BookManager {
         book.setThemes(getDaoFactory().getThemeDao().findThemesByBook(book));
         book.setNbOfCopiesAlreadyBorrowed(getDaoFactory().getBookDao().getNbOfCopiesAlreadyBorrowed(book));
         book.setNbOfCopiesAvailable(getNbOfCopiesAvailableForABook(book));
+        book.setNbOfActiveReservation(getNbOfActiveReservationForABook(book.getId()));
     }
 
 
@@ -158,6 +157,8 @@ public class BookManagerImpl extends AbstractManager implements BookManager {
     }
 
 
+
+
     @Override
     public void borrowBook (User user, Book book) { getDaoFactory().getBookBorrowedDao().borrowBook(user, book); }
 
@@ -201,4 +202,8 @@ public class BookManagerImpl extends AbstractManager implements BookManager {
         c = a - b;
         return c;
     }
+
+    @Override
+    public int getNbOfActiveReservationForABook(Integer id) {return getDaoFactory().getBookDao().getNbOfActiveReservationForABook(id); }
+
 }

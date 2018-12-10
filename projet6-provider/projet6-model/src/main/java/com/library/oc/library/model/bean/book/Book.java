@@ -29,6 +29,8 @@ public class Book {
     @NotNull
     private Integer nbOfCopiesAvailable;
 
+    @NotNull
+    private Integer nbOfActiveReservation;
 
     @NotNull
     private String title;
@@ -87,6 +89,9 @@ public class Book {
 
     public Integer getNbOfCopiesAvailable() { return nbOfCopiesAvailable; }
     public void setNbOfCopiesAvailable(Integer nbOfCopiesAvailable) { this.nbOfCopiesAvailable = nbOfCopiesAvailable; }
+
+    public Integer getNbOfActiveReservation() { return nbOfActiveReservation; }
+    public void setNbOfActiveReservation(Integer nbOfActiveReservation) { this.nbOfActiveReservation = nbOfActiveReservation; }
 
     public String getTitle() { return title; }
     public void setTitle(String title) { this.title = title; }
