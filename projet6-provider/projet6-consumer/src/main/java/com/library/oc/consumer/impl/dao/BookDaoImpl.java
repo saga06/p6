@@ -119,19 +119,14 @@ public class BookDaoImpl extends AbstractDao implements BookDao {
     @Override
     public ReservationWithEmail getOldestUserReservationForABook(int idBook) {
         String vSQL = "SELECT rs.* ,book.id, book.title, us.email " +
-        "FROM reservation AS rs " +
+                "FROM reservation AS rs " +
                 "LEFT JOIN book AS book " +
                 "ON rs.id_book = book.id " +
                 "LEFT JOIN users AS us " +
                 "ON rs.id_user = us.id " +
-                "WHERE rs.date_of_reservation =" +
-                " (SELECT min(rs2.date_of_reservation)" +
-                "  FROM reservation AS rs2" +
-                "  WHERE rs2.id_book = rs.id_book " +
-                "  GROUP BY rs2.id_book) " +
-                "AND rs.is_active = TRUE "+
-                "AND rs.id_book ="+ idBook ;
-
+                "WHERE rs.is_active = TRUE " +
+                "AND rs.id_book =" +idBook+  " " +
+                "ORDER BY rs.date_of_reservation";
         JdbcTemplate jdbcTemplate = new JdbcTemplate(getDataSource());
         List<ReservationWithEmail> reservationWithEmail = jdbcTemplate.query(vSQL, reservationWithEmailRM);
         ReservationWithEmail vReservation = reservationWithEmail.get(0);

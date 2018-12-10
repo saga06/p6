@@ -74,12 +74,8 @@ public class ReservationWithEmail {
         this.active = active;
     }
 
-    public Boolean getEmailSend() {
-        return emailSend;
-    }
-    public void setEmailSend(Boolean emailSend) {
-        this.emailSend = emailSend;
-    }
+    public Boolean getEmailSend() { return emailSend; }
+    public void setEmailSend(Boolean emailSend) { this.emailSend = emailSend; }
 
     public Calendar getDateOfEmail() { return dateOfEmail; }
     public void setDateOfEmail(Calendar dateOfEmail) { this.dateOfEmail = dateOfEmail; }
