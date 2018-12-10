@@ -35,8 +35,8 @@ public class MailBookAvailable {
         email.setAuthenticator(new DefaultAuthenticator(mail, password));
         email.setSSLOnConnect(true);
         try {
-            email.addTo(resa.getEmail(), "Abonn&eacute");
-            email.setFrom(mail, "Moi");
+            email.addTo(resa.getEmail(), "Lecteur");
+            email.setFrom(mail, "Biblioth&egrave;que OC");
             email.setSubject("Ouvrage de nouveau disponible");
 
             // set the html message

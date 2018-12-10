@@ -81,16 +81,14 @@ public class BookManagerImpl extends AbstractManager implements BookManager {
             // we get the number of book available
             Integer nbAvailable = bookReserved.getNbOfCopiesAvailable();
 
-            if (nbAvailable > 0) {
-                System.out.println("il y a une réservation pour le livre " + bookReserved.getTitle() + " qui est disponible");
-            } else {
-                System.out.println("il n'y a pas d'exemplaire disponible de " + bookReserved.getTitle());
-            }
-
             // if the book is available, we add the reservation in the list of reservationsAvailable
             if (nbAvailable > 0) {
+                System.out.println("il y a une réservation pour le livre " + bookReserved.getTitle() + " qui est disponible");
                 reservationsAvailable.add(reservation);
                 System.out.println("il y a une réservation qui peut etre honoree");
+            }
+            else {
+                System.out.println("il n'y a pas d'exemplaire disponible de " + bookReserved.getTitle());
             }
         }
 
@@ -116,7 +114,6 @@ public class BookManagerImpl extends AbstractManager implements BookManager {
         System.out.println("il y a au total " + oldestReservationByBookList.size() + " email(s) à envoyer");
 
         // Now we have to check that this reservation has been done under 48 hours :
-
         // 2nd list : list of resa without resa older than 48hours :
         List<ReservationWithEmail> finalList = new ArrayList<ReservationWithEmail>();
 
@@ -151,9 +148,10 @@ public class BookManagerImpl extends AbstractManager implements BookManager {
                     updateReservationStatusToFalse(reservation.getId());
                     // 2 : start all over to be sure that the next person on the list will be called
                     getListReservationWithEmailAndBook();
-                } else {
-                    finalList.add(reservation);
                 }
+                /*else {
+                    finalList.add(reservation);
+                }*/
             }
         }
         return finalList;

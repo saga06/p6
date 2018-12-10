@@ -35,7 +35,7 @@ public class MailLate {
 		  email.setSSLOnConnect(true);
 		  try {
 			  email.addTo(user.getEmail(), user.getSurname());
-			  email.setFrom(mail, "Moi");
+			  email.setFrom(mail, "Biblioth&egrave;que OC");
 			  email.setSubject("Retard emprunt ouvrage");
 
 			  // set the html message
