@@ -7,6 +7,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
+<jsp:useBean id="now" class="java.util.Date"/>
+
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
@@ -21,7 +23,7 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <script type="text/javascript">
+                <%--<script type="text/javascript">
                     $(document).ready(function () {
                         if(window.location.href.indexOf("library-webapp/library-webapp") > -1) {
                             $('ul li:not(:nth-child(2))').removeClass('active');
@@ -39,23 +41,23 @@
                             $('ul li:not(:nth-child(99))').removeClass('active');
                         }
                     });
-                </script>
-                <li class="active">
+                </script>--%>
+                <li>
                     <s:a href="library-webapp">
                         <s:text name="nav.homepage" />
                     </s:a>
                 </li>
-                <li class="active">
+                <li>
                     <s:a action="book_list">
                         <s:text name="nav.listBook" />
                     </s:a>
                 </li>
-                <li class="active">
+                <li>
                     <s:a action="book_search">
                         <s:text name="nav.searchBook" />
                     </s:a>
                 </li>
-                <li class="active">
+                <li>
                     <s:a action="about">
                         <s:text name="nav.about" />
                     </s:a>

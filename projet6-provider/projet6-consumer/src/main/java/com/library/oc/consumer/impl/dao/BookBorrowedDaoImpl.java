@@ -58,7 +58,7 @@ public class BookBorrowedDaoImpl extends AbstractDao implements BookBorrowedDao 
                     "SELECT * FROM book " +
                             "INNER JOIN borrow ON borrow.id_book = book.id \n " +
                             "LEFT JOIN editor ON book.editor_id = editor.id \n " +
-                            "WHERE id_borrower = " + id;
+                            "WHERE is_returned = false AND id_borrower = " + id;
 
             JdbcTemplate jdbcTemplate = new JdbcTemplate(getDataSource());
             List<BookBorrowed> vListBook = jdbcTemplate.query(vSQL, bookBorrowedRM);
@@ -86,6 +86,8 @@ public class BookBorrowedDaoImpl extends AbstractDao implements BookBorrowedDao 
 
     }
 
+
+
     @Override
     public void extendBorrow(int id) {
         try {
@@ -105,7 +107,7 @@ public class BookBorrowedDaoImpl extends AbstractDao implements BookBorrowedDao 
     public int getNbOfCopiesAlreadyBorrowed(BookBorrowed bookBorrowed) {
         JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
         Integer vNbrBook = vJdbcTemplate.queryForObject(
-                "SELECT COUNT(id_book) FROM borrow WHERE id_book =?", Integer.class, bookBorrowed.getId());
+                "SELECT COUNT(id_book) FROM borrow WHERE id_book =? AND is_returned = false ", Integer.class, bookBorrowed.getId());
         return vNbrBook;
     }
 

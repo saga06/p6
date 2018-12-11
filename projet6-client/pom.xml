@@ -9,17 +9,17 @@
     <!-- ======= Project's informations ====== -->
     <!-- ===================================== -->
     <parent>
-        <artifactId>projet4</artifactId>
+        <artifactId>projet6</artifactId>
         <groupId>com.library.oc</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0.1-SNAPSHOT</version>
     </parent>
     <groupId>com.library.oc</groupId>
-    <artifactId>projet4-client</artifactId>
+    <artifactId>projet6-client</artifactId>
     <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
 
     <modules>
-        <module>projet4-webapp</module>
+        <module>projet6-webapp</module>
     </modules>
 
     <!-- ===== General informations ===== -->
@@ -62,8 +62,8 @@
             <!-- ====== Modules ====== -->
             <dependency>
                 <groupId>com.library.oc</groupId>
-                <artifactId>projet4Consumer</artifactId>
-                <version>1.0-SNAPSHOT</version>
+                <artifactId>projet6Consumer</artifactId>
+                <version>1.0.1-SNAPSHOT</version>
             </dependency>
             <!-- ===== Bibliothèques tierces ===== -->
             <dependency>
@@ -217,7 +217,7 @@
     <!-- Build -->
     <!-- =============================================================== -->
     <build>
-        <finalName>projet4</finalName>
+        <finalName>projet6</finalName>
         <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
             <plugins>
                 <!-- Compilation des sources Java -->

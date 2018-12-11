@@ -1,15 +1,15 @@
 package com.library.oc.consumer.impl;
 
 
-import javax.inject.Inject;
-import javax.inject.Named;
-
 import com.library.oc.consumer.contract.DaoFactory;
 import com.library.oc.consumer.contract.dao.*;
 
+import javax.inject.Inject;
+import javax.inject.Named;
+
+
 @Named("daoFactory")
 public class DaoFactoryImpl implements DaoFactory {
-
 
     @Inject
     BookDao bookDaoImpl;
@@ -21,6 +21,9 @@ public class DaoFactoryImpl implements DaoFactory {
     ThemeDao themeDaoImpl;
     @Inject
     BookBorrowedDao bookBorrowedDaoImpl;
+    @Inject
+    BookReservedDao bookReservedDaoImpl;
+
 
 
 
@@ -43,6 +46,13 @@ public class DaoFactoryImpl implements DaoFactory {
     public BookBorrowedDao getBookBorrowedDao() { return bookBorrowedDaoImpl; }
     @Override
     public void setBookBorrowedDao(BookBorrowedDao pBookBorrowedDao) { this.bookBorrowedDaoImpl = pBookBorrowedDao; }
+
+    //----- BOOK Reserved-----
+    @Override
+    public BookReservedDao getBookReservedDao() { return bookReservedDaoImpl; }
+    @Override
+    public void setBookReservedDao(BookReservedDao pBookReservedDao) { this.bookReservedDaoImpl = pBookReservedDao; }
+
 
 
     //----- Author -----

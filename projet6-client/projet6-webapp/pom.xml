@@ -8,12 +8,12 @@
     <!-- =============================================================== -->
     <!-- ===== Book Parent Maven ===== -->
     <parent>
-        <artifactId>projet4-client</artifactId>
+        <artifactId>projet6-client</artifactId>
         <groupId>com.library.oc</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>projet4-webapp</artifactId>
+    <artifactId>projet6-webapp</artifactId>
     <packaging>war</packaging>
 
     <name>library-webapp Maven Webapp</name>

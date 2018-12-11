@@ -8,8 +8,8 @@
     <!-- ======= Project's informations ====== -->
     <!-- ===================================== -->
     <groupId>com.library.oc</groupId>
-    <artifactId>projet4</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <artifactId>projet6</artifactId>
+    <version>1.0.1-SNAPSHOT</version>
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -56,8 +56,8 @@
     </properties>
 
     <modules>
-        <module>projet4-client</module>
-        <module>projet4-provider</module>
+        <module>projet6-client</module>
+        <module>projet6-provider</module>
         <module>batch</module>
     </modules>
 

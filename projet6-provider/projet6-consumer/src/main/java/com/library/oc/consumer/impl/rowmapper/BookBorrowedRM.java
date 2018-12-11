@@ -10,9 +10,6 @@ import javax.inject.Named;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-/*
-import com.library.oc.consumer.contract.dao.BookStatutDao;
-*/
 
 @Named
 public class BookBorrowedRM implements RowMapper<BookBorrowed> {
@@ -20,8 +17,6 @@ public class BookBorrowedRM implements RowMapper<BookBorrowed> {
 
     @Inject
     AuthorDao authorDaoImpl;
-
-
     @Inject
     UserDao userDaoImpl;
 

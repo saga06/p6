@@ -55,7 +55,6 @@ public class ApacheMail {
 			  System.out.println("Mail has been sent successfully");
 		  }
 		 catch (EmailException e) {
-			// TODO Auto-generated catch block
 			 System.out.println("Unable to send an email" + e.getMessage());
 		}
 
