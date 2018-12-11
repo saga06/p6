@@ -1,7 +1,6 @@
 package com.library.oc.library.model.bean.book;
 
 import javax.validation.constraints.NotNull;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -82,9 +81,6 @@ public class Reservation extends ReservationWithEmail {
     public void setReservations(List<Reservation> reservations) {
         this.reservations = reservations;
     }
-
-/*    public String getEmail() { return email; }
-    public void setEmail(String email) { this.email = email; }*/
 
     public String getBookTitle() { return bookTitle; }
     public void setBookTitle(String bookTitle) { this.bookTitle = bookTitle; }

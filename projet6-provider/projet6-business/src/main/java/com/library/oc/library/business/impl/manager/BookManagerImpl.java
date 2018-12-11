@@ -47,6 +47,9 @@ public class BookManagerImpl extends AbstractManager implements BookManager {
         book.setNbOfCopiesAlreadyBorrowed(getDaoFactory().getBookDao().getNbOfCopiesAlreadyBorrowed(book));
         book.setNbOfCopiesAvailable(getNbOfCopiesAvailableForABook(book));
         book.setNbOfActiveReservation(getNbOfActiveReservationForABook(book.getId()));
+        if ( (getDateOfReturnOfOldestBorrowOfABook(book.getId())) != null ){
+            Date dateEnd = (getDateOfReturnOfOldestBorrowOfABook(book.getId())).getDateEnd();
+        book.setDateReturn(dateEnd);}
     }
 
 
@@ -92,7 +95,7 @@ public class BookManagerImpl extends AbstractManager implements BookManager {
         }
 
         // 3 : Pour chaque réservation active et dispo, on chercher quelle est la réservation la plus ancienne
-        // ie, la réservation qui a été faite en premier, et donc la première à devoir etre honorer
+        // ie, la réservation qui a été faite en premier, et donc la première à devoir etre honorée
         List<ReservationWithEmail> oldestReservationByBookList = new ArrayList<>();
         List<Integer> idsBook = new ArrayList<>();
         for (Reservation oldestReservationByBook : reservationsAvailable) {
@@ -100,7 +103,7 @@ public class BookManagerImpl extends AbstractManager implements BookManager {
             int idBook = oldestReservationByBook.getIdBook();
             // we use the orberBy to get ONLY the oldest reservation information by book
             // Ici une méthode en pure sql est appelée. C'est elle qui sélectionne la réservation la plus ancienne
-            // pour une livre donné (un id)
+            // pour un livre donné (un id)
             ReservationWithEmail oldestReservationForABook = getOldestUserReservationForABook(idBook);
             if (oldestReservationForABook != null) {
                 int idBook2 = oldestReservationForABook.getIdBook();
@@ -177,6 +180,9 @@ public class BookManagerImpl extends AbstractManager implements BookManager {
 
     @Override
     public ReservationWithEmail getOldestUserReservationForABook(Integer id) { return getDaoFactory().getBookDao().getOldestUserReservationForABook(id);}
+
+    @Override
+    public BookBorrowed getDateOfReturnOfOldestBorrowOfABook(int idBook) { return getDaoFactory().getBookDao().getDateOfReturnOfOldestBorrowOfABook(idBook);}
 
     @Override
     public ReservationWithEmail getReservationByUserByBook(int idUser, int idBook) { return getDaoFactory().getBookDao().getReservationByUserByBook(idUser,idBook);}

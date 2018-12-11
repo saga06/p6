@@ -29,11 +29,6 @@ public class BookReserved {
 
         private Calendar dateOfEmail;
 
-/*
-        private List<BookReserved> books = new ArrayList<BookReserved>();
-*/
-
-
 
         // ==================== Constructeurs ====================
         /**

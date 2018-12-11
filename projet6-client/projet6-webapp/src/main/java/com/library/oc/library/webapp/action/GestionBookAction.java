@@ -95,7 +95,6 @@ public class GestionBookAction extends ActionSupport {
         else {
             listBook = bookClient.displayAllBooks();
             listBookBorrowedByUser = bookClient.getListBookBorrowedByUser(id);
-
         }
 
         return (this.hasErrors()) ? ActionSupport.ERROR : ActionSupport.SUCCESS;

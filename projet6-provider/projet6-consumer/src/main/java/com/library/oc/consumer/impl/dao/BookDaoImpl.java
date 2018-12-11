@@ -1,6 +1,5 @@
 package com.library.oc.consumer.impl.dao;
 import java.sql.Types;
-import java.util.HashSet;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -172,6 +171,21 @@ public class BookDaoImpl extends AbstractDao implements BookDao {
         if (reservationWithEmail.size() != 0) {
             ReservationWithEmail vReservation = reservationWithEmail.get(0);
             return vReservation;
+        }
+        return null;
+    }
+
+    public BookBorrowed getDateOfReturnOfOldestBorrowOfABook(int idBook) {
+        String vSQL = "SELECT * FROM borrow " +
+                "INNER JOIN book ON borrow.id_book = book.id \n " +
+                "LEFT JOIN editor ON book.editor_id = editor.id \n " +
+                "WHERE is_returned = FALSE AND id_book = " + idBook + "  ORDER BY date_end";
+        getvParams().addValue("idBook", idBook, Types.INTEGER);
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(getDataSource());
+        List<BookBorrowed> dateOfReturnOfABookList = jdbcTemplate.query(vSQL, bookBorrowedRM);
+        if (dateOfReturnOfABookList.size() != 0) {
+            BookBorrowed vdateOfReturnOfABook = dateOfReturnOfABookList.get(0);
+            return vdateOfReturnOfABook;
         }
         return null;
     }

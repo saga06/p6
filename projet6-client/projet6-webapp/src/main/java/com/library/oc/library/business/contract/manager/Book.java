@@ -6,7 +6,9 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
@@ -20,6 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="authors" type="{http://manager.contract.business.library.oc.library.com/}author" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *         &lt;element name="dateReturn" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
  *         &lt;element name="editorName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
  *         &lt;element name="isbn" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
@@ -41,6 +44,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "book", propOrder = {
     "authors",
+    "dateReturn",
     "editorName",
     "id",
     "isbn",
@@ -56,6 +60,8 @@ public class Book {
 
     @XmlElement(nillable = true)
     protected List<Author> authors;
+    @XmlSchemaType(name = "dateTime")
+    protected XMLGregorianCalendar dateReturn;
     protected String editorName;
     protected Integer id;
     protected String isbn;
@@ -95,6 +101,30 @@ public class Book {
             authors = new ArrayList<Author>();
         }
         return this.authors;
+    }
+
+    /**
+     * Obtient la valeur de la propriété dateReturn.
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public XMLGregorianCalendar getDateReturn() {
+        return dateReturn;
+    }
+
+    /**
+     * Définit la valeur de la propriété dateReturn.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setDateReturn(XMLGregorianCalendar value) {
+        this.dateReturn = value;
     }
 
     /**

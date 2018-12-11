@@ -15,6 +15,7 @@
         <thead class="thead-dark">
         <tr>
             <th scope="col">Id</th>
+            <th scope="col">Prochaine date retour emprunt</th>
             <th scope="col">Titre</th>
             <th scope="col">Auteur(s)</th>
             <th scope="col">Editeur</th>
@@ -29,13 +30,17 @@
         </thead>
         <tbody>
         <div>
-
             <span style="text-align: center;"><s:fielderror fieldName="statusBorrow" cssClass="col-xs-12 errorMessage"/></span>
         </div>
         <s:iterator value="listBook">
             <tr class="table-primary">
                 <td>
                     <s:property value="id"/>
+                </td>
+                <td>
+                    <s:if test="nbOfCopiesAvailable == 0">
+                        <s:date name="dateReturn.toGregorianCalendar.time" format="dd/MM/yyyy" />
+                    </s:if>
                 </td>
                 <td>
                     <s:property value="title"/>

@@ -1,6 +1,7 @@
 package com.library.oc.library.model.bean.book;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.validation.constraints.NotNull;
@@ -42,6 +43,8 @@ public class Book {
     private String isbn;
 
     private String resume;
+
+    private Date dateReturn;
 
     public void setEditorId(Integer editorId) { this.editorId = editorId; }
 
@@ -102,8 +105,10 @@ public class Book {
     public String getIsbn() { return isbn; }
     public void setIsbn(String isbn) { this.isbn = isbn; }
 
-    public String getResume() { return resume; }
+    public Date getDateReturn() { return dateReturn; }
+    public void setDateReturn(Date dateReturn) { this.dateReturn = dateReturn; }
 
+    public String getResume() { return resume; }
     public void setResume(String resume) { this.resume = resume; }
 
     public List<Author> getAuthors() {
