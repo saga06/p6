@@ -25,6 +25,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="authors" type="{http://manager.contract.business.library.oc.library.com/}author" maxOccurs="unbounded" minOccurs="0"/&gt;
  *         &lt;element name="books" type="{http://manager.contract.business.library.oc.library.com/}bookBorrowed" maxOccurs="unbounded" minOccurs="0"/&gt;
  *         &lt;element name="dateEnd" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
+ *         &lt;element name="dateReturn" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
  *         &lt;element name="dateStart" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
  *         &lt;element name="editorId" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
  *         &lt;element name="editorName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
@@ -55,6 +56,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "authors",
     "books",
     "dateEnd",
+    "dateReturn",
     "dateStart",
     "editorId",
     "editorName",
@@ -81,6 +83,8 @@ public class BookBorrowed {
     protected List<BookBorrowed> books;
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar dateEnd;
+    @XmlSchemaType(name = "dateTime")
+    protected XMLGregorianCalendar dateReturn;
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar dateStart;
     protected Integer editorId;
@@ -196,6 +200,30 @@ public class BookBorrowed {
      */
     public void setDateEnd(XMLGregorianCalendar value) {
         this.dateEnd = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété dateReturn.
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public XMLGregorianCalendar getDateReturn() {
+        return dateReturn;
+    }
+
+    /**
+     * Définit la valeur de la propriété dateReturn.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setDateReturn(XMLGregorianCalendar value) {
+        this.dateReturn = value;
     }
 
     /**

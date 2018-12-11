@@ -81,6 +81,7 @@ public class BookDaoImpl extends AbstractDao implements BookDao {
         }
     }
 
+
     @Override
     public int getCountBook() {
         JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
@@ -111,6 +112,8 @@ public class BookDaoImpl extends AbstractDao implements BookDao {
             return null;
         }
     }
+
+
 
     @Override
     public ReservationWithEmail getOldestUserReservationForABook(int idBook) {

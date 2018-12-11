@@ -17,8 +17,8 @@ public class ReservationRM implements RowMapper<Reservation> {
     @Override
     public Reservation mapRow(ResultSet pRS, int pRowNum) throws SQLException {
 
-        Reservation reservationRM = new Reservation(pRS.getInt("id"));
-        reservationRM.setIdReservation(pRS.getInt("id"));
+        Reservation reservationRM = new Reservation(pRS.getInt("id_reservation"));
+        reservationRM.setIdReservation(pRS.getInt("id_reservation"));
         reservationRM.setIdBook(pRS.getInt("id_book"));
         reservationRM.setIdUser(pRS.getInt("id_user"));
         reservationRM.setActive(pRS.getBoolean("is_active"));

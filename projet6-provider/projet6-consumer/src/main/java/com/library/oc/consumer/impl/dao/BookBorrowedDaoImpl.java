@@ -9,10 +9,12 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import com.library.oc.consumer.contract.dao.BookBorrowedDao;
 import com.library.oc.consumer.contract.dao.UserDao;
+import com.library.oc.consumer.impl.rowmapper.BookReservedRM;
 import com.library.oc.library.model.bean.book.Book;
 import com.library.oc.consumer.impl.rowmapper.BookRM;
 import com.library.oc.consumer.impl.rowmapper.BookBorrowedRM;
 import com.library.oc.library.model.bean.book.BookBorrowed;
+import com.library.oc.library.model.bean.book.BookReserved;
 import com.library.oc.library.model.bean.user.User;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -32,6 +34,8 @@ public class BookBorrowedDaoImpl extends AbstractDao implements BookBorrowedDao 
     BookRM bookRM;
     @Inject
     BookBorrowedRM bookBorrowedRM;
+    @Inject
+    BookReservedRM bookReservedRM;
 
     private static final String FICHIER_PROPERTIES = "config.properties";
     private static final String PROPERTY_BORROWDURATION = "borrow.Duration";
@@ -71,6 +75,24 @@ public class BookBorrowedDaoImpl extends AbstractDao implements BookBorrowedDao 
     }
 
     @Override
+    public List<BookReserved> findAllBooksReserved(int id) {
+        try {
+            String vSQL =
+                    "SELECT * FROM book " +
+                            "INNER JOIN reservation ON reservation.id_book = book.id \n " +
+                            "LEFT JOIN editor ON book.editor_id = editor.id \n " +
+                            "WHERE is_active = TRUE AND id_user = " + id;
+
+            JdbcTemplate jdbcTemplate = new JdbcTemplate(getDataSource());
+            List<BookReserved> vListBook = jdbcTemplate.query(vSQL, bookReservedRM);
+            return vListBook;
+
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
+    }
+
+    @Override
     public void borrowBook(User user, Book book) {
         try {
             properties.load(fichierProperties);
@@ -101,6 +123,14 @@ public class BookBorrowedDaoImpl extends AbstractDao implements BookBorrowedDao 
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void cancelReservation(int id) {
+            String vSQL = "UPDATE reservation SET is_active= FALSE WHERE id_reservation = :id";
+            getvParams().addValue("id", id, Types.INTEGER);
+            getvNamedParameterJdbcTemplate().update(vSQL, getvParams());
+    }
+
 
 
     @Override

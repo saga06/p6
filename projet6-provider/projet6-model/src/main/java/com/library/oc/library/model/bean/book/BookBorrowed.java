@@ -49,6 +49,8 @@ public class BookBorrowed {
 
     private String resume;
 
+    private Date dateReturn;
+
     public Integer getEditorId() { return editorId; }
 
     public void setEditorId(Integer editorId) { this.editorId = editorId; }
@@ -165,6 +167,9 @@ public class BookBorrowed {
     public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
+
+    public Date getDateReturn() { return dateReturn; }
+    public void setDateReturn(Date dateReturn) { this.dateReturn = dateReturn; }
 
     public String getResume() {
         return resume;

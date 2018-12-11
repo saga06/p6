@@ -39,6 +39,7 @@ public class GestionUserAction extends ActionSupport {
     XMLGregorianCalendar currentDate = datatypeFactory.newXMLGregorianCalendar(gregorianCalendar);
 
     private List<BookBorrowed> listBookBorrowedByUser;
+    private List<BookReserved> listBookReservedByUser;
 
 
     private BookService bookService = new BookService();
@@ -124,8 +125,10 @@ public class GestionUserAction extends ActionSupport {
     public List<BookBorrowed> getListBookBorrowedByUser() { return listBookBorrowedByUser; }
     public void setListBookBorrowedByUser(List<BookBorrowed> listBookBorrowedByUser) { this.listBookBorrowedByUser = listBookBorrowedByUser; }
 
+    public List<BookReserved> getListBookReservedByUser() { return listBookReservedByUser; }
+    public void setListBookReservedByUser(List<BookReserved> listBookReservedByUser) { this.listBookReservedByUser = listBookReservedByUser; }
 
-    // ==================== Méthodes ====================
+// ==================== Méthodes ====================
 
     /**
      * Action affichant les ouvrages emprunté par un {@Link User}
@@ -137,6 +140,7 @@ public class GestionUserAction extends ActionSupport {
             this.addActionError("No id user");
         } else {
             listBookBorrowedByUser = bookClient.getListBookBorrowedByUser(id);
+            listBookReservedByUser = bookClient.getListBookReservedByUser(id);
         }
         return (this.hasErrors()) ? ActionSupport.ERROR : ActionSupport.SUCCESS;
     }

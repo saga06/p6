@@ -16,9 +16,9 @@
         <tr>
             <th scope="col">Id</th>
             <th scope="col">Titre</th>
-            <th scope="col">Auteur(s)</th>
+            <th scope="col" style="min-width: 150px">Auteur(s)</th>
             <th scope="col">Editeur</th>
-            <th scope="col">Thème(s)</th>
+            <th scope="col" style="min-width: 150px">Thème(s)</th>
             <th scope="col">ISBN</th>
             <th scope="col">Nb d'exemplaire(s) total</th>
             <th scope="col">Nb d'exemplaire(s) déjà emprunté(s)</th>
@@ -94,7 +94,7 @@
                 <td style="text-align: center">
                     <s:property value="nbOfActiveReservation"/>
                 </td>
-                <td style="text-align: center">
+                <td style="text-align: center; vertical-align: middle">
                     <s:if test="#session.user">
                         <s:if test="%{nbOfCopiesAvailable!=0}">
                         <s:set var="idBookOftheList" value="id"/>
@@ -127,8 +127,8 @@
                                 <s:date name="dateReturn.toGregorianCalendar.time" format="dd/MM/yyyy" />
                             </s:if>
                             <s:else>
-                                <p>Nb de réservation maximum atteint pour cet ouvrage</p>
-                                <p>Date du prochain retour :</p>
+                                Nb de résa max atteint</br>
+                                Date prochain retour :</br>
                                 <s:date name="dateReturn.toGregorianCalendar.time" format="dd/MM/yyyy" />
                             </s:else>
                         </s:else>

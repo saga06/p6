@@ -12,7 +12,7 @@
 <div class="container" id="main-content">
     <s:actionmessage />
 
-    <h2><s:text name="myListBook"/></h2>
+    <h3><s:text name="myListBook"/></h3>
 
     <table id="table" class="table table-dark">
         <thead class="thead-dark">
@@ -108,6 +108,94 @@
         </s:iterator>
         </tbody>
     </table>
+
+
+
+
+
+    <h3 style="margin-top: 60px;"><s:text name="myListReservedBook"/></h3>
+
+
+    <table id="table" class="table table-dark">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Titre</th>
+            <th scope="col">Statut Réservation</th>
+            <th scope="col" style="text-align: center">Date de la réservation</th>
+            <th scope="col" style="text-align: center">Date de retour prévu</th>
+            <th scope="col" style="text-align: center">Position liste d'attente</th>
+            <th scope="col" style="text-align: center">Vous souhaitez annuler votre réservation ?</th>
+        </tr>
+        </thead>
+        <tbody>
+        <s:iterator value="listBookReservedByUser">
+            <tr class="table-primary">
+                <td>
+                    <s:property value="title"/>
+                </td>
+                <td>
+                    <s:if test="%{active==true}">
+                    <p>Active</p>
+                    </s:if>
+                    <s:else>
+                        <p>Annulée</p>
+                    </s:else>
+                </td>
+                <td style="text-align: center">
+                    <s:date name="dateOfReservation.toGregorianCalendar.time" format="dd/MM/yyyy" />
+                </td>
+                <td style="text-align: center">
+                    <s:date name="dateReturn.toGregorianCalendar.time" format="dd/MM/yyyy" />
+                </td>
+                <td style="text-align: center">
+                    <s:date name="dateReturn.toGregorianCalendar.time" format="dd/MM/yyyy" />
+                </td>
+                <td style="text-align: center">
+                    <s:a cssClass="btn btn-danger" action="reservation_cancel">
+                        <s:param name="id" value="idReservation" />
+                        Annuler
+                    </s:a>
+                </td>
+            </tr>
+        </s:iterator>
+        </tbody>
+    </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </div>
 <%@ include file="../_include/footer.jsp" %>
 </body>

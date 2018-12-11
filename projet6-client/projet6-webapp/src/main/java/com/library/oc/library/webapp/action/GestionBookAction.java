@@ -190,4 +190,17 @@ public class GestionBookAction extends ActionSupport {
             return (this.hasErrors()) ? ActionSupport.ERROR : ActionSupport.SUCCESS;
     }
 
+    public String doCancel() {
+
+        //Par défaut, le result est "input"
+        String vResult = ActionSupport.INPUT;
+
+        if (id == null) {
+            this.addActionError("réservation non renseigné");
+        } else {
+            bookClient.cancelReservation(id);
+        }
+        return (this.hasErrors()) ? ActionSupport.ERROR : ActionSupport.SUCCESS;
+    }
+
 }

@@ -2,6 +2,7 @@ package com.library.oc.library.business.contract.manager;
 
 import com.library.oc.library.model.bean.book.Book;
 import com.library.oc.library.model.bean.book.BookBorrowed;
+import com.library.oc.library.model.bean.book.BookReserved;
 import com.library.oc.library.model.bean.book.ReservationWithEmail;
 import com.library.oc.library.model.bean.user.User;
 
@@ -31,13 +32,16 @@ public interface BookManager {
 
     List<Book> displayAllBooks();
     List<BookBorrowed> getListBookBorrowedByUser(@WebParam(name = "id") Integer pid);
+    List<BookReserved> getListBookReservedByUser(@WebParam(name = "id") Integer pid);
     void buildBookDependencies(@WebParam(name = "book") Book book);
     void buildBookBorrowedDependencies(@WebParam(name = "borrowedBook") BookBorrowed bookBorrowed);
+    void buildBookReservedDependencies(@WebParam(name = "reservedBook") BookReserved bookReserved);
     void borrowBook(@WebParam(name = "user") User user,
                     @WebParam(name = "book") Book book);
     void reserveBook(@WebParam(name = "user") User user,
                     @WebParam(name = "book") Book book);
     void extendBorrow(@WebParam(name = "id") Integer id);
+    void cancelReservation(@WebParam(name = "id") Integer id);
     void updateEmailStatus(@WebParam(name = "id") Integer id);
     void updateReservationStatusToFalse(@WebParam(name = "id") Integer id);
     int getNbOfCopiesAvailableForABookBorrowed(@WebParam(name = "bookBorrowed") BookBorrowed bookBorrowed);

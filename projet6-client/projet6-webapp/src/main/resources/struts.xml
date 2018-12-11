@@ -85,6 +85,22 @@
             </result>
         </action>
 
+        <!-- Action d'annulation de réservation d'ouvrage -->
+        <action name="reservation_cancel"
+                class="com.library.oc.library.webapp.action.GestionBookAction"
+                method="doCancel">
+
+            <interceptor-ref name="store">
+                <param name="operationMode">STORE</param>
+            </interceptor-ref>
+            <interceptor-ref name="defaultStack"/>
+
+            <result name="success" type="redirectAction">
+                <param name="actionName">profil</param>
+                <param name="id">${#session.user.id}</param>
+            </result>
+        </action>
+
         <!-- Action de prolongement d'un emprunt d'ouvrage -->
         <action name="borrow_extend"
                 class="com.library.oc.library.webapp.action.GestionBookAction"

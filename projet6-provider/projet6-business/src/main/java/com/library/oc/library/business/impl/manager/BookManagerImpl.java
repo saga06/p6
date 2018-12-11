@@ -1,10 +1,7 @@
 package com.library.oc.library.business.impl.manager;
 
 import com.library.oc.library.business.contract.manager.BookManager;
-import com.library.oc.library.model.bean.book.Book;
-import com.library.oc.library.model.bean.book.BookBorrowed;
-import com.library.oc.library.model.bean.book.Reservation;
-import com.library.oc.library.model.bean.book.ReservationWithEmail;
+import com.library.oc.library.model.bean.book.*;
 import com.library.oc.library.model.bean.user.User;
 
 import javax.inject.Named;
@@ -40,6 +37,23 @@ public class BookManagerImpl extends AbstractManager implements BookManager {
     }
 
     @Override
+    public List<BookReserved> getListBookReservedByUser(Integer id) {
+        List<BookReserved> booksReserved = getDaoFactory().getBookBorrowedDao().findAllBooksReserved(id);
+        for(BookReserved bookReserved : booksReserved)
+        {
+            buildBookReservedDependencies(bookReserved);
+        }
+        return booksReserved;
+    }
+
+    @Override
+    public void buildBookReservedDependencies(BookReserved bookReserved) {
+        if ( (getDateOfReturnOfOldestBorrowOfABook(bookReserved.getId())) != null ){
+            Date dateEnd = (getDateOfReturnOfOldestBorrowOfABook(bookReserved.getId())).getDateEnd();
+            bookReserved.setDateReturn(dateEnd);}
+    }
+
+    @Override
     public void buildBookDependencies(Book book) {
 
         book.setAuthors(getDaoFactory().getAuthorDao().findAuthorsByBook(book));
@@ -61,7 +75,9 @@ public class BookManagerImpl extends AbstractManager implements BookManager {
         bookBorrowed.setThemes(getDaoFactory().getThemeDao().findThemesByBook(bookBorrowed));
         bookBorrowed.setNbOfCopiesAlreadyBorrowed(getDaoFactory().getBookBorrowedDao().getNbOfCopiesAlreadyBorrowed(bookBorrowed));
         bookBorrowed.setNbOfCopiesAvailable(getNbOfCopiesAvailableForABookBorrowed(bookBorrowed));
-
+        if ( (getDateOfReturnOfOldestBorrowOfABook(bookBorrowed.getId())) != null ){
+            Date dateEnd = (getDateOfReturnOfOldestBorrowOfABook(bookBorrowed.getId())).getDateEnd();
+            bookBorrowed.setDateReturn(dateEnd);}
     }
 
     @Override
@@ -168,6 +184,9 @@ public class BookManagerImpl extends AbstractManager implements BookManager {
 
     @Override
     public void extendBorrow(Integer id) {getDaoFactory().getBookBorrowedDao().extendBorrow(id);}
+
+    @Override
+    public void cancelReservation(Integer id) {getDaoFactory().getBookBorrowedDao().cancelReservation(id);}
 
     @Override
     public void updateEmailStatus(Integer id) {getDaoFactory().getBookDao().updateEmailStatus(id);}
