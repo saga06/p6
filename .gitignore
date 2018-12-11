@@ -1,4 +1,3 @@
 target/
 .idea
-projet6.iml
-projet6-client/projet6-webapp/projet6-webapp.iml
+*.iml

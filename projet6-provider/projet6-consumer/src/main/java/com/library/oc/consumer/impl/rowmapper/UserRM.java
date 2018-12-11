@@ -20,6 +20,7 @@ import org.springframework.jdbc.core.RowMapper;
             vUser.setSurname(pRS.getString("surname"));
             vUser.setEmail(pRS.getString("email"));
             vUser.setPassword(pRS.getString("password"));
+            vUser.setReminderActive(pRS.getBoolean("reminder_active"));
 
             return vUser;
         }

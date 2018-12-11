@@ -20,6 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
  *         &lt;element name="lastname" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="password" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="reminderActive" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/&gt;
  *         &lt;element name="surname" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
@@ -35,6 +36,7 @@ import javax.xml.bind.annotation.XmlType;
     "id",
     "lastname",
     "password",
+    "reminderActive",
     "surname"
 })
 public class User {
@@ -43,6 +45,7 @@ public class User {
     protected Integer id;
     protected String lastname;
     protected String password;
+    protected Boolean reminderActive;
     protected String surname;
 
     /**
@@ -139,6 +142,30 @@ public class User {
      */
     public void setPassword(String value) {
         this.password = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété reminderActive.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean isReminderActive() {
+        return reminderActive;
+    }
+
+    /**
+     * Définit la valeur de la propriété reminderActive.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setReminderActive(Boolean value) {
+        this.reminderActive = value;
     }
 
     /**

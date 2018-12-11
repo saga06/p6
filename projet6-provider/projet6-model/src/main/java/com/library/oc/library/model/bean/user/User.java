@@ -8,6 +8,7 @@ public class User {
     private String lastname;
     private String email;
     private String password;
+    private Boolean reminderActive;
 
 
    /* // ==================== Constructeurs ====================
@@ -62,7 +63,10 @@ public class User {
         this.password = password;
     }
 
-/*// ==================== Méthodes ====================
+    public Boolean getReminderActive() { return reminderActive; }
+    public void setReminderActive(Boolean reminderActive) { this.reminderActive = reminderActive; }
+
+    /*// ==================== Méthodes ====================
     @Override
     public String toString() {
         final StringBuilder vStB = new StringBuilder(this.getClass().getSimpleName());

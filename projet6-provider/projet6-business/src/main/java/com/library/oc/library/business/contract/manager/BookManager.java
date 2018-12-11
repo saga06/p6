@@ -29,6 +29,7 @@ public interface BookManager {
 
     List<Book> displayAllBooks();
     List<BookBorrowed> getListBookBorrowedByUser(@WebParam(name = "id") Integer pid);
+    List<BookBorrowedWithEmail> getListBookBorrowedFinishInFiveDays();
     List<BookReserved> getListBookReservedByUser(@WebParam(name = "id") Integer pid);
     List<Reservation> getListReservationByBookOrderByDate(@WebParam(name = "idBook") int ibBook);
     void buildBookDependencies(@WebParam(name = "book") Book book);

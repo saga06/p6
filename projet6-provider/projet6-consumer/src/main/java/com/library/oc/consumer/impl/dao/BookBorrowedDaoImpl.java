@@ -9,11 +9,13 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import com.library.oc.consumer.contract.dao.BookBorrowedDao;
 import com.library.oc.consumer.contract.dao.UserDao;
+import com.library.oc.consumer.impl.rowmapper.BookBorrowedWithEmailRM;
 import com.library.oc.consumer.impl.rowmapper.BookReservedRM;
 import com.library.oc.library.model.bean.book.Book;
 import com.library.oc.consumer.impl.rowmapper.BookRM;
 import com.library.oc.consumer.impl.rowmapper.BookBorrowedRM;
 import com.library.oc.library.model.bean.book.BookBorrowed;
+import com.library.oc.library.model.bean.book.BookBorrowedWithEmail;
 import com.library.oc.library.model.bean.book.BookReserved;
 import com.library.oc.library.model.bean.user.User;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -36,6 +38,8 @@ public class BookBorrowedDaoImpl extends AbstractDao implements BookBorrowedDao 
     BookBorrowedRM bookBorrowedRM;
     @Inject
     BookReservedRM bookReservedRM;
+    @Inject
+    BookBorrowedWithEmailRM bookBorrowedWithEmailRM;
 
     private static final String FICHIER_PROPERTIES = "config.properties";
     private static final String PROPERTY_BORROWDURATION = "borrow.Duration";
@@ -151,5 +155,20 @@ public class BookBorrowedDaoImpl extends AbstractDao implements BookBorrowedDao 
         getvNamedParameterJdbcTemplate().update(vSQL, getvParams());
     }
 
+    @Override
+    public List<BookBorrowedWithEmail> getListBookBorrowedFinishInFiveDays() {
+        String vSQL = "SELECT * FROM borrow " +
+                "INNER JOIN book ON borrow.id_book = book.id " +
+                "LEFT JOIN editor ON book.editor_id = editor.id " +
+                "WHERE is_returned = FALSE AND date_end < current_date";
+
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(getDataSource());
+        List<BookBorrowedWithEmail> vListBook = jdbcTemplate.query(vSQL, bookBorrowedWithEmailRM);
+        if (vListBook.size() != 0) {
+
+            return vListBook;
+        }
+        return null;
+    }
 
 }
