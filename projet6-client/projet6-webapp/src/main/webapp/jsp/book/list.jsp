@@ -15,7 +15,6 @@
         <thead class="thead-dark">
         <tr>
             <th scope="col">Id</th>
-            <th scope="col">Prochaine date retour emprunt</th>
             <th scope="col">Titre</th>
             <th scope="col">Auteur(s)</th>
             <th scope="col">Editeur</th>
@@ -36,11 +35,6 @@
             <tr class="table-primary">
                 <td>
                     <s:property value="id"/>
-                </td>
-                <td>
-                    <s:if test="nbOfCopiesAvailable == 0">
-                        <s:date name="dateReturn.toGregorianCalendar.time" format="dd/MM/yyyy" />
-                    </s:if>
                 </td>
                 <td>
                     <s:property value="title"/>
@@ -129,9 +123,13 @@
                                     <s:param name="idUser" value="#session.user.id" />
                                     Réserver *
                                 </s:a>
+                                <p>Date du prochain retour :</p>
+                                <s:date name="dateReturn.toGregorianCalendar.time" format="dd/MM/yyyy" />
                             </s:if>
                             <s:else>
                                 <p>Nb de réservation maximum atteint pour cet ouvrage</p>
+                                <p>Date du prochain retour :</p>
+                                <s:date name="dateReturn.toGregorianCalendar.time" format="dd/MM/yyyy" />
                             </s:else>
                         </s:else>
                     </s:if>
