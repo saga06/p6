@@ -16,6 +16,8 @@ public class Reservation extends ReservationWithEmail {
     private Boolean emailSend;
     private Calendar dateOfEmail;
     private String bookTitle;
+    private Integer positionNumber;
+
 
     private List<Reservation> reservations = new ArrayList<Reservation>();
 
@@ -84,4 +86,7 @@ public class Reservation extends ReservationWithEmail {
 
     public String getBookTitle() { return bookTitle; }
     public void setBookTitle(String bookTitle) { this.bookTitle = bookTitle; }
+
+    public Integer getPositionNumber() { return positionNumber; }
+    public void setPositionNumber(Integer positionNumber) { this.positionNumber = positionNumber; }
 }

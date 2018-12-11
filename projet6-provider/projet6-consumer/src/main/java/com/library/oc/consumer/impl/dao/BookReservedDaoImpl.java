@@ -4,12 +4,17 @@ import com.library.oc.consumer.contract.dao.BookReservedDao;
 import com.library.oc.consumer.contract.dao.UserDao;
 import com.library.oc.consumer.impl.rowmapper.BookRM;
 import com.library.oc.consumer.impl.rowmapper.BookReservedRM;
+import com.library.oc.consumer.impl.rowmapper.ReservationRM;
 import com.library.oc.library.model.bean.book.Book;
+import com.library.oc.library.model.bean.book.Reservation;
 import com.library.oc.library.model.bean.user.User;
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.sql.Types;
+import java.util.List;
 
 /**
  * Classe d'implémentation de {@link BookReservedDaoImpl}.
@@ -25,6 +30,8 @@ public class BookReservedDaoImpl extends AbstractDao implements BookReservedDao 
     BookRM bookRM;
     @Inject
     BookReservedRM bookReservedRM;
+    @Inject
+    ReservationRM reservationRM;
 
     //----- Implementation methods -----
 
@@ -46,5 +53,17 @@ public class BookReservedDaoImpl extends AbstractDao implements BookReservedDao 
         getvParams().addValue("id_book", id, Types.INTEGER);
         Integer vNbrRs = getvNamedParameterJdbcTemplate().queryForObject(sql,getvParams(), Integer.class);
         return vNbrRs.intValue();
+    }
+
+    public List<Reservation> getListReservationByBookOrderByDate(int idBook){
+        try {
+            String sql = "SELECT * FROM reservation WHERE reservation.id_book = " + idBook + " AND is_active = TRUE ORDER BY date_of_reservation";
+            JdbcTemplate jdbcTemplate = new JdbcTemplate(getDataSource());
+            List<Reservation> vListBook = jdbcTemplate.query(sql, reservationRM);
+            return vListBook;
+
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
     }
 }

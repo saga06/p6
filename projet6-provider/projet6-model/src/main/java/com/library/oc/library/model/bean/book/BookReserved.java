@@ -36,8 +36,13 @@ public class BookReserved {
 
         private Date dateReturn;
 
+        Integer position;
 
-        // ==================== Constructeurs ====================
+        private List<Reservation> resa = new ArrayList<>();
+
+
+
+    // ==================== Constructeurs ====================
         /**
          * Constructeur par défaut.
          */
@@ -97,5 +102,11 @@ public class BookReserved {
 
     public Date getDateReturn() { return dateReturn;}
     public void setDateReturn(Date dateReturn) { this.dateReturn = dateReturn; }
+
+    public List<Reservation> getResa() { return resa; }
+    public void setResa(List<Reservation> resa) { this.resa = resa; }
+
+    public Integer getPosition() { return position; }
+    public void setPosition(Integer position) { this.position = position; }
 }
 

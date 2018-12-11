@@ -1,8 +1,11 @@
 
 package com.library.oc.library.business.contract.manager;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.datatype.XMLGregorianCalendar;
@@ -27,6 +30,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="idBook" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
  *         &lt;element name="idReservation" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
  *         &lt;element name="idUser" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
+ *         &lt;element name="position" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
+ *         &lt;element name="resa" type="{http://manager.contract.business.library.oc.library.com/}reservation" maxOccurs="unbounded" minOccurs="0"/&gt;
  *         &lt;element name="title" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
@@ -47,6 +52,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "idBook",
     "idReservation",
     "idUser",
+    "position",
+    "resa",
     "title"
 })
 public class BookReserved {
@@ -63,6 +70,9 @@ public class BookReserved {
     protected Integer idBook;
     protected Integer idReservation;
     protected Integer idUser;
+    protected Integer position;
+    @XmlElement(nillable = true)
+    protected List<Reservation> resa;
     protected String title;
 
     /**
@@ -263,6 +273,59 @@ public class BookReserved {
      */
     public void setIdUser(Integer value) {
         this.idUser = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété position.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getPosition() {
+        return position;
+    }
+
+    /**
+     * Définit la valeur de la propriété position.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setPosition(Integer value) {
+        this.position = value;
+    }
+
+    /**
+     * Gets the value of the resa property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the resa property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getResa().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link Reservation }
+     * 
+     * 
+     */
+    public List<Reservation> getResa() {
+        if (resa == null) {
+            resa = new ArrayList<Reservation>();
+        }
+        return this.resa;
     }
 
     /**

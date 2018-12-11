@@ -148,7 +148,7 @@
                     <s:date name="dateReturn.toGregorianCalendar.time" format="dd/MM/yyyy" />
                 </td>
                 <td style="text-align: center">
-                    <s:date name="dateReturn.toGregorianCalendar.time" format="dd/MM/yyyy" />
+                        <s:property value="position + 1"/>
                 </td>
                 <td style="text-align: center">
                     <s:a cssClass="btn btn-danger" action="reservation_cancel">

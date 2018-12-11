@@ -51,6 +51,17 @@ public class BookManagerImpl extends AbstractManager implements BookManager {
         if ( (getDateOfReturnOfOldestBorrowOfABook(bookReserved.getId())) != null ){
             Date dateEnd = (getDateOfReturnOfOldestBorrowOfABook(bookReserved.getId())).getDateEnd();
             bookReserved.setDateReturn(dateEnd);}
+            if (getListReservationByBookOrderByDate(bookReserved.getIdBook()) != null) {
+                bookReserved.setResa(getListReservationByBookOrderByDate(bookReserved.getIdBook()));
+                List <Reservation> listResa = bookReserved.getResa();
+                int position = 0;
+                for (Reservation resa : listResa) {
+                    if (bookReserved.getIdReservation() == resa.getIdReservation()) {
+                        position = listResa.indexOf(resa);
+                        bookReserved.setPosition(position);
+                    }
+                }
+            }
     }
 
     @Override
@@ -206,8 +217,11 @@ public class BookManagerImpl extends AbstractManager implements BookManager {
     @Override
     public ReservationWithEmail getReservationByUserByBook(int idUser, int idBook) { return getDaoFactory().getBookDao().getReservationByUserByBook(idUser,idBook);}
 
-
     @Override
+    public List<Reservation> getListReservationByBookOrderByDate(int idBook) { return getDaoFactory().getBookReservedDao().getListReservationByBookOrderByDate(idBook);}
+
+
+        @Override
     public int getNbOfCopiesAvailableForABookBorrowed(BookBorrowed bookBorrowed) {
         int a;
         int b;
