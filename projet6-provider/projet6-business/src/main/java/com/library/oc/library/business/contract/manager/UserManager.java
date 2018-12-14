@@ -43,4 +43,8 @@ public interface UserManager {
     User getEmailUser(@WebParam(name = "username") String username);
 
     boolean validateLogin(@WebParam(name = "user") User user,
-                          @WebParam(name = "password") String password);}
+                          @WebParam(name = "password") String password);
+
+    void updateStatusReminderToFalse(@WebParam(name = "idUser") Integer idUser);
+    void updateStatusReminderToTrue(@WebParam(name = "idUser") Integer idUser);
+}

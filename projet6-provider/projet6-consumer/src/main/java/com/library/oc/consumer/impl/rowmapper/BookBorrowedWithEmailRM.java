@@ -19,7 +19,9 @@ public class BookBorrowedWithEmailRM implements RowMapper<BookBorrowedWithEmail>
 
         bookBorrowedWithEmailRM.setIdBorrow(pRS.getInt("id_borrow"));
         bookBorrowedWithEmailRM.setIdBook(pRS.getInt("id_book"));
-        bookBorrowedWithEmailRM.setIdUser(pRS.getInt("id_user"));
+        bookBorrowedWithEmailRM.setIdUser(pRS.getInt("id_borrower"));
+        bookBorrowedWithEmailRM.setSurname(pRS.getString("lastname"));
+        bookBorrowedWithEmailRM.setLastname(pRS.getString("surname"));
 
         Timestamp dateStart = pRS.getTimestamp("date_start");
         Timestamp dateEnd = pRS.getTimestamp("date_end");
@@ -30,11 +32,8 @@ public class BookBorrowedWithEmailRM implements RowMapper<BookBorrowedWithEmail>
         bookBorrowedWithEmailRM.setDateEnd(calendarDateEnd);
         bookBorrowedWithEmailRM.setDateStart(calendarDateStart);
 
-        bookBorrowedWithEmailRM.setAlreadyExtended(pRS.getBoolean("already_extended"));
         bookBorrowedWithEmailRM.setIdBorrower(pRS.getInt("id_borrower"));
         bookBorrowedWithEmailRM.setReturned(pRS.getBoolean("is_returned"));
-        bookBorrowedWithEmailRM.setReturnedOnTime(pRS.getBoolean("is_returned_on_time"));
-        bookBorrowedWithEmailRM.setEmail(pRS.getString("email"));
         bookBorrowedWithEmailRM.setEmail(pRS.getString("email"));
         bookBorrowedWithEmailRM.setBookTitle(pRS.getString("title"));
 

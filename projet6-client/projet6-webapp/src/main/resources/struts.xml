@@ -117,6 +117,38 @@
             </result>
         </action>
 
+        <!-- Action de désactivation de choix de rappel par email avant la fin d'un emprunt -->
+        <action name="change_reminder_status_to_false"
+                class="com.library.oc.library.webapp.action.GestionUserAction"
+                method="doChangeToFalse">
+
+            <interceptor-ref name="store">
+                <param name="operationMode">STORE</param>
+            </interceptor-ref>
+            <interceptor-ref name="defaultStack"/>
+
+            <result name="success" type="redirectAction">
+                <param name="actionName">profil</param>
+                <param name="id">${#session.user.id}</param>
+            </result>
+        </action>
+
+        <!-- Action d'activation de choix de rappel par email avant la fin d'un emprunt -->
+        <action name="change_reminder_status_to_true"
+                class="com.library.oc.library.webapp.action.GestionUserAction"
+                method="doChangeToTrue">
+
+            <interceptor-ref name="store">
+                <param name="operationMode">STORE</param>
+            </interceptor-ref>
+            <interceptor-ref name="defaultStack"/>
+
+            <result name="success" type="redirectAction">
+                <param name="actionName">profil</param>
+                <param name="id">${#session.user.id}</param>
+            </result>
+        </action>
+
 
         <!-- Action d'accès au profil -->
         <action name="profil"

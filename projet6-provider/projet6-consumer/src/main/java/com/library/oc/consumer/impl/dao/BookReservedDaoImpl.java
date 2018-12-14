@@ -55,6 +55,7 @@ public class BookReservedDaoImpl extends AbstractDao implements BookReservedDao 
         return vNbrRs.intValue();
     }
 
+    @Override
     public List<Reservation> getListReservationByBookOrderByDate(int idBook){
         try {
             String sql = "SELECT * FROM reservation WHERE reservation.id_book = " + idBook + " AND is_active = TRUE ORDER BY date_of_reservation";

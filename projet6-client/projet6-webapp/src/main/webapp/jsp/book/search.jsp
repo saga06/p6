@@ -58,70 +58,183 @@
     <h2><s:text name="listBook"/></h2>
     <table id="table_id" class="display">
         <thead>
-        <tr>
-            <th>Titre</th>
-            <th>Auteur</th>
-            <th>Editeur</th>
-            <th scope="col">Thème(s)</th>
-            <th scope="col">Nombre d'exemplaire(s) disponible(s)</th>
-            <th scope="col">ISBN</th>
-            <th scope="col"></th>
-        </tr>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Titre</th>
+                <th scope="col" style="min-width: 150px">Auteur(s)</th>
+                <th scope="col">Editeur</th>
+                <th scope="col" style="min-width: 150px">Thème(s)</th>
+                <th scope="col">ISBN</th>
+                <th scope="col">Nb d'exemplaire(s) total</th>
+                <th scope="col">Nb d'exemplaire(s) déjà emprunté(s)</th>
+                <th scope="col">Nb d'exemplaire(s) disponible(s)</th>
+                <th scope="col">Nb de réservation(s)</th>
+                <th scope="col" style="text-align:center">Vous souhaitez l'emprunter ?</th>
+            </tr>
         </thead>
         <tbody>
+        <div>
+            <span style="text-align: center;"><s:fielderror fieldName="statusBorrow" cssClass="col-xs-12 errorMessage"/></span>
+        </div>
         <s:iterator value="listBook">
-            <tr>
-                <td><s:property value="title"/></td>
-                        <td>
-                            <s:iterator value="authors" status="loop">
-                                <s:if test="#loop.last == true ">
-                                    <s:property value="name" />
+            <tr class="table-primary">
+                <td>
+                    <s:property value="id"/>
+                </td>
+                <td>
+                    <s:property value="title"/>
+                </td>
+                <td>
+                    <s:iterator value="authors" status="loop">
+                        <s:if test="#loop.last == true ">
+                            <s:property value="name" />
+                        </s:if>
+                        <s:else>
+                            <s:property value="name" />,
+                        </s:else>
+                    </s:iterator>
+                </td>
+                <td>
+                    <s:property value="editorName"/>
+                </td>
+                <td>
+                    <s:iterator value="themes" status="loop">
+                        <s:if test="#loop.last == true ">
+                            <s:property value="name" />
+                        </s:if>
+                        <s:else>
+                            <s:property value="name" />,
+                        </s:else>
+                    </s:iterator>
+                </td>
+                <td>
+                    <s:property value="isbn"/>
+                </td>
+                <td style="text-align: center">
+                    <s:property value="numberOfCopies"/>
+                </td>
+                <td style="text-align: center">
+                    <s:property value="nbOfCopiesAlreadyBorrowed"/>
+                </td>
+                <s:if test="nbOfCopiesAvailable >= 4">
+                    <td style="text-align: center; color:limegreen">
+                        <b><s:property value="nbOfCopiesAvailable"/></b>
+                    </td>
+                </s:if>
+                <s:elseif test="nbOfCopiesAvailable >= 3 && nbOfCopiesAvailable < 4">
+                    <td style="text-align: center; color:gold">
+                        <b><s:property value="nbOfCopiesAvailable"/></b>
+                    </td>
+                </s:elseif>
+                <s:elseif test="nbOfCopiesAvailable > 0 && nbOfCopiesAvailable < 3">
+                    <td style="text-align: center; color:orange">
+                        <b><s:property value="nbOfCopiesAvailable"/></b>
+                    </td>
+                </s:elseif>
+                <s:elseif test="nbOfCopiesAvailable == 0">
+                    <td style="text-align: center; color:red">
+                        <b><s:property value="nbOfCopiesAvailable"/></b>
+                    </td>
+                </s:elseif>
+                <td style="text-align: center">
+                    <s:property value="nbOfActiveReservation"/>
+                </td>
+                <td style="text-align: center; vertical-align: middle">
+                    <s:if test="#session.user">
+                        <s:if test="%{nbOfCopiesAvailable!=0}">
+                            <s:set var="idBookOftheList" value="id"/>
+                            <s:set var="presentInBoorowedList" value="0"/>
+                            <s:iterator value="listBookBorrowedByUser">
+                                <s:set var="idBookAlreadyBorrowed" value="id"/>
+                                <s:if test="%{#idBookOftheList==#idBookAlreadyBorrowed}">
+                                    <s:set var="presentInBoorowedList" value="1"/>
                                 </s:if>
-                                <s:else>
-                                    <s:property value="name" />,
-                                </s:else>
                             </s:iterator>
-                        </td>
-                        <td>
-                            <s:property value="editorName"/>
-                        </td>
-                        <td>
-                            <s:iterator value="themes" status="loop">
-                                <s:if test="#loop.last == true ">
-                                    <s:property value="name" />
-                                </s:if>
-                                <s:else>
-                                    <s:property value="name" />,
-                                </s:else>
-                            </s:iterator>
-                        </td>
-                        <td style="text-align: center">
-                            <s:property value="nbOfCopiesAvailable"/>
-                        </td>
-                        <td>
-                            <s:property value="isbn"/>
-                        </td>
-                        <td style="text-align: center">
-                            <s:if test="#session.user">
-                                <s:if test="%{nbOfCopiesAvailable!=0}">
-                                    <s:a cssClass="btn btn-info" action="borrow_new">
-                                        <s:param name="id" value="id" />
-                                        <s:param name="idUser" value="#session.user.id" />
-                                        Emprunter
-                                    </s:a>
-                                </s:if>
-                                <s:else>
-                                    <p>Plus aucun exemplaire disponible</p>
-                                </s:else>
+                            <s:if test="%{#presentInBoorowedList==1}">
+                                <p>Vous avez déjà emprunté ce livre</p>
                             </s:if>
                             <s:else>
-                                <p>Vous devez vous identifiez d'abord !</p>
+                                <s:a cssClass="btn btn-info" action="borrow_new" data-toggle="modal" data-target="#myModalBorrow">
+                                    <s:param name="id" value="id" />
+                                    <s:param name="idUser" value="#session.user.id" />
+                                    Emprunter
+                                </s:a>
+                                <!-- Modal eprunter -->
+                                <div class="modal fade" id="myModalBorrow" role="dialog">
+                                    <div class="modal-dialog">
+                                        <!-- Modal content-->
+                                        <div class="modal-c" style="background-color: whitesmoke">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <h4 class="modal-title">Confirmer emprunt </h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Souhaitez-vous confimer votre demande d'emprunt ?</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
+                                                <s:a cssClass="btn btn-success" action="borrow_new">
+                                                    <s:param name="id" value="id" />
+                                                    <s:param name="idUser" value="#session.user.id" />
+                                                    Emprunter
+                                                </s:a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </s:else>
-                        </td>
+                        </s:if>
+                        <s:else>
+                            <s:if test="(2*numberOfCopies) > nbOfActiveReservation ">
+                                <s:a cssClass="btn btn-warning" action="reservation_new" data-toggle="modal" data-target="#myModalReservation">
+                                    <s:param name="id" value="id" />
+                                    <s:param name="idUser" value="#session.user.id" />
+                                    Réserver *
+                                </s:a>
+
+                                <!-- Modal réserver -->
+                                <div class="modal fade" id="myModalReservation" role="dialog">
+                                    <div class="modal-dialog">
+                                        <!-- Modal content-->
+                                        <div class="modal-c" style="background-color: whitesmoke">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <h4 class="modal-title">Confirmer réservation </h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Souhaitez-vous confimer votre réservation ?</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
+                                                <s:a cssClass="btn btn-success" action="reservation_new">
+                                                    <s:param name="id" value="id" />
+                                                    <s:param name="idUser" value="#session.user.id" />
+                                                    Réserver
+                                                </s:a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p>Date du prochain retour :</p>
+                                <s:date name="dateReturn.toGregorianCalendar.time" format="dd/MM/yyyy" />
+                            </s:if>
+                            <s:else>
+                                Nb de réservation max atteint.</br>
+                                Date prochain retour :
+                                <s:date name="dateReturn.toGregorianCalendar.time" format="dd/MM/yyyy" />
+                            </s:else>
+                        </s:else>
+                    </s:if>
+                    <s:else>
+                        <p>Vous devez vous identifiez d'abord !</p>
+                    </s:else>
+                </td>
             </tr>
         </s:iterator>
         </tbody>
     </table>
+    <div>* = Cet ouvrage n'est actuellement pas disponible, mais vous pouvez le réserver et ainsi vous inscrire dans une liste d'attente.</br>
+        Vous serez alors averti dès qu'il sera disponible par email, et vous aurez 48H pour venir le récupérer</div>
 </div>
 <%@ include file="../_include/footer.jsp" %>
 </body>

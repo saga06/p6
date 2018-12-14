@@ -23,12 +23,22 @@
 		</batch:step>
 	</batch:job>
 
+	<batch:job id="scheduledJob3">
+		<batch:step id="jobStep3">
+			<batch:tasklet ref="batchTaskletEndBorrowSoon" />
+		</batch:step>
+	</batch:job>
+
 	<task:scheduled-tasks>
 		<task:scheduled ref="batchLauncher" method="run" cron="${batch.cron}" />
 	</task:scheduled-tasks>
 
 	<task:scheduled-tasks>
 		<task:scheduled ref="batchLauncher2" method="run" cron="${batch.cron2}" />
+	</task:scheduled-tasks>
+
+	<task:scheduled-tasks>
+		<task:scheduled ref="batchLauncherEndBorrowSoon" method="run" cron="${batch.cron3}" />
 	</task:scheduled-tasks>
 
 </beans>

@@ -157,15 +157,21 @@ public class BookBorrowedDaoImpl extends AbstractDao implements BookBorrowedDao 
 
     @Override
     public List<BookBorrowedWithEmail> getListBookBorrowedFinishInFiveDays() {
-        String vSQL = "SELECT * FROM borrow " +
+        String vSQL = "SELECT " +
+                "borrow.id_borrower, borrow.date_start, borrow.date_end, borrow.id_borrow, borrow.id_book, borrow.is_returned, " +
+                "book.title, " +
+                "users.id, users.surname, users.lastname, users.email, users.reminder_active " +
+                "FROM borrow " +
                 "INNER JOIN book ON borrow.id_book = book.id " +
                 "LEFT JOIN editor ON book.editor_id = editor.id " +
-                "WHERE is_returned = FALSE AND date_end < current_date";
+                "LEFT JOIN users ON borrow.id_borrower = users.id " +
+                "WHERE is_returned = FALSE " +
+                "AND users.reminder_active = TRUE " +
+                "AND  (date_end - INTERVAL '5 DAYS') <= CURRENT_DATE ";
 
         JdbcTemplate jdbcTemplate = new JdbcTemplate(getDataSource());
         List<BookBorrowedWithEmail> vListBook = jdbcTemplate.query(vSQL, bookBorrowedWithEmailRM);
         if (vListBook.size() != 0) {
-
             return vListBook;
         }
         return null;

@@ -1,5 +1,6 @@
 package com.library.oc.consumer.impl.dao;
 
+import java.sql.Types;
 import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -91,6 +92,29 @@ public class UserDaoImpl extends AbstractDao implements UserDao {
 
         return listUser;
     }
+
+    // Method used by an User to change his "reminder_active" to false (it's to not receive the email 5 days and less before the end of the borrow)
+    @Override
+    public void updateStatusReminderToFalse(Integer idUser) {
+        String vSQL ="UPDATE users " +
+                " SET reminder_active = FALSE " +
+                " WHERE users.id=" +idUser;
+        getvParams().addValue("idUser", idUser, Types.INTEGER);
+        getvNamedParameterJdbcTemplate().update(vSQL, getvParams());
+    }
+
+    // Method used by an User to change his "reminder_active" to true (it's to receive the email 5 days and less before the end of the borrow)
+    @Override
+    public void updateStatusReminderToTrue(Integer idUser) {
+        String vSQL ="UPDATE users " +
+                " SET reminder_active = TRUE " +
+                " WHERE users.id=" +idUser;
+        getvParams().addValue("idUser", idUser, Types.INTEGER);
+        getvNamedParameterJdbcTemplate().update(vSQL, getvParams());
+    }
+
+
+
 
 
 

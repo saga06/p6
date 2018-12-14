@@ -31,8 +31,8 @@ public interface UserDao {
     User findByEmail(String email);
 
     List<User> getListUserLateReturn();
-
-
+    public void updateStatusReminderToFalse(Integer idUser);
+    public void updateStatusReminderToTrue(Integer idUser);
 
 
 }

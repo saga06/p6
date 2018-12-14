@@ -19,14 +19,11 @@ public class UserManagerImpl extends AbstractManager implements UserManager {
 
 
     @Override
-    public List<User> getListUser(Object pId) {
-        { return getDaoFactory().getUserDao().readAll(); } }
+    public List<User> getListUser(Object pId) { { return getDaoFactory().getUserDao().readAll(); } }
 
 
     @Override
-    public User getUser(Integer pId) throws NotFoundException {
-        return getDaoFactory().getUserDao().read(pId);
-    }
+    public User getUser(Integer pId) throws NotFoundException { return getDaoFactory().getUserDao().read(pId); }
 
 
     @Override
@@ -50,7 +47,6 @@ public class UserManagerImpl extends AbstractManager implements UserManager {
     }
 
 
-
     @Override
     public boolean validateLogin(User user, String password)
     {
@@ -58,9 +54,7 @@ public class UserManagerImpl extends AbstractManager implements UserManager {
         if(user.getPassword() == null || !user.getPassword().startsWith("$2a$")){
             throw new IllegalArgumentException("Le hash n'est pas valide");
         }
-
         passwordChecked = BCrypt.checkpw(password, user.getPassword());
-
         return passwordChecked;
     }
 
@@ -73,6 +67,12 @@ public class UserManagerImpl extends AbstractManager implements UserManager {
     public List<User> getListUserLateReturn() {
         return getDaoFactory().getUserDao().getListUserLateReturn();
     }
+
+    @Override
+    public void updateStatusReminderToTrue(Integer idUser) {getDaoFactory().getUserDao().updateStatusReminderToTrue(idUser);}
+
+    @Override
+    public void updateStatusReminderToFalse(Integer idUser) {getDaoFactory().getUserDao().updateStatusReminderToFalse(idUser);}
 
 
 }

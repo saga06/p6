@@ -34,6 +34,7 @@
                 </li>
                 <li>
                     <s:a action="book_search">
+                        <s:param name="id" value="#session.user.id"/>
                         <s:text name="nav.searchBook" />
                     </s:a>
                 </li>

@@ -20,6 +20,8 @@ public class BookBorrowedWithEmail {
     private boolean returned;
     private boolean returnedOnTime;
     private String email;
+    private String surname;
+    private String lastname;
     private String bookTitle;
 
     private List <BookBorrowedWithEmail> borrowsWithEmails = new ArrayList<BookBorrowedWithEmail>();
@@ -58,7 +60,6 @@ public class BookBorrowedWithEmail {
     public Calendar getDateStart() {
         return dateStart;
     }
-
     public void setDateStart(Calendar dateStart) {
         this.dateStart = dateStart;
     }
@@ -66,7 +67,6 @@ public class BookBorrowedWithEmail {
     public Calendar getDateEnd() {
         return dateEnd;
     }
-
     public void setDateEnd(Calendar dateEnd) {
         this.dateEnd = dateEnd;
     }
@@ -74,7 +74,6 @@ public class BookBorrowedWithEmail {
     public boolean isAlreadyExtended() {
         return alreadyExtended;
     }
-
     public void setAlreadyExtended(boolean alreadyExtended) {
         this.alreadyExtended = alreadyExtended;
     }
@@ -82,7 +81,6 @@ public class BookBorrowedWithEmail {
     public Integer getIdBorrower() {
         return idBorrower;
     }
-
     public void setIdBorrower(Integer idBorrower) {
         this.idBorrower = idBorrower;
     }
@@ -90,7 +88,6 @@ public class BookBorrowedWithEmail {
     public Integer getIdBook() {
         return idBook;
     }
-
     public void setIdBook(Integer idBook) {
         this.idBook = idBook;
     }
@@ -98,7 +95,6 @@ public class BookBorrowedWithEmail {
     public boolean isReturned() {
         return returned;
     }
-
     public void setReturned(boolean returned) {
         this.returned = returned;
     }
@@ -106,7 +102,6 @@ public class BookBorrowedWithEmail {
     public boolean isReturnedOnTime() {
         return returnedOnTime;
     }
-
     public void setReturnedOnTime(boolean returnedOnTime) {
         this.returnedOnTime = returnedOnTime;
     }
@@ -114,7 +109,6 @@ public class BookBorrowedWithEmail {
     public Integer getIdUser() {
         return idUser;
     }
-
     public void setIdUser(Integer idUser) {
         this.idUser = idUser;
     }
@@ -122,15 +116,19 @@ public class BookBorrowedWithEmail {
     public String getEmail() {
         return email;
     }
-
     public void setEmail(String email) {
         this.email = email;
     }
 
+    public String getSurname() { return surname; }
+    public void setSurname(String surname) { this.surname = surname; }
+
+    public String getLastname() { return lastname; }
+    public void setLastname(String lastname) { this.lastname = lastname; }
+
     public String getBookTitle() {
         return bookTitle;
     }
-
     public void setBookTitle(String bookTitle) {
         this.bookTitle = bookTitle;
     }
@@ -138,16 +136,13 @@ public class BookBorrowedWithEmail {
     public List<BookBorrowedWithEmail> getBorrowsWithEmails() {
         return borrowsWithEmails;
     }
-
-    public void setBorrowsWithEmails(List<BookBorrowedWithEmail> borrowsWithEmails) {
-        this.borrowsWithEmails = borrowsWithEmails;
-    }
+    public void setBorrowsWithEmails(List<BookBorrowedWithEmail> borrowsWithEmails) { this.borrowsWithEmails = borrowsWithEmails; }
 
     public Integer getId() {
         return id;
     }
-
     public void setId(Integer id) {
         this.id = id;
     }
+
 }

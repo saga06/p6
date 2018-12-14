@@ -20,6 +20,7 @@ public class GestionUserAction extends ActionSupport {
     // ==================== Attributs ====================
     // ----- Paramètres en entrée
     private Integer id;
+    private Integer idUser;
 
     // ----- Eléments en sortie
     private User user;
@@ -41,7 +42,6 @@ public class GestionUserAction extends ActionSupport {
     private List<BookBorrowed> listBookBorrowedByUser;
     private List<BookReserved> listBookReservedByUser;
 
-
     private BookService bookService = new BookService();
     private BookClient bookClient = bookService.getBookPort();
 
@@ -55,7 +55,6 @@ public class GestionUserAction extends ActionSupport {
     public Integer getId() {
         return id;
     }
-
     public void setId(Integer pId) {
         id = pId;
     }
@@ -63,15 +62,16 @@ public class GestionUserAction extends ActionSupport {
     public User getUser() {
         return user;
     }
-
     public void setUser(User user) {
         this.user = user;
     }
 
+    public Integer getIdUser() { return idUser; }
+    public void setIdUser(Integer idUser) { this.idUser = idUser; }
+
     public List<Book> getListBook() {
         return listBook;
     }
-
     public void setListBook(List<Book> listBook) {
         this.listBook = listBook;
     }
@@ -79,7 +79,6 @@ public class GestionUserAction extends ActionSupport {
     public Book getBook() {
         return book;
     }
-
     public void setBook(Book book) {
         this.book = book;
     }
@@ -87,7 +86,6 @@ public class GestionUserAction extends ActionSupport {
     public List<User> getListUser() {
         return listUser;
     }
-
     public void setListUser(List<User> listUser) {
         this.listUser = listUser;
     }
@@ -95,7 +93,6 @@ public class GestionUserAction extends ActionSupport {
     public List<Book> getListEditor() {
         return listEditor;
     }
-
     public void setListEditor(List<Book> listEditor) {
         this.listEditor = listEditor;
     }
@@ -103,7 +100,6 @@ public class GestionUserAction extends ActionSupport {
     public List<Author> getAuthors() {
         return authors;
     }
-
     public void setAuthors(List<Author> authors) {
         this.authors = authors;
     }
@@ -111,7 +107,6 @@ public class GestionUserAction extends ActionSupport {
     public List<Theme> getThemes() {
         return themes;
     }
-
     public void setThemes(List<Theme> themes) {
         this.themes = themes;
     }
@@ -144,5 +139,43 @@ public class GestionUserAction extends ActionSupport {
         }
         return (this.hasErrors()) ? ActionSupport.ERROR : ActionSupport.SUCCESS;
     }
+
+    /**
+     * Action permettant désavtiver le rappel de fin de prêt d'un {@link Book}
+     * @return input / success / erreur
+     *
+     */
+    public String doChangeToFalse() {
+
+        //Par défaut, le result est "input"
+        String vResult = ActionSupport.INPUT;
+
+        if (idUser == null) {
+            this.addActionError("User non renseigné");
+        } else {
+            userClient.updateStatusReminderToFalse(idUser);
+        }
+        return (this.hasErrors()) ? ActionSupport.ERROR : ActionSupport.SUCCESS;
+    }
+
+    /**
+     * Action permettant d'activer le rappel de fin de prêt d'un {@link Book}
+     * @return input / success / erreur
+     *
+     */
+    public String doChangeToTrue() {
+
+        //Par défaut, le result est "input"
+        String vResult = ActionSupport.INPUT;
+
+        if (idUser == null) {
+            this.addActionError("User non renseigné");
+        } else {
+            userClient.updateStatusReminderToTrue(idUser);
+        }
+        return (this.hasErrors()) ? ActionSupport.ERROR : ActionSupport.SUCCESS;
+    }
+
+
 }
 

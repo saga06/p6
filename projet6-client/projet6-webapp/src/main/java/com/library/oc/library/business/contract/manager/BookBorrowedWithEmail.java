@@ -32,8 +32,10 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="idBorrow" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
  *         &lt;element name="idBorrower" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
  *         &lt;element name="idUser" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
+ *         &lt;element name="lastname" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="returned" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
  *         &lt;element name="returnedOnTime" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
+ *         &lt;element name="surname" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -55,8 +57,10 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "idBorrow",
     "idBorrower",
     "idUser",
+    "lastname",
     "returned",
-    "returnedOnTime"
+    "returnedOnTime",
+    "surname"
 })
 public class BookBorrowedWithEmail {
 
@@ -74,8 +78,10 @@ public class BookBorrowedWithEmail {
     protected Integer idBorrow;
     protected Integer idBorrower;
     protected Integer idUser;
+    protected String lastname;
     protected boolean returned;
     protected boolean returnedOnTime;
+    protected String surname;
 
     /**
      * Obtient la valeur de la propriété alreadyExtended.
@@ -339,6 +345,30 @@ public class BookBorrowedWithEmail {
     }
 
     /**
+     * Obtient la valeur de la propriété lastname.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getLastname() {
+        return lastname;
+    }
+
+    /**
+     * Définit la valeur de la propriété lastname.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setLastname(String value) {
+        this.lastname = value;
+    }
+
+    /**
      * Obtient la valeur de la propriété returned.
      * 
      */
@@ -368,6 +398,30 @@ public class BookBorrowedWithEmail {
      */
     public void setReturnedOnTime(boolean value) {
         this.returnedOnTime = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété surname.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getSurname() {
+        return surname;
+    }
+
+    /**
+     * Définit la valeur de la propriété surname.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setSurname(String value) {
+        this.surname = value;
     }
 
 }

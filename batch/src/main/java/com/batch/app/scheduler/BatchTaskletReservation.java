@@ -18,7 +18,7 @@ import java.util.List;
 @Component
 public class BatchTaskletReservation implements Tasklet {
 
-    @Value("${batch.message}")
+    @Value("${batch.message2}")
     private String message;
 
     @Autowired

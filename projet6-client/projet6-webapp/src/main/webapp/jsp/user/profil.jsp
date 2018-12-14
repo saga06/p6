@@ -7,13 +7,76 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="../_include/head.jsp"%>
-<body>
+<div>
 <%@ include file="../_include/header.jsp" %>
 <div class="container" id="main-content">
     <s:actionmessage />
 
-    <h3><s:text name="myListBook"/></h3>
+<div style="font-size: 0.8em">
+    <h5>Le saviez-vous ? :</h5>
+    <p>Vous avez la possibilité d'activer ou non, un email de rappel lorsque vous vous approchez de la date limite de vos prêts.
+       Ceci vous permet de ne pas vous souciez de cette date, et d'être rappelé automatiquement, par email, 5 jours avant la date butoire.
+       Cette option est activée par défault pour chaque utilisateur.
+    Vous pouvez modifier cette option ici :
+            <s:a cssClass="btn btn-success btn-xs" action="change_reminder_status_to_true"  data-toggle="modal" data-target="#myModalActivation">
+                <s:param name="idUser" value="#session.user.id" />
+                Activer
+            </s:a>
+            <s:a cssClass="btn btn-danger btn-xs" action="change_reminder_status_to_false" data-toggle="modal" data-target="#myModalDesactivation">
+                <s:param name="idUser" value="#session.user.id" />
+            Désactiver
+            </s:a>
 
+        <!-- Modal activer -->
+        <div class="modal fade" id="myModalActivation" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-c" style="background-color: whitesmoke">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Validation modification </h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Souhaitez-vous activer le rappel par email ?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger btn-xs" data-dismiss="modal">Annuler</button>
+                        <s:a cssClass="btn btn-success btn-xs" action="change_reminder_status_to_true" >
+                            <s:param name="idUser" value="#session.user.id" />
+                            Activer
+                        </s:a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal désactvier -->
+        <div class="modal fade" id="myModalDesactivation" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-c" style="background-color: whitesmoke">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Validation modification </h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Souhaitez-vous désactiver le rappel par email ?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger btn-xs" data-dismiss="modal">Annuler</button>
+                        <s:a cssClass="btn btn-primary btn-xs" action="change_reminder_status_to_false">
+                            <s:param name="idUser" value="#session.user.id" />
+                            Désactiver
+                        </s:a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </p>
+</div>
+
+
+    <h3><s:text name="myListBook"/></h3>
     <table id="table" class="table table-dark">
         <thead class="thead-dark">
         <tr>
@@ -86,11 +149,35 @@
                 <td style="text-align: center">
                     <s:if test="%{alreadyExtended==false}">
                         <s:if test="%{returned==false}">
+
                             <s:if test="%{#dateEnd.toGregorianCalendar.time >= #currentDate.toGregorianCalendar.time}">
-                                <s:a cssClass="btn btn-warning" action="borrow_extend">
+                                <s:a cssClass="btn btn-info" action="borrow_extend" data-toggle="modal" data-target="#myModalExtend">
                                     <s:param name="id" value="idBorrow" />
                                     Prolonger
                                 </s:a>
+
+                                <!-- Modal prolonger -->
+                                <div class="modal fade" id="myModalExtend" role="dialog">
+                                    <div class="modal-dialog">
+                                        <!-- Modal content-->
+                                        <div class="modal-c" style="background-color: whitesmoke">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <h4 class="modal-title">Validation prolongement </h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Souhaitez-vous prolonger votre emprunt ?</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
+                                                <s:a cssClass="btn btn-info" action="borrow_extend">
+                                                    <s:param name="id" value="idBorrow" />
+                                                    Prolonger
+                                                </s:a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </s:if>
                             <s:else>
                                 <div style="color:red"><b>Impossible, vous avez dépassé la date limite</b></div>
@@ -151,51 +238,38 @@
                         <s:property value="position + 1"/>
                 </td>
                 <td style="text-align: center">
-                    <s:a cssClass="btn btn-danger" action="reservation_cancel">
+                    <s:a cssClass="btn btn-danger" action="reservation_cancel" data-toggle="modal" data-target="#myModalCancel">
                         <s:param name="id" value="idReservation" />
                         Annuler
                     </s:a>
+
+                    <!-- Modal prolonger -->
+                    <div class="modal fade" id="myModalCancel" role="dialog">
+                        <div class="modal-dialog">
+                            <!-- Modal content-->
+                            <div class="modal-c" style="background-color: whitesmoke">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Annuler réservation </h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Souhaitez-vous annuler votre réservation ?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Retour</button>
+                                    <s:a cssClass="btn btn-primary" action="reservation_cancel">
+                                        <s:param name="id" value="idReservation" />
+                                        Confirmer annulation
+                                    </s:a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </td>
             </tr>
         </s:iterator>
         </tbody>
     </table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </div>
 <%@ include file="../_include/footer.jsp" %>
 </body>
