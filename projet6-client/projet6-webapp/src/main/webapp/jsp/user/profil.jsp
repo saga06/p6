@@ -151,33 +151,10 @@
                         <s:if test="%{returned==false}">
 
                             <s:if test="%{#dateEnd.toGregorianCalendar.time >= #currentDate.toGregorianCalendar.time}">
-                                <s:a cssClass="btn btn-info" action="borrow_extend" data-toggle="modal" data-target="#myModalExtend">
+                                <s:a cssClass="btn btn-info" action="borrow_extend">
                                     <s:param name="id" value="idBorrow" />
                                     Prolonger
                                 </s:a>
-
-                                <!-- Modal prolonger -->
-                                <div class="modal fade" id="myModalExtend" role="dialog">
-                                    <div class="modal-dialog">
-                                        <!-- Modal content-->
-                                        <div class="modal-c" style="background-color: whitesmoke">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                <h4 class="modal-title">Validation prolongement </h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                <p>Souhaitez-vous prolonger votre emprunt ?</p>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
-                                                <s:a cssClass="btn btn-info" action="borrow_extend">
-                                                    <s:param name="id" value="idBorrow" />
-                                                    Prolonger
-                                                </s:a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </s:if>
                             <s:else>
                                 <div style="color:red"><b>Impossible, vous avez dépassé la date limite</b></div>
@@ -238,33 +215,10 @@
                         <s:property value="position + 1"/>
                 </td>
                 <td style="text-align: center">
-                    <s:a cssClass="btn btn-danger" action="reservation_cancel" data-toggle="modal" data-target="#myModalCancel">
+                    <s:a cssClass="btn btn-danger" action="reservation_cancel">
                         <s:param name="id" value="idReservation" />
                         Annuler
                     </s:a>
-
-                    <!-- Modal prolonger -->
-                    <div class="modal fade" id="myModalCancel" role="dialog">
-                        <div class="modal-dialog">
-                            <!-- Modal content-->
-                            <div class="modal-c" style="background-color: whitesmoke">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">Annuler réservation </h4>
-                                </div>
-                                <div class="modal-body">
-                                    <p>Souhaitez-vous annuler votre réservation ?</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Retour</button>
-                                    <s:a cssClass="btn btn-primary" action="reservation_cancel">
-                                        <s:param name="id" value="idReservation" />
-                                        Confirmer annulation
-                                    </s:a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </td>
             </tr>
         </s:iterator>

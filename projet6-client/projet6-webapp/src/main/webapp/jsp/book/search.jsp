@@ -154,67 +154,20 @@
                                 <p>Vous avez déjà emprunté ce livre</p>
                             </s:if>
                             <s:else>
-                                <s:a cssClass="btn btn-info" action="borrow_new" data-toggle="modal" data-target="#myModalBorrow">
+                                <s:a cssClass="btn btn-info" action="borrow_new" data-toggle="modal">
                                     <s:param name="id" value="id" />
                                     <s:param name="idUser" value="#session.user.id" />
                                     Emprunter
                                 </s:a>
-                                <!-- Modal eprunter -->
-                                <div class="modal fade" id="myModalBorrow" role="dialog">
-                                    <div class="modal-dialog">
-                                        <!-- Modal content-->
-                                        <div class="modal-c" style="background-color: whitesmoke">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                <h4 class="modal-title">Confirmer emprunt </h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                <p>Souhaitez-vous confimer votre demande d'emprunt ?</p>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
-                                                <s:a cssClass="btn btn-success" action="borrow_new">
-                                                    <s:param name="id" value="id" />
-                                                    <s:param name="idUser" value="#session.user.id" />
-                                                    Emprunter
-                                                </s:a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </s:else>
                         </s:if>
                         <s:else>
                             <s:if test="(2*numberOfCopies) > nbOfActiveReservation ">
-                                <s:a cssClass="btn btn-warning" action="reservation_new" data-toggle="modal" data-target="#myModalReservation">
+                                <s:a cssClass="btn btn-warning" action="reservation_new">
                                     <s:param name="id" value="id" />
                                     <s:param name="idUser" value="#session.user.id" />
                                     Réserver *
                                 </s:a>
-
-                                <!-- Modal réserver -->
-                                <div class="modal fade" id="myModalReservation" role="dialog">
-                                    <div class="modal-dialog">
-                                        <!-- Modal content-->
-                                        <div class="modal-c" style="background-color: whitesmoke">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                <h4 class="modal-title">Confirmer réservation </h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                <p>Souhaitez-vous confimer votre réservation ?</p>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
-                                                <s:a cssClass="btn btn-success" action="reservation_new">
-                                                    <s:param name="id" value="id" />
-                                                    <s:param name="idUser" value="#session.user.id" />
-                                                    Réserver
-                                                </s:a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                                 <p>Date du prochain retour :</p>
                                 <s:date name="dateReturn.toGregorianCalendar.time" format="dd/MM/yyyy" />
                             </s:if>
