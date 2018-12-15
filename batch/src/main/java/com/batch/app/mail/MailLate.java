@@ -35,16 +35,18 @@ public class MailLate {
 		  email.setSSLOnConnect(true);
 		  try {
 			  email.addTo(user.getEmail(), user.getSurname());
-			  email.setFrom(mail, "Biblioth&egrave;que OC");
+			  email.setFrom(mail, "Bibliotheque OC");
 			  email.setSubject("Retard emprunt ouvrage");
 
 			  // set the html message
 
 			  String message = "<html>Bonjour "+user.getSurname();
 			  message+="<br><br>Vous recevez cet email suite &agrave; un retard constat&eacute;  &agrave; l'emprunt d'un ouvrage effectu&eacute; aupr&egrave;s de notre Biblioth&egrave;que.";
-			  message+="<br>Vous pouvez obtenir plus d'informations en vous connectant &agrave; votre espace personnel sur notre site";
+			  message+="<br>Vous pouvez obtenir plus d'informations en vous connectant &agrave; votre espace personnel sur notre site.";
 			  message+="<br>Merci de restituer l'ouvrage concern&eacute; par ce retard.<br>";
 			  message+="<br>Cordialement<br>";
+			  message += "<br>Votre Biblioth&egrave;que OC<br>";
+
 
 			  email.setHtmlMsg(message);
 

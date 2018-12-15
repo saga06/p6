@@ -36,16 +36,18 @@ public class MailBookAvailable {
         email.setSSLOnConnect(true);
         try {
             email.addTo(resa.getEmail(), "Lecteur");
-            email.setFrom(mail, "Biblioth&egrave;que OC");
+            email.setFrom(mail, "Bibliotheque OC");
             email.setSubject("Ouvrage de nouveau disponible");
 
             // set the html message
 
             String message = "<html>Bonjour<br> ";
             message += "<br>Vous recevez cet email suite &agrave; la r&eacuteservation de l'ouvrage \"" +resa.getBookTitle()+ "\" aupr&egrave;s de notre Biblioth&egrave;que.<br>";
-            message += "<br>Nous avons le plaisir de vous informer que cet ouvrage est &agrave; nouveau disponible<br>";
-            message += "<br>Vous avez 48H pour venir le r&eacutecup&eacuterer, pass&eacute ce d&eacutelai, votre r&eacuteservation sera annul&eacutee<br>";
-            message += "<br>Cordialement<br>";
+            message += "<br>Nous avons le plaisir de vous informer que cet ouvrage est &agrave; nouveau disponible.<br>";
+            message += "<br>Vous avez 48H pour venir le r&eacutecup&eacuterer, pass&eacute ce d&eacutelai, votre r&eacuteservation sera annul&eacutee.<br>";
+            message += "<br>Cordialement";
+            message += "<br>Votre Biblioth&egrave;que OC<br>";
+
 
             email.setHtmlMsg(message);
 

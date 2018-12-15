@@ -18,7 +18,7 @@ public class ReservationWithEmailRM implements RowMapper<ReservationWithEmail> {
     public ReservationWithEmail mapRow(ResultSet pRS, int pRowNum) throws SQLException {
 
         ReservationWithEmail reservationWithEmailRM = new ReservationWithEmail(pRS.getInt("id"));
-        reservationWithEmailRM.setId(pRS.getInt("id"));
+        reservationWithEmailRM.setIdReservation(pRS.getInt("id_reservation"));
         reservationWithEmailRM.setIdBook(pRS.getInt("id_book"));
         reservationWithEmailRM.setIdUser(pRS.getInt("id_user"));
         Timestamp dateOfReservation = pRS.getTimestamp("date_of_reservation");

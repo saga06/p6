@@ -35,9 +35,11 @@ public class MailRemindEndBorrowSoon {
 
                 String message = "<html>Bonjour " +borrow.getLastname()+ " " +borrow.getSurname()+ "<br>";
                 message += "<br>Vous recevez cet email parce qu'il reste 5 jours, ou moins, pour retourner l'ouvrage \"" +borrow.getBookTitle()+ "\" aupr&egrave;s de notre Biblioth&egrave;que.<br>";
-                message += "<br>Pour rappel, la date limite de retour de votre pr&ecirc;t est le : " +borrow.getDateEnd().toGregorianCalendar().toZonedDateTime().format( DateTimeFormatter.ofPattern( "dd/MM/uuuu" ) )+ "<br>";
-                message += "<br>Merci de respecter la date limite, ou de prolonger votre emprunt via votre espace personnel<br>";
+                message += "<br>Pour rappel, la date limite de retour de votre pr&ecirc;t est le : " +borrow.getDateEnd().toGregorianCalendar().toZonedDateTime().format( DateTimeFormatter.ofPattern( "dd/MM/uuuu" ) )+ ".<br>";
+                message += "<br>Merci de respecter la date limite, ou de prolonger votre emprunt via votre espace personnel.<br>";
                 message += "<br>Cordialement<br>";
+                message += "<br>Votre Biblioth&egrave;que OC<br>";
+
 
 
                 email.setHtmlMsg(message);

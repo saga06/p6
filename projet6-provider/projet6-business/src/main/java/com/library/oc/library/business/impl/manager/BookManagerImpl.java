@@ -154,7 +154,7 @@ public class BookManagerImpl extends AbstractManager implements BookManager {
                 // 2 : for each reservation, if we never send an email, we add the resa to the secondListResa (the email batch list)
                 finalList.add(reservation);
                 // 3 and we update the status of their email (alreadySend to true)
-                updateEmailStatus(reservation.getId());
+                updateEmailStatus(reservation.getIdReservation());
             } else {   // if we already send an email, we check that it's not older than 48hours
                 // dateSend = datetime when the email was send
                 Date dateSend = (reservation.getDateOfEmail()).getTime();
@@ -174,13 +174,10 @@ public class BookManagerImpl extends AbstractManager implements BookManager {
                 // -> so the resa is not active anymore
                 if (deltaInMilliseconds > 172800000) {
                     // 1 : update status reservation "active" to "false" => next person on the list
-                    updateReservationStatusToFalse(reservation.getId());
+                    updateReservationStatusToFalse(reservation.getIdReservation());
                     // 2 : start all over to be sure that the next person on the list will be called
                     getListReservationWithEmailAndBook();
                 }
-                /*else {
-                    finalList.add(reservation);
-                }*/
             }
         }
         return finalList;

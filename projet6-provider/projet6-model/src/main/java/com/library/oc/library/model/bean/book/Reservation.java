@@ -37,7 +37,7 @@ public class Reservation extends ReservationWithEmail {
      * @param pId -
      */
     public Reservation(Integer pId) {
-        id = pId;
+        idReservation = pId;
     }
 
     // ==================== Getters/Setters ====================
