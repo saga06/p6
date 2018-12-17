@@ -33,6 +33,22 @@
             </div>
             <s:iterator value="listBook">
                 <tr class="table-primary">
+                        <s:if test="#session.user">
+                            <%--2: Then we check that the book is not in the list of reservation ready for this user--%>
+                            <s:set var="presentInReservedReadyList" value="0"/>
+                            <s:set var="idBookOftheList1" value="id"/>
+                            <s:iterator value="listBookReadyForBorrow">
+                                <s:set var="idBookReservedReady" value="id"/>
+                                <s:if test="%{#idBookOftheList1==#idBookReservedReady}">
+                                    <s:set var="presentInReservedReadyList" value="1"/>
+                                </s:if>
+                            </s:iterator>
+                            <%--3: if the book is in the book list reserved and ready to borrow, we give him the possibility to borrow--%>
+                            <s:if test="%{#presentInReservedReadyList==1}">
+                                <tr><td colspan="11" style="text-align:center;color:orangered;">Vous avez une réservation encore active pour l'ouvrage ci-dessous, et vous êtes le premier de cette liste de réservation, vous pouvez donc l'emprunter</td></tr>
+                            </s:if>
+                        </s:if>
+
                     <td>
                         <s:property value="id"/>
                     </td>
@@ -95,42 +111,86 @@
                         <s:property value="nbOfActiveReservation"/>
                     </td>
                     <td style="text-align: center; vertical-align: middle">
+                        <%--To display the "borrow" option, we check multiple things: --%>
+                        <%--1: We check that one user is connected --%>
                         <s:if test="#session.user">
-                            <s:if test="%{nbOfCopiesAvailable!=0}">
-                            <s:set var="idBookOftheList" value="id"/>
-                            <s:set var="presentInBoorowedList" value="0"/>
-                            <s:iterator value="listBookBorrowedByUser">
-                                <s:set var="idBookAlreadyBorrowed" value="id"/>
-                                <s:if test="%{#idBookOftheList==#idBookAlreadyBorrowed}">
-                                    <s:set var="presentInBoorowedList" value="1"/>
-                                </s:if>
-                            </s:iterator>
-                            <s:if test="%{#presentInBoorowedList==1}">
-                                <p>Vous avez déjà emprunté ce livre</p>
-                            </s:if>
-                            <s:else>
+                            <s:if test="%{#presentInReservedReadyList==1}">
                                 <s:a cssClass="btn btn-info" action="borrow_new" >
                                     <s:param name="id" value="id" />
                                     <s:param name="idUser" value="#session.user.id" />
                                     Emprunter
                                 </s:a>
-                            </s:else>
-                        </s:if>
-                            <s:else>
-                                <s:if test="(2*numberOfCopies) > nbOfActiveReservation ">
-                                    <s:a cssClass="btn btn-warning" action="reservation_new">
-                                        <s:param name="id" value="id" />
-                                        <s:param name="idUser" value="#session.user.id" />
-                                        Réserver *
-                                    </s:a>
-                                    <p>Date du prochain retour :</p>
-                                    <s:date name="dateReturn.toGregorianCalendar.time" format="dd/MM/yyyy" />
+                            </s:if>
+                            <%--4: if the user is connected, and he didn't reserved this book, we check the number of copies available--%>
+                            <s:if test="%{nbOfCopiesAvailable!=0}">
+                                <s:if test="%{nbOfActiveReservation==0}">
+                                <%--4: if the book is available, we check that the user didn't have a borrow of this book currently--%>
+                                <s:set var="idBookOftheList" value="id"/>
+                                <s:set var="presentInBoorowedList" value="0"/>
+                                <s:iterator value="listBookBorrowedByUser">
+                                    <s:set var="idBookAlreadyBorrowed" value="id"/>
+                                    <s:if test="%{#idBookOftheList==#idBookAlreadyBorrowed}">
+                                        <s:set var="presentInBoorowedList" value="1"/>
+                                    </s:if>
+                                </s:iterator>
+                                <s:if test="%{#presentInBoorowedList==1}">
+                                    <p>Vous avez déjà emprunté ce livre</p>
                                 </s:if>
                                 <s:else>
-                                    Nb de réservation max atteint.</br>
-                                    Date prochain retour :
-                                    <s:date name="dateReturn.toGregorianCalendar.time" format="dd/MM/yyyy" />
+                                    <s:a cssClass="btn btn-info" action="borrow_new" >
+                                        <s:param name="id" value="id" />
+                                        <s:param name="idUser" value="#session.user.id" />
+                                        Emprunter
+                                    </s:a>
                                 </s:else>
+                                </s:if>
+                            </s:if>
+                            <s:else>
+                                <s:if test="%{#presentInReservedReadyList==0}">
+                                    <s:if test="(2*numberOfCopies) > nbOfActiveReservation ">
+                                        <%--4: if the book is available, we check that the user didn't have a borrow of this book currently--%>
+                                        <s:set var="idBookOftheList" value="id"/>
+                                        <s:set var="presentInBoorowedList" value="0"/>
+                                        <s:iterator value="listBookBorrowedByUser">
+                                            <s:set var="idBookAlreadyBorrowed" value="id"/>
+                                            <s:if test="%{#idBookOftheList==#idBookAlreadyBorrowed}">
+                                                <s:set var="presentInBoorowedList" value="1"/>
+                                            </s:if>
+                                        </s:iterator>
+                                        <s:if test="%{#presentInBoorowedList==1}">
+                                            <p>Vous avez déjà emprunté ce livre</p>
+                                        </s:if>
+
+                                        <s:else>
+                                            <%--4: if the book is available, we check that the user didn't have a borrow of this book currently--%>
+                                            <s:set var="idBookOftheList" value="id"/>
+                                            <s:set var="presentInReservedList" value="0"/>
+                                            <s:iterator value="listBookReservedByUser">
+                                                <s:set var="idBookAlreadyReserved" value="id"/>
+                                                <s:if test="%{#idBookOftheList==#idBookAlreadyReserved}">
+                                                    <s:set var="presentInReservedList" value="1"/>
+                                                </s:if>
+                                            </s:iterator>
+                                            <s:if test="%{#presentInReservedList==1}">
+                                                <p>Vous avez déjà réservé ce livre</p>
+                                            </s:if>
+                                            <s:else>
+                                                <s:a cssClass="btn btn-warning" action="reservation_new">
+                                                    <s:param name="id" value="id" />
+                                                    <s:param name="idUser" value="#session.user.id" />
+                                                    Réserver *
+                                                </s:a>
+                                                <p>Date du prochain retour :</p>
+                                                <s:date name="dateReturn.toGregorianCalendar.time" format="dd/MM/yyyy" />
+                                            </s:else>
+                                        </s:else>
+                                    </s:if>
+                                    <s:else>
+                                        Nb de réservation max atteint.</br>
+                                        Date prochain retour :
+                                        <s:date name="dateReturn.toGregorianCalendar.time" format="dd/MM/yyyy" />
+                                    </s:else>
+                                </s:if>
                             </s:else>
                         </s:if>
                         <s:else>

@@ -56,7 +56,7 @@ public class MailBookAvailable {
 
             // send the email
             email.send();
-            System.out.println("Mail for return booked has been sent successfully");
+            System.out.println("Mail for return booked has been sent successfully to " +resa.getEmail()+ "");
         }
         catch (EmailException e) {
             System.out.println("Unable to send an email" + e.getMessage());

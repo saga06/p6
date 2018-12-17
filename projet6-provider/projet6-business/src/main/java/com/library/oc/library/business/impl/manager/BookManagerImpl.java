@@ -38,7 +38,7 @@ public class BookManagerImpl extends AbstractManager implements BookManager {
 
     @Override
     public List<BookReserved> getListBookReservedByUser(Integer id) {
-        List<BookReserved> booksReserved = getDaoFactory().getBookBorrowedDao().findAllBooksReserved(id);
+        List<BookReserved> booksReserved = getDaoFactory().getBookBorrowedDao().getListBooksReservedByUser(id);
         for(BookReserved bookReserved : booksReserved)
         {
             buildBookReservedDependencies(bookReserved);
@@ -178,6 +178,7 @@ public class BookManagerImpl extends AbstractManager implements BookManager {
                     // 2 : start all over to be sure that the next person on the list will be called
                     getListReservationWithEmailAndBook();
                 }
+                else finalList.add(reservation);
             }
         }
         return finalList;
@@ -219,6 +220,9 @@ public class BookManagerImpl extends AbstractManager implements BookManager {
 
     @Override
     public List<BookBorrowedWithEmail> getListBookBorrowedFinishInFiveDays() { return getDaoFactory().getBookBorrowedDao().getListBookBorrowedFinishInFiveDays();}
+
+    @Override
+    public List<Book> getListBookReservedByUserAndReadyToBorrow(int idUser) { return getDaoFactory().getBookDao().getListBookReservedByUserAndReadyToBorrow(idUser);}
 
 
 

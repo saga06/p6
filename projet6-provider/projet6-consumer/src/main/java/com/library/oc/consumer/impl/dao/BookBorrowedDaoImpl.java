@@ -79,7 +79,7 @@ public class BookBorrowedDaoImpl extends AbstractDao implements BookBorrowedDao 
     }
 
     @Override
-    public List<BookReserved> findAllBooksReserved(int id) {
+    public List<BookReserved> getListBooksReservedByUser(int id) {
         try {
             String vSQL =
                     "SELECT * FROM book " +
@@ -110,7 +110,6 @@ public class BookBorrowedDaoImpl extends AbstractDao implements BookBorrowedDao 
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
 
@@ -130,12 +129,10 @@ public class BookBorrowedDaoImpl extends AbstractDao implements BookBorrowedDao 
 
     @Override
     public void cancelReservation(int id) {
-            String vSQL = "UPDATE reservation SET is_active= FALSE WHERE id_reservation = :id";
+            String vSQL = "UPDATE reservation SET is_active= FALSE, is_ready_for_borrow= FALSE WHERE id_reservation = :id";
             getvParams().addValue("id", id, Types.INTEGER);
             getvNamedParameterJdbcTemplate().update(vSQL, getvParams());
     }
-
-
 
     @Override
     public int getNbOfCopiesAlreadyBorrowed(BookBorrowed bookBorrowed) {
@@ -145,9 +142,7 @@ public class BookBorrowedDaoImpl extends AbstractDao implements BookBorrowedDao 
         return vNbrBook;
     }
 
-
     // Method for book retuned (not implemented in the webapp interface)
-
     @Override
     public void returnBorrow(int id) {
         String vSQL = "UPDATE borrow SET is_returned = TRUE, is_returned_on_time = TRUE WHERE id_borrow = :borrow_id";

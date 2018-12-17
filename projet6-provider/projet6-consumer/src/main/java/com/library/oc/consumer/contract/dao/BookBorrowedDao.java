@@ -11,7 +11,7 @@ import java.util.List;
 public interface BookBorrowedDao {
 
     List<BookBorrowed> findAllBooksBorrowed(int id);
-    List<BookReserved> findAllBooksReserved(int id);
+    List<BookReserved> getListBooksReservedByUser(int id);
     public void borrowBook(User user, Book book);
     public void extendBorrow(int id);
     public void cancelReservation(int id);

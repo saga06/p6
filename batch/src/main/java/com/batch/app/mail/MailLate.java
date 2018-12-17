@@ -55,7 +55,7 @@ public class MailLate {
 
 			  // send the email
 			  email.send();  
-			  System.out.println("Mail has been sent successfully");
+			  System.out.println("Mail has been sent successfully to " +user.getEmail()+ "");
 		  }
 		 catch (EmailException e) {
 			// TODO Auto-generated catch block

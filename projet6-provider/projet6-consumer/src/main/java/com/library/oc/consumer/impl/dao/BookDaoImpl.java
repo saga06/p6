@@ -135,7 +135,7 @@ public class BookDaoImpl extends AbstractDao implements BookDao {
     @Override
     public void updateEmailStatus(int id) {
         String vSQL = "UPDATE reservation " +
-                " SET  email_send= TRUE, datetime_email_send = current_timestamp " +
+                " SET  email_send= TRUE, is_ready_for_borrow= TRUE, datetime_email_send = current_timestamp " +
                 " WHERE id_reservation = :id;";
         getvParams().addValue("id", id, Types.INTEGER);
         getvNamedParameterJdbcTemplate().update(vSQL, getvParams());
@@ -144,7 +144,7 @@ public class BookDaoImpl extends AbstractDao implements BookDao {
     @Override
     public void updateReservationStatusToFalse(int id) {
         String vSQL = "UPDATE reservation " +
-                " SET is_active = FALSE " +
+                " SET is_active = FALSE, is_ready_for_borrow= FALSE " +
                 " WHERE id_reservation = :id";
         getvParams().addValue("id", id, Types.INTEGER);
         getvNamedParameterJdbcTemplate().update(vSQL, getvParams());
@@ -192,5 +192,24 @@ public class BookDaoImpl extends AbstractDao implements BookDao {
         }
         return null;
     }
+
+    @Override
+    public List<Book> getListBookReservedByUserAndReadyToBorrow(int idUser) {
+        try {
+            String vSQL =
+                    "SELECT rs.id_user, rs.id_book, book.*, editor.* " +
+                            "FROM reservation AS rs " +
+                            "LEFT JOIN book AS book ON book.id = rs.id_book " +
+                            "LEFT JOIN editor ON book.editor_id = editor.id " +
+                            "WHERE id_user = " + idUser + " AND is_ready_for_borrow = TRUE";
+            JdbcTemplate jdbcTemplate = new JdbcTemplate(getDataSource());
+            List<Book> vListBook = jdbcTemplate.query(vSQL, bookRM);
+            return vListBook;
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
+    }
+
+
 
 }

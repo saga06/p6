@@ -49,7 +49,7 @@ public class MailRemindEndBorrowSoon {
 
                 // send the email
                 email.send();
-                System.out.println("Mail for remind the end of the borrw in a few days has been sent successfully");
+                System.out.println("Mail for remind the end of the borrw in a few days has been sent successfully to " +borrow.getEmail()+ "");
             }
             catch (EmailException e) {
                 System.out.println("Unable to send an email" + e.getMessage());

@@ -24,6 +24,8 @@ public class GestionBookAction extends ActionSupport {
     private List<Author> authors;
     private List<Theme> themes;
     private List<BookBorrowed> listBookBorrowedByUser;
+    private List<Book> listBookReadyForBorrow;
+    private List<BookReserved> listBookReservedByUser;
     private Boolean error;
 
 
@@ -74,6 +76,12 @@ public class GestionBookAction extends ActionSupport {
     public List<BookBorrowed> getListBookBorrowedByUser() { return listBookBorrowedByUser; }
     public void setListBookBorrowedByUser(List<BookBorrowed> listBookBorrowedByUser) { this.listBookBorrowedByUser = listBookBorrowedByUser; }
 
+    public List<Book> getListBookReadyForBorrow() { return listBookReadyForBorrow; }
+    public void setListBookReadyForBorrow(List<Book> listBookReadyForBorrow) { this.listBookReadyForBorrow = listBookReadyForBorrow; }
+
+    public List<BookReserved> getListBookReservedByUser() { return listBookReservedByUser; }
+    public void setListBookReservedByUser(List<BookReserved> listBookReservedByUser) { this.listBookReservedByUser = listBookReservedByUser; }
+
     public Boolean getError() { return error; }
     public void setError(Boolean error) { this.error = error; }
 
@@ -95,6 +103,9 @@ public class GestionBookAction extends ActionSupport {
         else {
             listBook = bookClient.displayAllBooks();
             listBookBorrowedByUser = bookClient.getListBookBorrowedByUser(id);
+            listBookReadyForBorrow = bookClient.getListBookReservedByUserAndReadyToBorrow(id);
+            listBookReservedByUser = bookClient.getListBookReservedByUser(id);
+
         }
 
         return (this.hasErrors()) ? ActionSupport.ERROR : ActionSupport.SUCCESS;

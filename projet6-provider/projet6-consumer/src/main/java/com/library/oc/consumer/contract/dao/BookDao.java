@@ -30,6 +30,7 @@ public interface BookDao {
     int getNbOfActiveReservationForABook(int id);
     ReservationWithEmail getReservationByUserByBook(int idUser, int idBook);
     BookBorrowed getDateOfReturnOfOldestBorrowOfABook(int idBook);
+    List<Book> getListBookReservedByUserAndReadyToBorrow(int idUser);
 
     /**
      * Retourne le nombre de Book
