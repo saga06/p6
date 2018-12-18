@@ -1,0 +1,1929 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="0d413bf3-1054-4938-955e-42be4fc0d582" activeEnvironment="Default" name="P7Services" resourceRoot="" soapui-version="5.4.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="c82ad2d4-909c-4668-aa97-d583210f8429" wsaVersion="NONE" name="AuthorServiceSoapBinding" type="wsdl" bindingName="{http://manager.contract.business.library.oc.library.com/}AuthorServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/services/AuthorService?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/services/AuthorService?wsdl"><con:part><con:url>http://localhost:8080/services/AuthorService?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="AuthorService" targetNamespace="http://manager.contract.business.library.oc.library.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://manager.contract.business.library.oc.library.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http">
+  <wsdl:types>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://manager.contract.business.library.oc.library.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="getAuthor" type="tns:getAuthor"/>
+      <xs:element name="getAuthorResponse" type="tns:getAuthorResponse"/>
+      <xs:element name="getListAuthor" type="tns:getListAuthor"/>
+      <xs:element name="getListAuthorResponse" type="tns:getListAuthorResponse"/>
+      <xs:complexType name="getAuthor">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="id" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getAuthorResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:author"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="author">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="id" type="xs:int"/>
+          <xs:element minOccurs="0" name="name" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getListAuthor">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="getListAuthorResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:author"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="NotFoundException" type="tns:NotFoundException"/>
+      <xs:complexType name="NotFoundException">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getListAuthorResponse">
+    <wsdl:part element="tns:getListAuthorResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAuthor">
+    <wsdl:part element="tns:getAuthor" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListAuthor">
+    <wsdl:part element="tns:getListAuthor" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="NotFoundException">
+    <wsdl:part element="tns:NotFoundException" name="NotFoundException"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAuthorResponse">
+    <wsdl:part element="tns:getAuthorResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="AuthorClient">
+    <wsdl:operation name="getAuthor">
+      <wsdl:input message="tns:getAuthor" name="getAuthor"></wsdl:input>
+      <wsdl:output message="tns:getAuthorResponse" name="getAuthorResponse"></wsdl:output>
+      <wsdl:fault message="tns:NotFoundException" name="NotFoundException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListAuthor">
+      <wsdl:input message="tns:getListAuthor" name="getListAuthor"></wsdl:input>
+      <wsdl:output message="tns:getListAuthorResponse" name="getListAuthorResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AuthorServiceSoapBinding" type="tns:AuthorClient">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getAuthor">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAuthor">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAuthorResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="NotFoundException">
+        <soap:fault name="NotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListAuthor">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getListAuthor">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getListAuthorResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AuthorService">
+    <wsdl:port binding="tns:AuthorServiceSoapBinding" name="AuthorPort">
+      <soap:address location="http://localhost:8080/services/AuthorService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/services/AuthorService</con:endpoint></con:endpoints><con:operation id="7e46ad45-7fe0-4e3a-b3ac-82c5f3663e5f" isOneWay="false" action="" name="getAuthor" bindingOperationName="getAuthor" type="Request-Response" outputName="getAuthorResponse" inputName="getAuthor" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="4e8e598e-d20d-477a-90d0-487b93ddaedb" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/AuthorService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.contract.business.library.oc.library.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <man:getAuthor>\r
+         <!--Optional:-->\r
+         <id>?</id>\r
+      </man:getAuthor>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.contract.business.library.oc.library.com/AuthorClient/getAuthor"/></con:call></con:operation><con:operation id="5e3a728a-df69-4aa0-858e-8746502502d8" isOneWay="false" action="" name="getListAuthor" bindingOperationName="getListAuthor" type="Request-Response" outputName="getListAuthorResponse" inputName="getListAuthor" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="cbaf7f89-89cf-4d9a-8eea-a7e311e5854d" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/AuthorService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.contract.business.library.oc.library.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <man:getListAuthor/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.contract.business.library.oc.library.com/AuthorClient/getListAuthor"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="8fef0103-9d3c-41fb-9b7e-7c6c26ea2646" wsaVersion="NONE" name="BookServiceSoapBinding" type="wsdl" bindingName="{http://manager.contract.business.library.oc.library.com/}BookServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/services/BookService?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/services/BookService?wsdl"><con:part><con:url>http://localhost:8080/services/BookService?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="BookService" targetNamespace="http://manager.contract.business.library.oc.library.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://manager.contract.business.library.oc.library.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http">
+  <wsdl:types>
+    <xs:schema elementFormDefault="unqualified" targetNamespace="http://manager.contract.business.library.oc.library.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="borrowBook" type="tns:borrowBook"/>
+      <xs:element name="borrowBookResponse" type="tns:borrowBookResponse"/>
+      <xs:element name="buildBookBorrowedDependencies" type="tns:buildBookBorrowedDependencies"/>
+      <xs:element name="buildBookBorrowedDependenciesResponse" type="tns:buildBookBorrowedDependenciesResponse"/>
+      <xs:element name="buildBookDependencies" type="tns:buildBookDependencies"/>
+      <xs:element name="buildBookDependenciesResponse" type="tns:buildBookDependenciesResponse"/>
+      <xs:element name="buildBookReservedDependencies" type="tns:buildBookReservedDependencies"/>
+      <xs:element name="buildBookReservedDependenciesResponse" type="tns:buildBookReservedDependenciesResponse"/>
+      <xs:element name="cancelReservation" type="tns:cancelReservation"/>
+      <xs:element name="cancelReservationResponse" type="tns:cancelReservationResponse"/>
+      <xs:element name="displayAllBooks" type="tns:displayAllBooks"/>
+      <xs:element name="displayAllBooksResponse" type="tns:displayAllBooksResponse"/>
+      <xs:element name="extendBorrow" type="tns:extendBorrow"/>
+      <xs:element name="extendBorrowResponse" type="tns:extendBorrowResponse"/>
+      <xs:element name="getBook" type="tns:getBook"/>
+      <xs:element name="getBookResponse" type="tns:getBookResponse"/>
+      <xs:element name="getDateOfReturnOfOldestBorrowOfABook" type="tns:getDateOfReturnOfOldestBorrowOfABook"/>
+      <xs:element name="getDateOfReturnOfOldestBorrowOfABookResponse" type="tns:getDateOfReturnOfOldestBorrowOfABookResponse"/>
+      <xs:element name="getListBookBorrowedByUser" type="tns:getListBookBorrowedByUser"/>
+      <xs:element name="getListBookBorrowedByUserResponse" type="tns:getListBookBorrowedByUserResponse"/>
+      <xs:element name="getListBookBorrowedFinishInFiveDays" type="tns:getListBookBorrowedFinishInFiveDays"/>
+      <xs:element name="getListBookBorrowedFinishInFiveDaysResponse" type="tns:getListBookBorrowedFinishInFiveDaysResponse"/>
+      <xs:element name="getListBookReservedByUser" type="tns:getListBookReservedByUser"/>
+      <xs:element name="getListBookReservedByUserAndReadyToBorrow" type="tns:getListBookReservedByUserAndReadyToBorrow"/>
+      <xs:element name="getListBookReservedByUserAndReadyToBorrowResponse" type="tns:getListBookReservedByUserAndReadyToBorrowResponse"/>
+      <xs:element name="getListBookReservedByUserResponse" type="tns:getListBookReservedByUserResponse"/>
+      <xs:element name="getListReservationByBookOrderByDate" type="tns:getListReservationByBookOrderByDate"/>
+      <xs:element name="getListReservationByBookOrderByDateResponse" type="tns:getListReservationByBookOrderByDateResponse"/>
+      <xs:element name="getListReservationWithEmailAndBook" type="tns:getListReservationWithEmailAndBook"/>
+      <xs:element name="getListReservationWithEmailAndBookResponse" type="tns:getListReservationWithEmailAndBookResponse"/>
+      <xs:element name="getNbOfActiveReservationForABook" type="tns:getNbOfActiveReservationForABook"/>
+      <xs:element name="getNbOfActiveReservationForABookResponse" type="tns:getNbOfActiveReservationForABookResponse"/>
+      <xs:element name="getNbOfCopiesAvailableForABook" type="tns:getNbOfCopiesAvailableForABook"/>
+      <xs:element name="getNbOfCopiesAvailableForABookBorrowed" type="tns:getNbOfCopiesAvailableForABookBorrowed"/>
+      <xs:element name="getNbOfCopiesAvailableForABookBorrowedResponse" type="tns:getNbOfCopiesAvailableForABookBorrowedResponse"/>
+      <xs:element name="getNbOfCopiesAvailableForABookResponse" type="tns:getNbOfCopiesAvailableForABookResponse"/>
+      <xs:element name="getOldestUserReservationForABook" type="tns:getOldestUserReservationForABook"/>
+      <xs:element name="getOldestUserReservationForABookResponse" type="tns:getOldestUserReservationForABookResponse"/>
+      <xs:element name="getReservationByUserByBook" type="tns:getReservationByUserByBook"/>
+      <xs:element name="getReservationByUserByBookResponse" type="tns:getReservationByUserByBookResponse"/>
+      <xs:element name="reserveBook" type="tns:reserveBook"/>
+      <xs:element name="reserveBookResponse" type="tns:reserveBookResponse"/>
+      <xs:element name="updateEmailStatus" type="tns:updateEmailStatus"/>
+      <xs:element name="updateEmailStatusResponse" type="tns:updateEmailStatusResponse"/>
+      <xs:element name="updateReservationStatusToFalse" type="tns:updateReservationStatusToFalse"/>
+      <xs:element name="updateReservationStatusToFalseResponse" type="tns:updateReservationStatusToFalseResponse"/>
+      <xs:complexType name="getListReservationByBookOrderByDate">
+        <xs:sequence>
+          <xs:element name="idBook" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getListReservationByBookOrderByDateResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:reservation"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="reservation">
+        <xs:complexContent>
+          <xs:extension base="tns:reservationWithEmail">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="positionNumber" type="xs:int"/>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="reservations" nillable="true" type="tns:reservation"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="reservationWithEmail">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="active" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="bookTitle" type="xs:string"/>
+          <xs:element minOccurs="0" name="dateOfEmail" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="dateOfReservation" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="email" type="xs:string"/>
+          <xs:element minOccurs="0" name="emailSend" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="id" type="xs:int"/>
+          <xs:element minOccurs="0" name="idBook" type="xs:int"/>
+          <xs:element minOccurs="0" name="idReservation" type="xs:int"/>
+          <xs:element minOccurs="0" name="idUser" type="xs:int"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="reservationWithEmails" nillable="true" type="tns:reservationWithEmail"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="updateReservationStatusToFalse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="id" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="updateReservationStatusToFalseResponse">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="getBook">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="id" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getBookResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:book"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="book">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="authors" nillable="true" type="tns:author"/>
+          <xs:element minOccurs="0" name="dateReturn" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="editorName" type="xs:string"/>
+          <xs:element minOccurs="0" name="id" type="xs:int"/>
+          <xs:element minOccurs="0" name="isbn" type="xs:string"/>
+          <xs:element minOccurs="0" name="nbOfActiveReservation" type="xs:int"/>
+          <xs:element minOccurs="0" name="nbOfCopiesAlreadyBorrowed" type="xs:int"/>
+          <xs:element minOccurs="0" name="nbOfCopiesAvailable" type="xs:int"/>
+          <xs:element minOccurs="0" name="numberOfCopies" type="xs:int"/>
+          <xs:element minOccurs="0" name="resume" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="themes" nillable="true" type="tns:theme"/>
+          <xs:element minOccurs="0" name="title" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="author">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="id" type="xs:int"/>
+          <xs:element minOccurs="0" name="name" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="theme">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="id" type="xs:int"/>
+          <xs:element minOccurs="0" name="name" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getNbOfActiveReservationForABook">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="id" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getNbOfActiveReservationForABookResponse">
+        <xs:sequence>
+          <xs:element name="return" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getNbOfCopiesAvailableForABookBorrowed">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="bookBorrowed" type="tns:bookBorrowed"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="bookBorrowed">
+        <xs:sequence>
+          <xs:element name="alreadyExtended" type="xs:boolean"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="authors" nillable="true" type="tns:author"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="books" nillable="true" type="tns:bookBorrowed"/>
+          <xs:element minOccurs="0" name="dateEnd" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="dateReturn" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="dateStart" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="editorId" type="xs:int"/>
+          <xs:element minOccurs="0" name="editorName" type="xs:string"/>
+          <xs:element minOccurs="0" name="id" type="xs:int"/>
+          <xs:element minOccurs="0" name="idBook" type="xs:int"/>
+          <xs:element minOccurs="0" name="idBorrow" type="xs:int"/>
+          <xs:element minOccurs="0" name="idBorrower" type="xs:int"/>
+          <xs:element minOccurs="0" name="isbn" type="xs:string"/>
+          <xs:element minOccurs="0" name="nbOfCopiesAlreadyBorrowed" type="xs:int"/>
+          <xs:element minOccurs="0" name="nbOfCopiesAvailable" type="xs:int"/>
+          <xs:element minOccurs="0" name="numberOfCopies" type="xs:int"/>
+          <xs:element minOccurs="0" name="resume" type="xs:string"/>
+          <xs:element name="returned" type="xs:boolean"/>
+          <xs:element name="returnedOnTime" type="xs:boolean"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="themes" nillable="true" type="tns:theme"/>
+          <xs:element minOccurs="0" name="title" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getNbOfCopiesAvailableForABookBorrowedResponse">
+        <xs:sequence>
+          <xs:element name="return" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="buildBookBorrowedDependencies">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="borrowedBook" type="tns:bookBorrowed"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="buildBookBorrowedDependenciesResponse">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="getReservationByUserByBook">
+        <xs:sequence>
+          <xs:element name="idUser" type="xs:int"/>
+          <xs:element name="idBook" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getReservationByUserByBookResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:reservationWithEmail"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getDateOfReturnOfOldestBorrowOfABook">
+        <xs:sequence>
+          <xs:element name="idBook" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getDateOfReturnOfOldestBorrowOfABookResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:bookBorrowed"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getNbOfCopiesAvailableForABook">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="book" type="tns:book"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getNbOfCopiesAvailableForABookResponse">
+        <xs:sequence>
+          <xs:element name="return" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="buildBookDependencies">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="book" type="tns:book"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="buildBookDependenciesResponse">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="updateEmailStatus">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="id" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="updateEmailStatusResponse">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="borrowBook">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="user" type="tns:user"/>
+          <xs:element minOccurs="0" name="book" type="tns:book"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="user">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="email" type="xs:string"/>
+          <xs:element minOccurs="0" name="id" type="xs:int"/>
+          <xs:element minOccurs="0" name="lastname" type="xs:string"/>
+          <xs:element minOccurs="0" name="password" type="xs:string"/>
+          <xs:element minOccurs="0" name="reminderActive" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="surname" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="borrowBookResponse">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="getListReservationWithEmailAndBook">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="getListReservationWithEmailAndBookResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:reservationWithEmail"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="displayAllBooks">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="displayAllBooksResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:book"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="reserveBook">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="user" type="tns:user"/>
+          <xs:element minOccurs="0" name="book" type="tns:book"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="reserveBookResponse">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="getListBookBorrowedFinishInFiveDays">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="getListBookBorrowedFinishInFiveDaysResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:bookBorrowedWithEmail"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="bookBorrowedWithEmail">
+        <xs:sequence>
+          <xs:element name="alreadyExtended" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="bookTitle" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="borrowsWithEmails" nillable="true" type="tns:bookBorrowedWithEmail"/>
+          <xs:element minOccurs="0" name="dateEnd" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="dateStart" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="email" type="xs:string"/>
+          <xs:element minOccurs="0" name="id" type="xs:int"/>
+          <xs:element minOccurs="0" name="idBook" type="xs:int"/>
+          <xs:element minOccurs="0" name="idBorrow" type="xs:int"/>
+          <xs:element minOccurs="0" name="idBorrower" type="xs:int"/>
+          <xs:element minOccurs="0" name="idUser" type="xs:int"/>
+          <xs:element minOccurs="0" name="lastname" type="xs:string"/>
+          <xs:element name="returned" type="xs:boolean"/>
+          <xs:element name="returnedOnTime" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="surname" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="cancelReservation">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="id" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="cancelReservationResponse">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="getListBookBorrowedByUser">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="id" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getListBookBorrowedByUserResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:bookBorrowed"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getListBookReservedByUser">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="id" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getListBookReservedByUserResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:bookReserved"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="bookReserved">
+        <xs:sequence>
+          <xs:element name="active" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="dateOfEmail" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="dateOfReservation" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="dateReturn" type="xs:dateTime"/>
+          <xs:element name="emailSend" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="id" type="xs:int"/>
+          <xs:element minOccurs="0" name="idBook" type="xs:int"/>
+          <xs:element minOccurs="0" name="idReservation" type="xs:int"/>
+          <xs:element minOccurs="0" name="idUser" type="xs:int"/>
+          <xs:element minOccurs="0" name="position" type="xs:int"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="resa" nillable="true" type="tns:reservation"/>
+          <xs:element minOccurs="0" name="title" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getListBookReservedByUserAndReadyToBorrow">
+        <xs:sequence>
+          <xs:element name="idUser" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getListBookReservedByUserAndReadyToBorrowResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:book"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getOldestUserReservationForABook">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="id" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getOldestUserReservationForABookResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:reservationWithEmail"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="buildBookReservedDependencies">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="reservedBook" type="tns:bookReserved"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="buildBookReservedDependenciesResponse">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="extendBorrow">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="id" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="extendBorrowResponse">
+        <xs:sequence/>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="reserveBookResponse">
+    <wsdl:part element="tns:reserveBookResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getNbOfActiveReservationForABook">
+    <wsdl:part element="tns:getNbOfActiveReservationForABook" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getNbOfCopiesAvailableForABookBorrowed">
+    <wsdl:part element="tns:getNbOfCopiesAvailableForABookBorrowed" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListReservationByBookOrderByDateResponse">
+    <wsdl:part element="tns:getListReservationByBookOrderByDateResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="buildBookBorrowedDependencies">
+    <wsdl:part element="tns:buildBookBorrowedDependencies" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getReservationByUserByBook">
+    <wsdl:part element="tns:getReservationByUserByBook" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDateOfReturnOfOldestBorrowOfABook">
+    <wsdl:part element="tns:getDateOfReturnOfOldestBorrowOfABook" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getNbOfCopiesAvailableForABook">
+    <wsdl:part element="tns:getNbOfCopiesAvailableForABook" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cancelReservationResponse">
+    <wsdl:part element="tns:cancelReservationResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="buildBookDependencies">
+    <wsdl:part element="tns:buildBookDependencies" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateEmailStatus">
+    <wsdl:part element="tns:updateEmailStatus" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getNbOfCopiesAvailableForABookResponse">
+    <wsdl:part element="tns:getNbOfCopiesAvailableForABookResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getNbOfActiveReservationForABookResponse">
+    <wsdl:part element="tns:getNbOfActiveReservationForABookResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="borrowBook">
+    <wsdl:part element="tns:borrowBook" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cancelReservation">
+    <wsdl:part element="tns:cancelReservation" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListBookBorrowedByUser">
+    <wsdl:part element="tns:getListBookBorrowedByUser" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListBookReservedByUser">
+    <wsdl:part element="tns:getListBookReservedByUser" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListBookReservedByUserAndReadyToBorrow">
+    <wsdl:part element="tns:getListBookReservedByUserAndReadyToBorrow" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getOldestUserReservationForABook">
+    <wsdl:part element="tns:getOldestUserReservationForABook" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="displayAllBooksResponse">
+    <wsdl:part element="tns:displayAllBooksResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getOldestUserReservationForABookResponse">
+    <wsdl:part element="tns:getOldestUserReservationForABookResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListBookBorrowedFinishInFiveDaysResponse">
+    <wsdl:part element="tns:getListBookBorrowedFinishInFiveDaysResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="extendBorrow">
+    <wsdl:part element="tns:extendBorrow" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListReservationWithEmailAndBookResponse">
+    <wsdl:part element="tns:getListReservationWithEmailAndBookResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateEmailStatusResponse">
+    <wsdl:part element="tns:updateEmailStatusResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListReservationByBookOrderByDate">
+    <wsdl:part element="tns:getListReservationByBookOrderByDate" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateReservationStatusToFalse">
+    <wsdl:part element="tns:updateReservationStatusToFalse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBookResponse">
+    <wsdl:part element="tns:getBookResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBook">
+    <wsdl:part element="tns:getBook" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getReservationByUserByBookResponse">
+    <wsdl:part element="tns:getReservationByUserByBookResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="buildBookBorrowedDependenciesResponse">
+    <wsdl:part element="tns:buildBookBorrowedDependenciesResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="buildBookDependenciesResponse">
+    <wsdl:part element="tns:buildBookDependenciesResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListBookReservedByUserAndReadyToBorrowResponse">
+    <wsdl:part element="tns:getListBookReservedByUserAndReadyToBorrowResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="buildBookReservedDependenciesResponse">
+    <wsdl:part element="tns:buildBookReservedDependenciesResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="borrowBookResponse">
+    <wsdl:part element="tns:borrowBookResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getNbOfCopiesAvailableForABookBorrowedResponse">
+    <wsdl:part element="tns:getNbOfCopiesAvailableForABookBorrowedResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateReservationStatusToFalseResponse">
+    <wsdl:part element="tns:updateReservationStatusToFalseResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListReservationWithEmailAndBook">
+    <wsdl:part element="tns:getListReservationWithEmailAndBook" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="displayAllBooks">
+    <wsdl:part element="tns:displayAllBooks" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="reserveBook">
+    <wsdl:part element="tns:reserveBook" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="extendBorrowResponse">
+    <wsdl:part element="tns:extendBorrowResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListBookBorrowedFinishInFiveDays">
+    <wsdl:part element="tns:getListBookBorrowedFinishInFiveDays" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDateOfReturnOfOldestBorrowOfABookResponse">
+    <wsdl:part element="tns:getDateOfReturnOfOldestBorrowOfABookResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListBookReservedByUserResponse">
+    <wsdl:part element="tns:getListBookReservedByUserResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="buildBookReservedDependencies">
+    <wsdl:part element="tns:buildBookReservedDependencies" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListBookBorrowedByUserResponse">
+    <wsdl:part element="tns:getListBookBorrowedByUserResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="BookClient">
+    <wsdl:operation name="getListReservationByBookOrderByDate">
+      <wsdl:input message="tns:getListReservationByBookOrderByDate" name="getListReservationByBookOrderByDate"></wsdl:input>
+      <wsdl:output message="tns:getListReservationByBookOrderByDateResponse" name="getListReservationByBookOrderByDateResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateReservationStatusToFalse">
+      <wsdl:input message="tns:updateReservationStatusToFalse" name="updateReservationStatusToFalse"></wsdl:input>
+      <wsdl:output message="tns:updateReservationStatusToFalseResponse" name="updateReservationStatusToFalseResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBook">
+      <wsdl:input message="tns:getBook" name="getBook"></wsdl:input>
+      <wsdl:output message="tns:getBookResponse" name="getBookResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNbOfActiveReservationForABook">
+      <wsdl:input message="tns:getNbOfActiveReservationForABook" name="getNbOfActiveReservationForABook"></wsdl:input>
+      <wsdl:output message="tns:getNbOfActiveReservationForABookResponse" name="getNbOfActiveReservationForABookResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNbOfCopiesAvailableForABookBorrowed">
+      <wsdl:input message="tns:getNbOfCopiesAvailableForABookBorrowed" name="getNbOfCopiesAvailableForABookBorrowed"></wsdl:input>
+      <wsdl:output message="tns:getNbOfCopiesAvailableForABookBorrowedResponse" name="getNbOfCopiesAvailableForABookBorrowedResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buildBookBorrowedDependencies">
+      <wsdl:input message="tns:buildBookBorrowedDependencies" name="buildBookBorrowedDependencies"></wsdl:input>
+      <wsdl:output message="tns:buildBookBorrowedDependenciesResponse" name="buildBookBorrowedDependenciesResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getReservationByUserByBook">
+      <wsdl:input message="tns:getReservationByUserByBook" name="getReservationByUserByBook"></wsdl:input>
+      <wsdl:output message="tns:getReservationByUserByBookResponse" name="getReservationByUserByBookResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDateOfReturnOfOldestBorrowOfABook">
+      <wsdl:input message="tns:getDateOfReturnOfOldestBorrowOfABook" name="getDateOfReturnOfOldestBorrowOfABook"></wsdl:input>
+      <wsdl:output message="tns:getDateOfReturnOfOldestBorrowOfABookResponse" name="getDateOfReturnOfOldestBorrowOfABookResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNbOfCopiesAvailableForABook">
+      <wsdl:input message="tns:getNbOfCopiesAvailableForABook" name="getNbOfCopiesAvailableForABook"></wsdl:input>
+      <wsdl:output message="tns:getNbOfCopiesAvailableForABookResponse" name="getNbOfCopiesAvailableForABookResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buildBookDependencies">
+      <wsdl:input message="tns:buildBookDependencies" name="buildBookDependencies"></wsdl:input>
+      <wsdl:output message="tns:buildBookDependenciesResponse" name="buildBookDependenciesResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateEmailStatus">
+      <wsdl:input message="tns:updateEmailStatus" name="updateEmailStatus"></wsdl:input>
+      <wsdl:output message="tns:updateEmailStatusResponse" name="updateEmailStatusResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="borrowBook">
+      <wsdl:input message="tns:borrowBook" name="borrowBook"></wsdl:input>
+      <wsdl:output message="tns:borrowBookResponse" name="borrowBookResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getListReservationWithEmailAndBook">
+      <wsdl:input message="tns:getListReservationWithEmailAndBook" name="getListReservationWithEmailAndBook"></wsdl:input>
+      <wsdl:output message="tns:getListReservationWithEmailAndBookResponse" name="getListReservationWithEmailAndBookResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="displayAllBooks">
+      <wsdl:input message="tns:displayAllBooks" name="displayAllBooks"></wsdl:input>
+      <wsdl:output message="tns:displayAllBooksResponse" name="displayAllBooksResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="reserveBook">
+      <wsdl:input message="tns:reserveBook" name="reserveBook"></wsdl:input>
+      <wsdl:output message="tns:reserveBookResponse" name="reserveBookResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getListBookBorrowedFinishInFiveDays">
+      <wsdl:input message="tns:getListBookBorrowedFinishInFiveDays" name="getListBookBorrowedFinishInFiveDays"></wsdl:input>
+      <wsdl:output message="tns:getListBookBorrowedFinishInFiveDaysResponse" name="getListBookBorrowedFinishInFiveDaysResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelReservation">
+      <wsdl:input message="tns:cancelReservation" name="cancelReservation"></wsdl:input>
+      <wsdl:output message="tns:cancelReservationResponse" name="cancelReservationResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getListBookBorrowedByUser">
+      <wsdl:input message="tns:getListBookBorrowedByUser" name="getListBookBorrowedByUser"></wsdl:input>
+      <wsdl:output message="tns:getListBookBorrowedByUserResponse" name="getListBookBorrowedByUserResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getListBookReservedByUser">
+      <wsdl:input message="tns:getListBookReservedByUser" name="getListBookReservedByUser"></wsdl:input>
+      <wsdl:output message="tns:getListBookReservedByUserResponse" name="getListBookReservedByUserResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getListBookReservedByUserAndReadyToBorrow">
+      <wsdl:input message="tns:getListBookReservedByUserAndReadyToBorrow" name="getListBookReservedByUserAndReadyToBorrow"></wsdl:input>
+      <wsdl:output message="tns:getListBookReservedByUserAndReadyToBorrowResponse" name="getListBookReservedByUserAndReadyToBorrowResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOldestUserReservationForABook">
+      <wsdl:input message="tns:getOldestUserReservationForABook" name="getOldestUserReservationForABook"></wsdl:input>
+      <wsdl:output message="tns:getOldestUserReservationForABookResponse" name="getOldestUserReservationForABookResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buildBookReservedDependencies">
+      <wsdl:input message="tns:buildBookReservedDependencies" name="buildBookReservedDependencies"></wsdl:input>
+      <wsdl:output message="tns:buildBookReservedDependenciesResponse" name="buildBookReservedDependenciesResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="extendBorrow">
+      <wsdl:input message="tns:extendBorrow" name="extendBorrow"></wsdl:input>
+      <wsdl:output message="tns:extendBorrowResponse" name="extendBorrowResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BookServiceSoapBinding" type="tns:BookClient">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getListReservationByBookOrderByDate">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getListReservationByBookOrderByDate">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getListReservationByBookOrderByDateResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateReservationStatusToFalse">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="updateReservationStatusToFalse">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateReservationStatusToFalseResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBook">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getBook">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getBookResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNbOfActiveReservationForABook">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getNbOfActiveReservationForABook">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getNbOfActiveReservationForABookResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNbOfCopiesAvailableForABookBorrowed">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getNbOfCopiesAvailableForABookBorrowed">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getNbOfCopiesAvailableForABookBorrowedResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buildBookBorrowedDependencies">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="buildBookBorrowedDependencies">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="buildBookBorrowedDependenciesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getReservationByUserByBook">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getReservationByUserByBook">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getReservationByUserByBookResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDateOfReturnOfOldestBorrowOfABook">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getDateOfReturnOfOldestBorrowOfABook">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getDateOfReturnOfOldestBorrowOfABookResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNbOfCopiesAvailableForABook">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getNbOfCopiesAvailableForABook">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getNbOfCopiesAvailableForABookResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buildBookDependencies">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="buildBookDependencies">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="buildBookDependenciesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateEmailStatus">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="updateEmailStatus">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateEmailStatusResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="borrowBook">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="borrowBook">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="borrowBookResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getListReservationWithEmailAndBook">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getListReservationWithEmailAndBook">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getListReservationWithEmailAndBookResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="displayAllBooks">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="displayAllBooks">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="displayAllBooksResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="reserveBook">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="reserveBook">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="reserveBookResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getListBookBorrowedFinishInFiveDays">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getListBookBorrowedFinishInFiveDays">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getListBookBorrowedFinishInFiveDaysResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelReservation">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="cancelReservation">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="cancelReservationResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getListBookBorrowedByUser">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getListBookBorrowedByUser">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getListBookBorrowedByUserResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getListBookReservedByUser">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getListBookReservedByUser">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getListBookReservedByUserResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getListBookReservedByUserAndReadyToBorrow">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getListBookReservedByUserAndReadyToBorrow">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getListBookReservedByUserAndReadyToBorrowResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOldestUserReservationForABook">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getOldestUserReservationForABook">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getOldestUserReservationForABookResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buildBookReservedDependencies">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="buildBookReservedDependencies">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="buildBookReservedDependenciesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="extendBorrow">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="extendBorrow">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="extendBorrowResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BookService">
+    <wsdl:port binding="tns:BookServiceSoapBinding" name="BookPort">
+      <soap:address location="http://localhost:8080/services/BookService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/services/BookService</con:endpoint></con:endpoints><con:operation id="7f5cc974-4eba-42e7-b960-0bb433dc679c" isOneWay="false" action="" name="borrowBook" bindingOperationName="borrowBook" type="Request-Response" outputName="borrowBookResponse" inputName="borrowBook" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="5ed7ff9b-c22a-4b70-aa5b-0cb1323cce72" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/BookService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.contract.business.library.oc.library.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <man:borrowBook>\r
+         <!--Optional:-->\r
+         <user>\r
+            <!--Optional:-->\r
+            <email>?</email>\r
+            <!--Optional:-->\r
+            <id>?</id>\r
+            <!--Optional:-->\r
+            <lastname>?</lastname>\r
+            <!--Optional:-->\r
+            <password>?</password>\r
+            <!--Optional:-->\r
+            <reminderActive>?</reminderActive>\r
+            <!--Optional:-->\r
+            <surname>?</surname>\r
+         </user>\r
+         <!--Optional:-->\r
+         <book>\r
+            <!--Zero or more repetitions:-->\r
+            <authors>\r
+               <!--Optional:-->\r
+               <id>?</id>\r
+               <!--Optional:-->\r
+               <name>?</name>\r
+            </authors>\r
+            <!--Optional:-->\r
+            <dateReturn>?</dateReturn>\r
+            <!--Optional:-->\r
+            <editorName>?</editorName>\r
+            <!--Optional:-->\r
+            <id>?</id>\r
+            <!--Optional:-->\r
+            <isbn>?</isbn>\r
+            <!--Optional:-->\r
+            <nbOfActiveReservation>?</nbOfActiveReservation>\r
+            <!--Optional:-->\r
+            <nbOfCopiesAlreadyBorrowed>?</nbOfCopiesAlreadyBorrowed>\r
+            <!--Optional:-->\r
+            <nbOfCopiesAvailable>?</nbOfCopiesAvailable>\r
+            <!--Optional:-->\r
+            <numberOfCopies>?</numberOfCopies>\r
+            <!--Optional:-->\r
+            <resume>?</resume>\r
+            <!--Zero or more repetitions:-->\r
+            <themes>\r
+               <!--Optional:-->\r
+               <id>?</id>\r
+               <!--Optional:-->\r
+               <name>?</name>\r
+            </themes>\r
+            <!--Optional:-->\r
+            <title>?</title>\r
+         </book>\r
+      </man:borrowBook>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.contract.business.library.oc.library.com/BookClient/borrowBook"/></con:call></con:operation><con:operation id="8c858fc5-1bde-4f64-b337-76d56cb70e68" isOneWay="false" action="" name="buildBookBorrowedDependencies" bindingOperationName="buildBookBorrowedDependencies" type="Request-Response" outputName="buildBookBorrowedDependenciesResponse" inputName="buildBookBorrowedDependencies" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="62568b07-3706-4c95-acd5-502d65985d58" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/BookService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.contract.business.library.oc.library.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <man:buildBookBorrowedDependencies>\r
+         <!--Optional:-->\r
+         <borrowedBook>\r
+            <alreadyExtended>?</alreadyExtended>\r
+            <!--Zero or more repetitions:-->\r
+            <authors>\r
+               <!--Optional:-->\r
+               <id>?</id>\r
+               <!--Optional:-->\r
+               <name>?</name>\r
+            </authors>\r
+            <!--Zero or more repetitions:-->\r
+            <books/>\r
+            <!--Optional:-->\r
+            <dateEnd>?</dateEnd>\r
+            <!--Optional:-->\r
+            <dateReturn>?</dateReturn>\r
+            <!--Optional:-->\r
+            <dateStart>?</dateStart>\r
+            <!--Optional:-->\r
+            <editorId>?</editorId>\r
+            <!--Optional:-->\r
+            <editorName>?</editorName>\r
+            <!--Optional:-->\r
+            <id>?</id>\r
+            <!--Optional:-->\r
+            <idBook>?</idBook>\r
+            <!--Optional:-->\r
+            <idBorrow>?</idBorrow>\r
+            <!--Optional:-->\r
+            <idBorrower>?</idBorrower>\r
+            <!--Optional:-->\r
+            <isbn>?</isbn>\r
+            <!--Optional:-->\r
+            <nbOfCopiesAlreadyBorrowed>?</nbOfCopiesAlreadyBorrowed>\r
+            <!--Optional:-->\r
+            <nbOfCopiesAvailable>?</nbOfCopiesAvailable>\r
+            <!--Optional:-->\r
+            <numberOfCopies>?</numberOfCopies>\r
+            <!--Optional:-->\r
+            <resume>?</resume>\r
+            <returned>?</returned>\r
+            <returnedOnTime>?</returnedOnTime>\r
+            <!--Zero or more repetitions:-->\r
+            <themes>\r
+               <!--Optional:-->\r
+               <id>?</id>\r
+               <!--Optional:-->\r
+               <name>?</name>\r
+            </themes>\r
+            <!--Optional:-->\r
+            <title>?</title>\r
+         </borrowedBook>\r
+      </man:buildBookBorrowedDependencies>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.contract.business.library.oc.library.com/BookClient/buildBookBorrowedDependencies"/></con:call></con:operation><con:operation id="cbc8b492-4214-4246-a540-f92d28526ea3" isOneWay="false" action="" name="buildBookDependencies" bindingOperationName="buildBookDependencies" type="Request-Response" outputName="buildBookDependenciesResponse" inputName="buildBookDependencies" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="19802b17-9131-421e-a552-2d3d46d700f9" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/BookService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.contract.business.library.oc.library.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <man:buildBookDependencies>\r
+         <!--Optional:-->\r
+         <book>\r
+            <!--Zero or more repetitions:-->\r
+            <authors>\r
+               <!--Optional:-->\r
+               <id>?</id>\r
+               <!--Optional:-->\r
+               <name>?</name>\r
+            </authors>\r
+            <!--Optional:-->\r
+            <dateReturn>?</dateReturn>\r
+            <!--Optional:-->\r
+            <editorName>?</editorName>\r
+            <!--Optional:-->\r
+            <id>?</id>\r
+            <!--Optional:-->\r
+            <isbn>?</isbn>\r
+            <!--Optional:-->\r
+            <nbOfActiveReservation>?</nbOfActiveReservation>\r
+            <!--Optional:-->\r
+            <nbOfCopiesAlreadyBorrowed>?</nbOfCopiesAlreadyBorrowed>\r
+            <!--Optional:-->\r
+            <nbOfCopiesAvailable>?</nbOfCopiesAvailable>\r
+            <!--Optional:-->\r
+            <numberOfCopies>?</numberOfCopies>\r
+            <!--Optional:-->\r
+            <resume>?</resume>\r
+            <!--Zero or more repetitions:-->\r
+            <themes>\r
+               <!--Optional:-->\r
+               <id>?</id>\r
+               <!--Optional:-->\r
+               <name>?</name>\r
+            </themes>\r
+            <!--Optional:-->\r
+            <title>?</title>\r
+         </book>\r
+      </man:buildBookDependencies>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.contract.business.library.oc.library.com/BookClient/buildBookDependencies"/></con:call></con:operation><con:operation id="9285633b-d88e-442e-955f-7be45e7ad5fc" isOneWay="false" action="" name="buildBookReservedDependencies" bindingOperationName="buildBookReservedDependencies" type="Request-Response" outputName="buildBookReservedDependenciesResponse" inputName="buildBookReservedDependencies" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="4ea37b5e-1a5b-4fc7-9269-3083011099b2" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/BookService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.contract.business.library.oc.library.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <man:buildBookReservedDependencies>\r
+         <!--Optional:-->\r
+         <reservedBook>\r
+            <active>?</active>\r
+            <!--Optional:-->\r
+            <dateOfEmail>?</dateOfEmail>\r
+            <!--Optional:-->\r
+            <dateOfReservation>?</dateOfReservation>\r
+            <!--Optional:-->\r
+            <dateReturn>?</dateReturn>\r
+            <emailSend>?</emailSend>\r
+            <!--Optional:-->\r
+            <id>?</id>\r
+            <!--Optional:-->\r
+            <idBook>?</idBook>\r
+            <!--Optional:-->\r
+            <idReservation>?</idReservation>\r
+            <!--Optional:-->\r
+            <idUser>?</idUser>\r
+            <!--Optional:-->\r
+            <position>?</position>\r
+            <!--Zero or more repetitions:-->\r
+            <resa>\r
+               <!--Optional:-->\r
+               <active>?</active>\r
+               <!--Optional:-->\r
+               <bookTitle>?</bookTitle>\r
+               <!--Optional:-->\r
+               <dateOfEmail>?</dateOfEmail>\r
+               <!--Optional:-->\r
+               <dateOfReservation>?</dateOfReservation>\r
+               <!--Optional:-->\r
+               <email>?</email>\r
+               <!--Optional:-->\r
+               <emailSend>?</emailSend>\r
+               <!--Optional:-->\r
+               <id>?</id>\r
+               <!--Optional:-->\r
+               <idBook>?</idBook>\r
+               <!--Optional:-->\r
+               <idReservation>?</idReservation>\r
+               <!--Optional:-->\r
+               <idUser>?</idUser>\r
+               <!--Zero or more repetitions:-->\r
+               <reservationWithEmails>\r
+                  <!--Optional:-->\r
+                  <active>?</active>\r
+                  <!--Optional:-->\r
+                  <bookTitle>?</bookTitle>\r
+                  <!--Optional:-->\r
+                  <dateOfEmail>?</dateOfEmail>\r
+                  <!--Optional:-->\r
+                  <dateOfReservation>?</dateOfReservation>\r
+                  <!--Optional:-->\r
+                  <email>?</email>\r
+                  <!--Optional:-->\r
+                  <emailSend>?</emailSend>\r
+                  <!--Optional:-->\r
+                  <id>?</id>\r
+                  <!--Optional:-->\r
+                  <idBook>?</idBook>\r
+                  <!--Optional:-->\r
+                  <idReservation>?</idReservation>\r
+                  <!--Optional:-->\r
+                  <idUser>?</idUser>\r
+                  <!--Zero or more repetitions:-->\r
+                  <reservationWithEmails/>\r
+               </reservationWithEmails>\r
+               <!--Optional:-->\r
+               <positionNumber>?</positionNumber>\r
+               <!--Zero or more repetitions:-->\r
+               <reservations/>\r
+            </resa>\r
+            <!--Optional:-->\r
+            <title>?</title>\r
+         </reservedBook>\r
+      </man:buildBookReservedDependencies>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.contract.business.library.oc.library.com/BookClient/buildBookReservedDependencies"/></con:call></con:operation><con:operation id="b921ee89-5369-431e-bdf7-574c58299848" isOneWay="false" action="" name="cancelReservation" bindingOperationName="cancelReservation" type="Request-Response" outputName="cancelReservationResponse" inputName="cancelReservation" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="9f9104a5-d0b3-4a85-a0a2-6399b2af2549" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/BookService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.contract.business.library.oc.library.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <man:cancelReservation>\r
+         <!--Optional:-->\r
+         <id>?</id>\r
+      </man:cancelReservation>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.contract.business.library.oc.library.com/BookClient/cancelReservation"/></con:call></con:operation><con:operation id="cb8399d2-56d6-4c04-af26-2a22e11b28fc" isOneWay="false" action="" name="displayAllBooks" bindingOperationName="displayAllBooks" type="Request-Response" outputName="displayAllBooksResponse" inputName="displayAllBooks" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="f944008f-3b3d-4899-8c50-25b59aad6454" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/BookService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.contract.business.library.oc.library.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <man:displayAllBooks/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.contract.business.library.oc.library.com/BookClient/displayAllBooks"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="dbf1ae9e-0ad4-4da3-88ab-5b7a614ee6b6" isOneWay="false" action="" name="extendBorrow" bindingOperationName="extendBorrow" type="Request-Response" outputName="extendBorrowResponse" inputName="extendBorrow" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="976800a9-3fb3-49a0-8eb9-da5c9101fcdf" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/BookService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.contract.business.library.oc.library.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <man:extendBorrow>\r
+         <!--Optional:-->\r
+         <id>?</id>\r
+      </man:extendBorrow>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.contract.business.library.oc.library.com/BookClient/extendBorrow"/></con:call></con:operation><con:operation id="80ed9f6e-3775-4ecb-89d7-c217695347a6" isOneWay="false" action="" name="getBook" bindingOperationName="getBook" type="Request-Response" outputName="getBookResponse" inputName="getBook" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="583cca49-d347-47a5-8a0a-19690c8b81da" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/BookService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.contract.business.library.oc.library.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <man:getBook>\r
+         <!--Optional:-->\r
+         <id>?</id>\r
+      </man:getBook>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.contract.business.library.oc.library.com/BookClient/getBook"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="4a1f87fc-d170-4148-b61f-6b3351b7ff17" isOneWay="false" action="" name="getDateOfReturnOfOldestBorrowOfABook" bindingOperationName="getDateOfReturnOfOldestBorrowOfABook" type="Request-Response" outputName="getDateOfReturnOfOldestBorrowOfABookResponse" inputName="getDateOfReturnOfOldestBorrowOfABook" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="e8878b6b-917d-46ee-8fb8-488ec69d5b44" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/BookService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.contract.business.library.oc.library.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <man:getDateOfReturnOfOldestBorrowOfABook>\r
+         <idBook>?</idBook>\r
+      </man:getDateOfReturnOfOldestBorrowOfABook>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.contract.business.library.oc.library.com/BookClient/getDateOfReturnOfOldestBorrowOfABook"/></con:call></con:operation><con:operation id="5117b55c-4c08-4ab6-8993-5f41a5b09c61" isOneWay="false" action="" name="getListBookBorrowedByUser" bindingOperationName="getListBookBorrowedByUser" type="Request-Response" outputName="getListBookBorrowedByUserResponse" inputName="getListBookBorrowedByUser" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="c3c723f7-d65e-4257-a1ec-cff8305a9837" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/BookService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.contract.business.library.oc.library.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <man:getListBookBorrowedByUser>\r
+         <!--Optional:-->\r
+         <id>?</id>\r
+      </man:getListBookBorrowedByUser>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.contract.business.library.oc.library.com/BookClient/getListBookBorrowedByUser"/></con:call></con:operation><con:operation id="9e7f33d5-8060-4cb5-9211-b0a519f90e6b" isOneWay="false" action="" name="getListBookBorrowedFinishInFiveDays" bindingOperationName="getListBookBorrowedFinishInFiveDays" type="Request-Response" outputName="getListBookBorrowedFinishInFiveDaysResponse" inputName="getListBookBorrowedFinishInFiveDays" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="e7bc2b10-863a-4a31-aec5-f9d692d3dfa7" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/BookService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.contract.business.library.oc.library.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <man:getListBookBorrowedFinishInFiveDays/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.contract.business.library.oc.library.com/BookClient/getListBookBorrowedFinishInFiveDays"/></con:call></con:operation><con:operation id="25115abb-963e-479a-9d85-04aa7d422269" isOneWay="false" action="" name="getListBookReservedByUser" bindingOperationName="getListBookReservedByUser" type="Request-Response" outputName="getListBookReservedByUserResponse" inputName="getListBookReservedByUser" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="c9d45512-37ff-4d95-9674-5c8122ca6fed" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/BookService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.contract.business.library.oc.library.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <man:getListBookReservedByUser>\r
+         <!--Optional:-->\r
+         <id>?</id>\r
+      </man:getListBookReservedByUser>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.contract.business.library.oc.library.com/BookClient/getListBookReservedByUser"/></con:call></con:operation><con:operation id="1b557b8b-d788-4088-84c5-92f27a2890da" isOneWay="false" action="" name="getListBookReservedByUserAndReadyToBorrow" bindingOperationName="getListBookReservedByUserAndReadyToBorrow" type="Request-Response" outputName="getListBookReservedByUserAndReadyToBorrowResponse" inputName="getListBookReservedByUserAndReadyToBorrow" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="2af312bc-d83e-4723-8c98-57772338b7d7" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/BookService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.contract.business.library.oc.library.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <man:getListBookReservedByUserAndReadyToBorrow>\r
+         <idUser>?</idUser>\r
+      </man:getListBookReservedByUserAndReadyToBorrow>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.contract.business.library.oc.library.com/BookClient/getListBookReservedByUserAndReadyToBorrow"/></con:call></con:operation><con:operation id="c9c801cd-2248-4331-af10-cc5113f7ab46" isOneWay="false" action="" name="getListReservationByBookOrderByDate" bindingOperationName="getListReservationByBookOrderByDate" type="Request-Response" outputName="getListReservationByBookOrderByDateResponse" inputName="getListReservationByBookOrderByDate" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="cdfdf5b4-32a3-493c-9e41-49046467c43e" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/BookService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.contract.business.library.oc.library.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <man:getListReservationByBookOrderByDate>\r
+         <idBook>?</idBook>\r
+      </man:getListReservationByBookOrderByDate>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.contract.business.library.oc.library.com/BookClient/getListReservationByBookOrderByDate"/></con:call></con:operation><con:operation id="f75ce83d-0399-419f-9bf1-6373b8de2123" isOneWay="false" action="" name="getListReservationWithEmailAndBook" bindingOperationName="getListReservationWithEmailAndBook" type="Request-Response" outputName="getListReservationWithEmailAndBookResponse" inputName="getListReservationWithEmailAndBook" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="3926882d-9a34-42b1-9de9-46bc39010783" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/BookService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.contract.business.library.oc.library.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <man:getListReservationWithEmailAndBook/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.contract.business.library.oc.library.com/BookClient/getListReservationWithEmailAndBook"/></con:call></con:operation><con:operation id="0ab97c82-5b57-48b9-8fb2-057df990f342" isOneWay="false" action="" name="getNbOfActiveReservationForABook" bindingOperationName="getNbOfActiveReservationForABook" type="Request-Response" outputName="getNbOfActiveReservationForABookResponse" inputName="getNbOfActiveReservationForABook" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="c419e642-cd07-435b-8e04-4803ffbaf318" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/BookService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.contract.business.library.oc.library.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <man:getNbOfActiveReservationForABook>\r
+         <!--Optional:-->\r
+         <id>?</id>\r
+      </man:getNbOfActiveReservationForABook>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.contract.business.library.oc.library.com/BookClient/getNbOfActiveReservationForABook"/></con:call></con:operation><con:operation id="48c00f61-5a02-46de-83eb-d006a2529baf" isOneWay="false" action="" name="getNbOfCopiesAvailableForABook" bindingOperationName="getNbOfCopiesAvailableForABook" type="Request-Response" outputName="getNbOfCopiesAvailableForABookResponse" inputName="getNbOfCopiesAvailableForABook" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="d60dfb77-56da-48be-ba48-5fd0bfe57d15" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/BookService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.contract.business.library.oc.library.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <man:getNbOfCopiesAvailableForABook>\r
+         <!--Optional:-->\r
+         <book>\r
+            <!--Zero or more repetitions:-->\r
+            <authors>\r
+               <!--Optional:-->\r
+               <id>?</id>\r
+               <!--Optional:-->\r
+               <name>?</name>\r
+            </authors>\r
+            <!--Optional:-->\r
+            <dateReturn>?</dateReturn>\r
+            <!--Optional:-->\r
+            <editorName>?</editorName>\r
+            <!--Optional:-->\r
+            <id>?</id>\r
+            <!--Optional:-->\r
+            <isbn>?</isbn>\r
+            <!--Optional:-->\r
+            <nbOfActiveReservation>?</nbOfActiveReservation>\r
+            <!--Optional:-->\r
+            <nbOfCopiesAlreadyBorrowed>?</nbOfCopiesAlreadyBorrowed>\r
+            <!--Optional:-->\r
+            <nbOfCopiesAvailable>?</nbOfCopiesAvailable>\r
+            <!--Optional:-->\r
+            <numberOfCopies>?</numberOfCopies>\r
+            <!--Optional:-->\r
+            <resume>?</resume>\r
+            <!--Zero or more repetitions:-->\r
+            <themes>\r
+               <!--Optional:-->\r
+               <id>?</id>\r
+               <!--Optional:-->\r
+               <name>?</name>\r
+            </themes>\r
+            <!--Optional:-->\r
+            <title>?</title>\r
+         </book>\r
+      </man:getNbOfCopiesAvailableForABook>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.contract.business.library.oc.library.com/BookClient/getNbOfCopiesAvailableForABook"/></con:call></con:operation><con:operation id="52b91e92-f3ea-491a-aec6-97aedac225ac" isOneWay="false" action="" name="getNbOfCopiesAvailableForABookBorrowed" bindingOperationName="getNbOfCopiesAvailableForABookBorrowed" type="Request-Response" outputName="getNbOfCopiesAvailableForABookBorrowedResponse" inputName="getNbOfCopiesAvailableForABookBorrowed" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="26447ff4-a095-4f0d-95e5-a6d42da8b5d5" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/BookService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.contract.business.library.oc.library.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <man:getNbOfCopiesAvailableForABookBorrowed>\r
+         <!--Optional:-->\r
+         <bookBorrowed>\r
+            <alreadyExtended>?</alreadyExtended>\r
+            <!--Zero or more repetitions:-->\r
+            <authors>\r
+               <!--Optional:-->\r
+               <id>?</id>\r
+               <!--Optional:-->\r
+               <name>?</name>\r
+            </authors>\r
+            <!--Zero or more repetitions:-->\r
+            <books/>\r
+            <!--Optional:-->\r
+            <dateEnd>?</dateEnd>\r
+            <!--Optional:-->\r
+            <dateReturn>?</dateReturn>\r
+            <!--Optional:-->\r
+            <dateStart>?</dateStart>\r
+            <!--Optional:-->\r
+            <editorId>?</editorId>\r
+            <!--Optional:-->\r
+            <editorName>?</editorName>\r
+            <!--Optional:-->\r
+            <id>?</id>\r
+            <!--Optional:-->\r
+            <idBook>?</idBook>\r
+            <!--Optional:-->\r
+            <idBorrow>?</idBorrow>\r
+            <!--Optional:-->\r
+            <idBorrower>?</idBorrower>\r
+            <!--Optional:-->\r
+            <isbn>?</isbn>\r
+            <!--Optional:-->\r
+            <nbOfCopiesAlreadyBorrowed>?</nbOfCopiesAlreadyBorrowed>\r
+            <!--Optional:-->\r
+            <nbOfCopiesAvailable>?</nbOfCopiesAvailable>\r
+            <!--Optional:-->\r
+            <numberOfCopies>?</numberOfCopies>\r
+            <!--Optional:-->\r
+            <resume>?</resume>\r
+            <returned>?</returned>\r
+            <returnedOnTime>?</returnedOnTime>\r
+            <!--Zero or more repetitions:-->\r
+            <themes>\r
+               <!--Optional:-->\r
+               <id>?</id>\r
+               <!--Optional:-->\r
+               <name>?</name>\r
+            </themes>\r
+            <!--Optional:-->\r
+            <title>?</title>\r
+         </bookBorrowed>\r
+      </man:getNbOfCopiesAvailableForABookBorrowed>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.contract.business.library.oc.library.com/BookClient/getNbOfCopiesAvailableForABookBorrowed"/></con:call></con:operation><con:operation id="cc23c55d-0994-47a2-b49f-f7bc810001aa" isOneWay="false" action="" name="getOldestUserReservationForABook" bindingOperationName="getOldestUserReservationForABook" type="Request-Response" outputName="getOldestUserReservationForABookResponse" inputName="getOldestUserReservationForABook" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="e45ccc71-9b37-4415-8fc5-e71c401a8219" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/BookService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.contract.business.library.oc.library.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <man:getOldestUserReservationForABook>\r
+         <!--Optional:-->\r
+         <id>?</id>\r
+      </man:getOldestUserReservationForABook>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.contract.business.library.oc.library.com/BookClient/getOldestUserReservationForABook"/></con:call></con:operation><con:operation id="349e40a8-94bb-4f89-bbe2-3b456e0abded" isOneWay="false" action="" name="getReservationByUserByBook" bindingOperationName="getReservationByUserByBook" type="Request-Response" outputName="getReservationByUserByBookResponse" inputName="getReservationByUserByBook" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="1bb00deb-4d9f-4d50-af63-4f1909b74e18" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/BookService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.contract.business.library.oc.library.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <man:getReservationByUserByBook>\r
+         <idUser>?</idUser>\r
+         <idBook>?</idBook>\r
+      </man:getReservationByUserByBook>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.contract.business.library.oc.library.com/BookClient/getReservationByUserByBook"/></con:call></con:operation><con:operation id="742c1817-1e0e-446c-9d4a-55f34939739e" isOneWay="false" action="" name="reserveBook" bindingOperationName="reserveBook" type="Request-Response" outputName="reserveBookResponse" inputName="reserveBook" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="46e36b51-91d4-465a-9c79-d66d9bbfb178" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/BookService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.contract.business.library.oc.library.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <man:reserveBook>\r
+         <!--Optional:-->\r
+         <user>\r
+            <!--Optional:-->\r
+            <email>?</email>\r
+            <!--Optional:-->\r
+            <id>?</id>\r
+            <!--Optional:-->\r
+            <lastname>?</lastname>\r
+            <!--Optional:-->\r
+            <password>?</password>\r
+            <!--Optional:-->\r
+            <reminderActive>?</reminderActive>\r
+            <!--Optional:-->\r
+            <surname>?</surname>\r
+         </user>\r
+         <!--Optional:-->\r
+         <book>\r
+            <!--Zero or more repetitions:-->\r
+            <authors>\r
+               <!--Optional:-->\r
+               <id>?</id>\r
+               <!--Optional:-->\r
+               <name>?</name>\r
+            </authors>\r
+            <!--Optional:-->\r
+            <dateReturn>?</dateReturn>\r
+            <!--Optional:-->\r
+            <editorName>?</editorName>\r
+            <!--Optional:-->\r
+            <id>?</id>\r
+            <!--Optional:-->\r
+            <isbn>?</isbn>\r
+            <!--Optional:-->\r
+            <nbOfActiveReservation>?</nbOfActiveReservation>\r
+            <!--Optional:-->\r
+            <nbOfCopiesAlreadyBorrowed>?</nbOfCopiesAlreadyBorrowed>\r
+            <!--Optional:-->\r
+            <nbOfCopiesAvailable>?</nbOfCopiesAvailable>\r
+            <!--Optional:-->\r
+            <numberOfCopies>?</numberOfCopies>\r
+            <!--Optional:-->\r
+            <resume>?</resume>\r
+            <!--Zero or more repetitions:-->\r
+            <themes>\r
+               <!--Optional:-->\r
+               <id>?</id>\r
+               <!--Optional:-->\r
+               <name>?</name>\r
+            </themes>\r
+            <!--Optional:-->\r
+            <title>?</title>\r
+         </book>\r
+      </man:reserveBook>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.contract.business.library.oc.library.com/BookClient/reserveBook"/></con:call></con:operation><con:operation id="45a8bef9-c7b7-44e9-9b7b-e43aa062bdfc" isOneWay="false" action="" name="updateEmailStatus" bindingOperationName="updateEmailStatus" type="Request-Response" outputName="updateEmailStatusResponse" inputName="updateEmailStatus" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="1db2c6f2-3cd9-4e10-8cd7-f98ae277a599" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/BookService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.contract.business.library.oc.library.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <man:updateEmailStatus>\r
+         <!--Optional:-->\r
+         <id>?</id>\r
+      </man:updateEmailStatus>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.contract.business.library.oc.library.com/BookClient/updateEmailStatus"/></con:call></con:operation><con:operation id="bc0a7a48-dc44-4e74-8478-f7239ca413e4" isOneWay="false" action="" name="updateReservationStatusToFalse" bindingOperationName="updateReservationStatusToFalse" type="Request-Response" outputName="updateReservationStatusToFalseResponse" inputName="updateReservationStatusToFalse" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="4b611cfd-6ad3-457b-8a6f-f92ddcc05761" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/BookService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.contract.business.library.oc.library.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <man:updateReservationStatusToFalse>\r
+         <!--Optional:-->\r
+         <id>?</id>\r
+      </man:updateReservationStatusToFalse>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.contract.business.library.oc.library.com/BookClient/updateReservationStatusToFalse"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="62d68aac-0740-4218-a4a3-23faa11b194b" wsaVersion="NONE" name="UserServiceSoapBinding" type="wsdl" bindingName="{http://manager.contract.business.library.oc.library.com/}UserServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/services/UserService?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/services/UserService?wsdl"><con:part><con:url>http://localhost:8080/services/UserService?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="UserService" targetNamespace="http://manager.contract.business.library.oc.library.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://manager.contract.business.library.oc.library.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http">
+  <wsdl:types>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://manager.contract.business.library.oc.library.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="getEmailUser" type="tns:getEmailUser"/>
+      <xs:element name="getEmailUserResponse" type="tns:getEmailUserResponse"/>
+      <xs:element name="getListUser" type="tns:getListUser"/>
+      <xs:element name="getListUserLateReturn" type="tns:getListUserLateReturn"/>
+      <xs:element name="getListUserLateReturnResponse" type="tns:getListUserLateReturnResponse"/>
+      <xs:element name="getListUserResponse" type="tns:getListUserResponse"/>
+      <xs:element name="getNbUser" type="tns:getNbUser"/>
+      <xs:element name="getNbUserResponse" type="tns:getNbUserResponse"/>
+      <xs:element name="getUser" type="tns:getUser"/>
+      <xs:element name="getUserResponse" type="tns:getUserResponse"/>
+      <xs:element name="hashPassword" type="tns:hashPassword"/>
+      <xs:element name="hashPasswordResponse" type="tns:hashPasswordResponse"/>
+      <xs:element name="updateStatusReminderToFalse" type="tns:updateStatusReminderToFalse"/>
+      <xs:element name="updateStatusReminderToFalseResponse" type="tns:updateStatusReminderToFalseResponse"/>
+      <xs:element name="updateStatusReminderToTrue" type="tns:updateStatusReminderToTrue"/>
+      <xs:element name="updateStatusReminderToTrueResponse" type="tns:updateStatusReminderToTrueResponse"/>
+      <xs:element name="validateLogin" type="tns:validateLogin"/>
+      <xs:element name="validateLoginResponse" type="tns:validateLoginResponse"/>
+      <xs:complexType name="getListUser">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="id" type="xs:anyType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getListUserResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:user"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="user">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="email" type="xs:string"/>
+          <xs:element minOccurs="0" name="id" type="xs:int"/>
+          <xs:element minOccurs="0" name="lastname" type="xs:string"/>
+          <xs:element minOccurs="0" name="password" type="xs:string"/>
+          <xs:element minOccurs="0" name="reminderActive" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="surname" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getEmailUser">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="username" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getEmailUserResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:user"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="updateStatusReminderToFalse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="idUser" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="updateStatusReminderToFalseResponse">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="getListUserLateReturn">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="getListUserLateReturnResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:user"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="updateStatusReminderToTrue">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="idUser" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="updateStatusReminderToTrueResponse">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="getUser">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="id" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getUserResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:user"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="hashPassword">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="password" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="hashPasswordResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getNbUser">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="getNbUserResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="validateLogin">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="user" type="tns:user"/>
+          <xs:element minOccurs="0" name="password" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="validateLoginResponse">
+        <xs:sequence>
+          <xs:element name="return" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="NotFoundException" type="tns:NotFoundException"/>
+      <xs:complexType name="NotFoundException">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getEmailUser">
+    <wsdl:part element="tns:getEmailUser" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getEmailUserResponse">
+    <wsdl:part element="tns:getEmailUserResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateStatusReminderToFalseResponse">
+    <wsdl:part element="tns:updateStatusReminderToFalseResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUserResponse">
+    <wsdl:part element="tns:getUserResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateStatusReminderToFalse">
+    <wsdl:part element="tns:updateStatusReminderToFalse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListUserLateReturnResponse">
+    <wsdl:part element="tns:getListUserLateReturnResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUser">
+    <wsdl:part element="tns:getUser" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="hashPasswordResponse">
+    <wsdl:part element="tns:hashPasswordResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="hashPassword">
+    <wsdl:part element="tns:hashPassword" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="NotFoundException">
+    <wsdl:part element="tns:NotFoundException" name="NotFoundException"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="validateLoginResponse">
+    <wsdl:part element="tns:validateLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getNbUser">
+    <wsdl:part element="tns:getNbUser" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListUser">
+    <wsdl:part element="tns:getListUser" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListUserLateReturn">
+    <wsdl:part element="tns:getListUserLateReturn" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateStatusReminderToTrue">
+    <wsdl:part element="tns:updateStatusReminderToTrue" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateStatusReminderToTrueResponse">
+    <wsdl:part element="tns:updateStatusReminderToTrueResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListUserResponse">
+    <wsdl:part element="tns:getListUserResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getNbUserResponse">
+    <wsdl:part element="tns:getNbUserResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="validateLogin">
+    <wsdl:part element="tns:validateLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="UserClient">
+    <wsdl:operation name="getListUser">
+      <wsdl:input message="tns:getListUser" name="getListUser"></wsdl:input>
+      <wsdl:output message="tns:getListUserResponse" name="getListUserResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmailUser">
+      <wsdl:input message="tns:getEmailUser" name="getEmailUser"></wsdl:input>
+      <wsdl:output message="tns:getEmailUserResponse" name="getEmailUserResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateStatusReminderToFalse">
+      <wsdl:input message="tns:updateStatusReminderToFalse" name="updateStatusReminderToFalse"></wsdl:input>
+      <wsdl:output message="tns:updateStatusReminderToFalseResponse" name="updateStatusReminderToFalseResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getListUserLateReturn">
+      <wsdl:input message="tns:getListUserLateReturn" name="getListUserLateReturn"></wsdl:input>
+      <wsdl:output message="tns:getListUserLateReturnResponse" name="getListUserLateReturnResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateStatusReminderToTrue">
+      <wsdl:input message="tns:updateStatusReminderToTrue" name="updateStatusReminderToTrue"></wsdl:input>
+      <wsdl:output message="tns:updateStatusReminderToTrueResponse" name="updateStatusReminderToTrueResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUser">
+      <wsdl:input message="tns:getUser" name="getUser"></wsdl:input>
+      <wsdl:output message="tns:getUserResponse" name="getUserResponse"></wsdl:output>
+      <wsdl:fault message="tns:NotFoundException" name="NotFoundException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="hashPassword">
+      <wsdl:input message="tns:hashPassword" name="hashPassword"></wsdl:input>
+      <wsdl:output message="tns:hashPasswordResponse" name="hashPasswordResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNbUser">
+      <wsdl:input message="tns:getNbUser" name="getNbUser"></wsdl:input>
+      <wsdl:output message="tns:getNbUserResponse" name="getNbUserResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validateLogin">
+      <wsdl:input message="tns:validateLogin" name="validateLogin"></wsdl:input>
+      <wsdl:output message="tns:validateLoginResponse" name="validateLoginResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="UserServiceSoapBinding" type="tns:UserClient">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getListUser">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getListUser">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getListUserResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmailUser">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getEmailUser">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getEmailUserResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateStatusReminderToFalse">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="updateStatusReminderToFalse">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateStatusReminderToFalseResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getListUserLateReturn">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getListUserLateReturn">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getListUserLateReturnResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateStatusReminderToTrue">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="updateStatusReminderToTrue">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateStatusReminderToTrueResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUser">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getUser">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getUserResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="NotFoundException">
+        <soap:fault name="NotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="hashPassword">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="hashPassword">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="hashPasswordResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNbUser">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getNbUser">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getNbUserResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validateLogin">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="validateLogin">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="validateLoginResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UserService">
+    <wsdl:port binding="tns:UserServiceSoapBinding" name="UserPort">
+      <soap:address location="http://localhost:8080/services/UserService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/services/UserService</con:endpoint></con:endpoints><con:operation id="7bc2ba0f-5ed9-4734-8d9a-bd941a316847" isOneWay="false" action="" name="getEmailUser" bindingOperationName="getEmailUser" type="Request-Response" outputName="getEmailUserResponse" inputName="getEmailUser" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="6acd5849-ec3e-4ee7-b1ed-784799b23793" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/UserService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.contract.business.library.oc.library.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <man:getEmailUser>\r
+         <!--Optional:-->\r
+         <username>?</username>\r
+      </man:getEmailUser>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.contract.business.library.oc.library.com/UserClient/getEmailUser"/></con:call></con:operation><con:operation id="be32355e-0628-44a9-beec-4fc5417c03ee" isOneWay="false" action="" name="getListUser" bindingOperationName="getListUser" type="Request-Response" outputName="getListUserResponse" inputName="getListUser" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="0d6097de-29cb-4d7a-bfbf-aa26e10fe311" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/UserService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.contract.business.library.oc.library.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <man:getListUser>\r
+         <!--Optional:-->\r
+         <id>?</id>\r
+      </man:getListUser>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.contract.business.library.oc.library.com/UserClient/getListUser"/></con:call></con:operation><con:operation id="8c447412-6d44-4a21-aec5-412bd37d6e43" isOneWay="false" action="" name="getListUserLateReturn" bindingOperationName="getListUserLateReturn" type="Request-Response" outputName="getListUserLateReturnResponse" inputName="getListUserLateReturn" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="9de25392-35bc-4c62-984e-fc7d1c009e44" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/UserService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.contract.business.library.oc.library.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <man:getListUserLateReturn/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.contract.business.library.oc.library.com/UserClient/getListUserLateReturn"/></con:call></con:operation><con:operation id="e824f81d-6300-4569-90d7-4bf3c988e09f" isOneWay="false" action="" name="getNbUser" bindingOperationName="getNbUser" type="Request-Response" outputName="getNbUserResponse" inputName="getNbUser" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="b3e20ab8-b5ac-4c3c-813f-1bc6966deed5" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/UserService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.contract.business.library.oc.library.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <man:getNbUser/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.contract.business.library.oc.library.com/UserClient/getNbUser"/></con:call></con:operation><con:operation id="33105ab2-e464-4491-a5d2-195a337e3119" isOneWay="false" action="" name="getUser" bindingOperationName="getUser" type="Request-Response" outputName="getUserResponse" inputName="getUser" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="d586eaa2-aa7a-4909-8d26-c451949aed2d" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/UserService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.contract.business.library.oc.library.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <man:getUser>\r
+         <!--Optional:-->\r
+         <id>?</id>\r
+      </man:getUser>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.contract.business.library.oc.library.com/UserClient/getUser"/></con:call></con:operation><con:operation id="afdf80ec-9b47-4086-a914-a87c1db67161" isOneWay="false" action="" name="hashPassword" bindingOperationName="hashPassword" type="Request-Response" outputName="hashPasswordResponse" inputName="hashPassword" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="a17c5dcb-0757-465d-9fb4-9e2b8672cdea" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/UserService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.contract.business.library.oc.library.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <man:hashPassword>\r
+         <!--Optional:-->\r
+         <password>?</password>\r
+      </man:hashPassword>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.contract.business.library.oc.library.com/UserClient/hashPassword"/></con:call></con:operation><con:operation id="4484cc23-1987-4d5e-8719-10af1bc5e54e" isOneWay="false" action="" name="updateStatusReminderToFalse" bindingOperationName="updateStatusReminderToFalse" type="Request-Response" outputName="updateStatusReminderToFalseResponse" inputName="updateStatusReminderToFalse" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="3b87d2a6-5962-4208-ae9a-89af8afb567d" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/UserService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.contract.business.library.oc.library.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <man:updateStatusReminderToFalse>\r
+         <!--Optional:-->\r
+         <idUser>?</idUser>\r
+      </man:updateStatusReminderToFalse>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.contract.business.library.oc.library.com/UserClient/updateStatusReminderToFalse"/></con:call></con:operation><con:operation id="3cc320fd-f137-4887-9f72-d35a6434c159" isOneWay="false" action="" name="updateStatusReminderToTrue" bindingOperationName="updateStatusReminderToTrue" type="Request-Response" outputName="updateStatusReminderToTrueResponse" inputName="updateStatusReminderToTrue" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="662d0db9-75e5-4a12-8826-7da58530c506" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/UserService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.contract.business.library.oc.library.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <man:updateStatusReminderToTrue>\r
+         <!--Optional:-->\r
+         <idUser>?</idUser>\r
+      </man:updateStatusReminderToTrue>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.contract.business.library.oc.library.com/UserClient/updateStatusReminderToTrue"/></con:call></con:operation><con:operation id="6facfcc6-d350-4357-bcb9-a2b3579b8ae2" isOneWay="false" action="" name="validateLogin" bindingOperationName="validateLogin" type="Request-Response" outputName="validateLoginResponse" inputName="validateLogin" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="0cc2c4a5-bd08-455f-b77c-fcedc1f04d41" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/UserService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.contract.business.library.oc.library.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <man:validateLogin>\r
+         <!--Optional:-->\r
+         <user>\r
+            <!--Optional:-->\r
+            <email>?</email>\r
+            <!--Optional:-->\r
+            <id>?</id>\r
+            <!--Optional:-->\r
+            <lastname>?</lastname>\r
+            <!--Optional:-->\r
+            <password>?</password>\r
+            <!--Optional:-->\r
+            <reminderActive>?</reminderActive>\r
+            <!--Optional:-->\r
+            <surname>?</surname>\r
+         </user>\r
+         <!--Optional:-->\r
+         <password>?</password>\r
+      </man:validateLogin>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.contract.business.library.oc.library.com/UserClient/validateLogin"/></con:call></con:operation></con:interface><con:testSuite id="f03fb7dd-cb62-46bf-beb9-6a43c9950a85" name="TestSuite 1"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="eb000d2d-3cf1-41a4-ba07-a919b6257d4a" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TestCase P7Services" searchProperties="true"><con:settings/><con:testStep type="request" id="870ae5df-e1e4-4898-b026-72a8985d1efc" name="getListAuthor - Request 1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AuthorServiceSoapBinding</con:interface><con:operation>getListAuthor</con:operation><con:request name="getListAuthor - Request 1" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="f8eb040f-c0ac-4f7a-b7ab-1ec3354bc629"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/AuthorService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.contract.business.library.oc.library.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <man:getListAuthor/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="c4a106f5-8be8-499e-a856-66c811b3e61f" name="SOAP Response"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.contract.business.library.oc.library.com/AuthorClient/getListAuthor"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="9d1addbb-287e-4db3-943e-85cd5ceeb5ee" name="getBook - Request 1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookServiceSoapBinding</con:interface><con:operation>getBook</con:operation><con:request name="getBook - Request 1" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="5b0c1937-5979-4cfd-85fe-001be4a383ab"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/BookService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.contract.business.library.oc.library.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <man:getBook>\r
+         <!--Optional:-->\r
+         <id>${#TestCase#bookId}</id>\r
+      </man:getBook>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="ae7f46e6-a82c-40e9-a4fa-8fff1145116b" name="SOAP Response"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.contract.business.library.oc.library.com/BookClient/getBook"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="913c4b56-30fe-42f3-be44-1c672c772110" name="displayAllBooks - Request 1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookServiceSoapBinding</con:interface><con:operation>displayAllBooks</con:operation><con:request name="displayAllBooks - Request 1" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="94fba8ba-02f5-4509-8343-dfc5c5bbcd2c"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/BookService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.contract.business.library.oc.library.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <man:displayAllBooks/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="0627f58f-3292-4cd4-b84e-fc626ac26b06" name="SOAP Response"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.contract.business.library.oc.library.com/BookClient/displayAllBooks"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="cec090a1-0c13-4541-b031-30960561df0b" name="getUser - Request 1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>UserServiceSoapBinding</con:interface><con:operation>getUser</con:operation><con:request name="getUser - Request 1" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="163aa6ba-910c-453a-a5b3-ba21ab617a08"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/UserService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.contract.business.library.oc.library.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <man:getUser>\r
+         <!--Optional:-->\r
+         <id>${#TestCase#id}</id>\r
+      </man:getUser>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="19af4fca-5b6c-4021-97a4-7453d9c465b3" name="SOAP Response"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.contract.business.library.oc.library.com/UserClient/getUser"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="transfer" name="Property Transfer" id="da60f2ba-dcd8-45fa-b596-cd7f52265fcf"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>email</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>getUser - Request 1</con:sourceStep><con:sourcePath>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://manager.contract.business.library.oc.library.com/';
+
+/soap:Envelope/soap:Body/ns1:getUserResponse/return/email/text()
+</con:sourcePath><con:targetType>email</con:targetType><con:targetStep>#TestCase#</con:targetStep><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>id</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>getUser - Request 1</con:sourceStep><con:sourcePath>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://manager.contract.business.library.oc.library.com/';
+
+/soap:Envelope/soap:Body/ns1:getUserResponse/return/id/text()</con:sourcePath><con:targetType>id</con:targetType><con:targetStep>#TestCase#</con:targetStep><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>lastname</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>getUser - Request 1</con:sourceStep><con:sourcePath>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://manager.contract.business.library.oc.library.com/';
+
+/soap:Envelope/soap:Body/ns1:getUserResponse/return/lastname/text()
+</con:sourcePath><con:targetType>lastname</con:targetType><con:targetStep>#TestCase#</con:targetStep><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>password</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>getUser - Request 1</con:sourceStep><con:sourcePath/><con:targetType>password</con:targetType><con:targetStep>#TestCase#</con:targetStep><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>reminderActive</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>getUser - Request 1</con:sourceStep><con:sourcePath>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://manager.contract.business.library.oc.library.com/';
+
+/soap:Envelope/soap:Body/ns1:getUserResponse/return/reminderActive/text()
+</con:sourcePath><con:targetType>reminderActive</con:targetType><con:targetStep>#TestCase#</con:targetStep><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>surname</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>getUser - Request 1</con:sourceStep><con:sourcePath>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://manager.contract.business.library.oc.library.com/';
+
+/soap:Envelope/soap:Body/ns1:getUserResponse/return/surname/text()</con:sourcePath><con:targetType>surname</con:targetType><con:targetStep>#TestCase#</con:targetStep><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>hashedPassword</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>getUser - Request 1</con:sourceStep><con:sourcePath>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://manager.contract.business.library.oc.library.com/';
+
+/soap:Envelope/soap:Body/ns1:getUserResponse/return/password/text()
+</con:sourcePath><con:targetType>hashedPassword</con:targetType><con:targetStep>#TestCase#</con:targetStep><con:upgraded>true</con:upgraded></con:transfers></con:config></con:testStep><con:testStep type="request" id="e684e79d-ad73-4961-ad9e-fe657c405a61" name="validateLogin - Request 1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>UserServiceSoapBinding</con:interface><con:operation>validateLogin</con:operation><con:request name="validateLogin - Request 1" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="27ecd548-743b-4bb0-b74a-b357101c579e"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/UserService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.contract.business.library.oc.library.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <man:validateLogin>\r
+         <!--Optional:-->\r
+         <user>\r
+            <!--Optional:-->\r
+            <email>?</email>\r
+            <!--Optional:-->\r
+            <id>?</id>\r
+            <!--Optional:-->\r
+            <lastname>?</lastname>\r
+            <!--Optional:-->\r
+            <password>?</password>\r
+            <!--Optional:-->\r
+            <reminderActive>?</reminderActive>\r
+            <!--Optional:-->\r
+            <surname>?</surname>\r
+         </user>\r
+         <!--Optional:-->\r
+         <password>?</password>\r
+      </man:validateLogin>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="222a276b-da22-48e0-911c-d1df29c71f98" name="SOAP Response"/><con:assertion type="Schema Compliance" id="e5e77730-cfbf-498a-b510-3f1c52f8a5a7" name="Schema Compliance"><con:configuration><definition/></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.contract.business.library.oc.library.com/UserClient/validateLogin"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>email</con:name><con:value>samirgahama@gmail.com</con:value></con:property><con:property><con:name>hashedPassword</con:name><con:value>$2a$10$qMWyYgXF9Su3w9GwS7zoyOQYt9uFYr9/X07g/ssib201IQrmC3ip6</con:value></con:property><con:property><con:name>id</con:name><con:value>1</con:value></con:property><con:property><con:name>lastname</con:name><con:value>Jean</con:value></con:property><con:property><con:name>surname</con:name><con:value>Hubert</con:value></con:property><con:property><con:name>bookId</con:name><con:value>1</con:value></con:property><con:property><con:name>password</con:name><con:value><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <ns2:getUserResponse xmlns:ns2="http://manager.contract.business.library.oc.library.com/">
+         <return>
+            <email>samirgahama@gmail.com</email>
+            <id>1</id>
+            <lastname>Jean</lastname>
+            <password>$2a$10$qMWyYgXF9Su3w9GwS7zoyOQYt9uFYr9/X07g/ssib201IQrmC3ip6</password>
+            <reminderActive>true</reminderActive>
+            <surname>Hubert</surname>
+         </return>
+      </ns2:getUserResponse>
+   </soap:Body>
+</soap:Envelope>]]></con:value></con:property><con:property><con:name>reminderActive</con:name><con:value>true</con:value></con:property></con:properties></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

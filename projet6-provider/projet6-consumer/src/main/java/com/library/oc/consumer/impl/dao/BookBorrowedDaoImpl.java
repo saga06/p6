@@ -142,7 +142,7 @@ public class BookBorrowedDaoImpl extends AbstractDao implements BookBorrowedDao 
         return vNbrBook;
     }
 
-    // Method for book retuned (not implemented in the webapp interface)
+    // Method for book returned (not implemented in the webapp interface : only for the "admin")
     @Override
     public void returnBorrow(int id) {
         String vSQL = "UPDATE borrow SET is_returned = TRUE, is_returned_on_time = TRUE WHERE id_borrow = :borrow_id";
