@@ -79,7 +79,7 @@ public class UserDaoImpl extends AbstractDao implements UserDao {
     @Override
     public List<User> getListUserLateReturn() {
         String vSQL = "SELECT borrow.date_end, borrow.id_borrower, borrow.id_book, borrow.is_returned, borrow.is_returned_on_time, users.email, users.lastname, " +
-                "users.password, users.id, users.surname\n" +
+                "users.password, users.id, users.surname, users.reminder_active " +
                 "FROM borrow\n" +
                 "INNER JOIN users ON borrow.id_borrower = users.id\n" +
                 "WHERE date_end < current_date\n" +
