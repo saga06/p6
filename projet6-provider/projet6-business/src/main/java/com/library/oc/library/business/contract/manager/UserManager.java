@@ -30,6 +30,8 @@ public interface UserManager {
      */
     User getUser(@WebParam(name = "id") Integer pId) throws NotFoundException;
 
+    Boolean read(@WebParam(name = "idUser") int idUser) throws NotFoundException;
+
 
     /**
      * Retourne le nombre de User dans la base de données.

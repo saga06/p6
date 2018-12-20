@@ -15,18 +15,35 @@
 <div style="font-size: 0.8em">
     <h5>Le saviez-vous ? :</h5>
     <p>Vous avez la possibilité d'activer ou non, un email de rappel lorsque vous vous approchez de la date limite de vos prêts.
-       Ceci vous permet de ne pas vous souciez de cette date, et d'être rappelé automatiquement, par email, 5 jours avant la date butoire.
-       Cette option est activée par défault pour chaque utilisateur.
-    Vous pouvez modifier cette option ici :
+        Ceci vous permet d'être rappelé automatiquement, par email, 5 jours avant la date butoire.</br>
+        Actuellement, cette option est
+        <s:if test="%{statusUser=='true'}">
+        <span style="color: green;"><b><u>activée</u></b></span>
+        </s:if>
+        <s:else>
+        <span style="color: red;"><b><u>désactivée</u></b></span>
+        </s:else>
+        pour vous. Souhaitez vous
+        <s:if test="%{statusUser=='true'}">
+        la désactiver
+        </s:if>
+        <s:else>
+        l'activer
+        </s:else>
+        ?
+        <s:if test="%{statusUser=='true'}">
+            <s:a cssClass="btn btn-danger btn-xs" action="change_reminder_status_to_false" data-toggle="modal" data-target="#myModalDesactivation">
+                <s:param name="idUser" value="#session.user.id" />
+                Désactiver
+            </s:a>
+        </s:if>
+        <s:else>
             <s:a cssClass="btn btn-success btn-xs" action="change_reminder_status_to_true"  data-toggle="modal" data-target="#myModalActivation">
                 <s:param name="idUser" value="#session.user.id" />
                 Activer
             </s:a>
-            <s:a cssClass="btn btn-danger btn-xs" action="change_reminder_status_to_false" data-toggle="modal" data-target="#myModalDesactivation">
-                <s:param name="idUser" value="#session.user.id" />
-            Désactiver
-            </s:a>
-
+        </s:else>
+    </p>
         <!-- Modal activer -->
         <div class="modal fade" id="myModalActivation" role="dialog">
             <div class="modal-dialog">

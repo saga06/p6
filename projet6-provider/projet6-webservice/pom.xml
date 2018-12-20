@@ -30,17 +30,14 @@
         <dependency>
             <groupId>com.library.oc</groupId>
             <artifactId>projet6-model</artifactId>
-            <version>1.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.library.oc</groupId>
             <artifactId>projet6-consumer</artifactId>
-            <version>1.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.library.oc</groupId>
             <artifactId>projet6-business</artifactId>
-            <version>1.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>

@@ -31,6 +31,7 @@ public class GestionUserAction extends ActionSupport {
     private List<Book> listEditor;
     private List<Author> authors;
     private List<Theme> themes;
+    private String statusUser;
 
     /*Get current date in Date Format*/
     Date dateToday = new Date();
@@ -123,6 +124,14 @@ public class GestionUserAction extends ActionSupport {
     public List<BookReserved> getListBookReservedByUser() { return listBookReservedByUser; }
     public void setListBookReservedByUser(List<BookReserved> listBookReservedByUser) { this.listBookReservedByUser = listBookReservedByUser; }
 
+    public String getStatusUser() {
+        return statusUser;
+    }
+
+    public void setStatusUser(String statusUser) {
+        this.statusUser = statusUser;
+    }
+
 // ==================== Méthodes ====================
 
     /**
@@ -130,12 +139,13 @@ public class GestionUserAction extends ActionSupport {
      *
      * @return success / erreur
      */
-    public String doListBookBorrowedByUser() {
+    public String doListBookBorrowedByUser() throws NotFoundException_Exception {
         if (id == null) {
             this.addActionError("No id user");
         } else {
             listBookBorrowedByUser = bookClient.getListBookBorrowedByUser(id);
             listBookReservedByUser = bookClient.getListBookReservedByUser(id);
+            statusUser = String.valueOf(userClient.read(id));
         }
         return (this.hasErrors()) ? ActionSupport.ERROR : ActionSupport.SUCCESS;
     }
@@ -175,7 +185,6 @@ public class GestionUserAction extends ActionSupport {
         }
         return (this.hasErrors()) ? ActionSupport.ERROR : ActionSupport.SUCCESS;
     }
-
 
 }
 

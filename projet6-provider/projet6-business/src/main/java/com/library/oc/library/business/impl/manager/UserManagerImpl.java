@@ -74,5 +74,8 @@ public class UserManagerImpl extends AbstractManager implements UserManager {
     @Override
     public void updateStatusReminderToFalse(Integer idUser) {getDaoFactory().getUserDao().updateStatusReminderToFalse(idUser);}
 
+    @Override
+    public Boolean read(int idUser) {return getDaoFactory().getUserDao().read(idUser).getReminderActive();}
+
 
 }

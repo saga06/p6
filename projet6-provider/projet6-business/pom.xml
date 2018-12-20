@@ -29,12 +29,10 @@
         <dependency>
             <groupId>com.library.oc</groupId>
             <artifactId>projet6-consumer</artifactId>
-            <version>1.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.library.oc</groupId>
             <artifactId>projet6-model</artifactId>
-            <version>1.0.1-SNAPSHOT</version>
         </dependency>
         <!-- =========   External librairies    ========= -->
         <dependency>
@@ -49,7 +47,6 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>

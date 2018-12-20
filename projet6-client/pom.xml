@@ -11,13 +11,12 @@
     <parent>
         <artifactId>projet6</artifactId>
         <groupId>com.library.oc</groupId>
+        <relativePath>../pom.xml</relativePath>
         <version>1.0.1-SNAPSHOT</version>
     </parent>
     <groupId>com.library.oc</groupId>
     <artifactId>projet6-client</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.1-SNAPSHOT</version>
-
     <modules>
         <module>projet6-webapp</module>
     </modules>
