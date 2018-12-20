@@ -33,3 +33,4 @@ from [Github/p6:bug](https://github.com/saga06/p6/issues/2).
  ## [1.0.0] - 2018-11-27
 ### Added
 - First release of the app
+

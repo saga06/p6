@@ -54,6 +54,16 @@ public interface BookClient {
     );
 
     @WebMethod
+    @RequestWrapper(localName = "reserveBook", targetNamespace = "http://manager.contract.business.library.oc.library.com/", className = "com.library.oc.library.business.contract.manager.ReserveBook")
+    @ResponseWrapper(localName = "reserveBookResponse", targetNamespace = "http://manager.contract.business.library.oc.library.com/", className = "com.library.oc.library.business.contract.manager.ReserveBookResponse")
+    public void reserveBook(
+        @WebParam(name = "user", targetNamespace = "")
+        com.library.oc.library.business.contract.manager.User user,
+        @WebParam(name = "book", targetNamespace = "")
+        com.library.oc.library.business.contract.manager.Book book
+    );
+
+    @WebMethod
     @RequestWrapper(localName = "getNbOfCopiesAvailableForABookBorrowed", targetNamespace = "http://manager.contract.business.library.oc.library.com/", className = "com.library.oc.library.business.contract.manager.GetNbOfCopiesAvailableForABookBorrowed")
     @ResponseWrapper(localName = "getNbOfCopiesAvailableForABookBorrowedResponse", targetNamespace = "http://manager.contract.business.library.oc.library.com/", className = "com.library.oc.library.business.contract.manager.GetNbOfCopiesAvailableForABookBorrowedResponse")
     @WebResult(name = "return", targetNamespace = "")

@@ -58,7 +58,6 @@ public class MailLate {
 			  System.out.println("Mail has been sent successfully to " +user.getEmail()+ "");
 		  }
 		 catch (EmailException e) {
-			// TODO Auto-generated catch block
 			 System.out.println("Unable to send an email" + e.getMessage());
 		}
 

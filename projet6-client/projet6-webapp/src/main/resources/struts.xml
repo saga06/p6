@@ -101,6 +101,7 @@
             </result>
         </action>
 
+
         <!-- Action de prolongement d'un emprunt d'ouvrage -->
         <action name="borrow_extend"
                 class="com.library.oc.library.webapp.action.GestionBookAction"

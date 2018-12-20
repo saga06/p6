@@ -66,7 +66,6 @@ public class UserDaoImpl extends AbstractDao implements UserDao {
 
     @Override
     public List<User> readAll(int id) {
-        // TODO Auto-generated method stub
         return null;
     }
 

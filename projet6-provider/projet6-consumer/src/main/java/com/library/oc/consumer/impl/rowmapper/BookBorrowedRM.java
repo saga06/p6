@@ -17,8 +17,6 @@ public class BookBorrowedRM implements RowMapper<BookBorrowed> {
 
     @Inject
     AuthorDao authorDaoImpl;
-
-
     @Inject
     UserDao userDaoImpl;
 

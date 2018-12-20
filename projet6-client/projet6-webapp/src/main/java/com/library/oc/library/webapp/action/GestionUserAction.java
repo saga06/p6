@@ -45,12 +45,12 @@ public class GestionUserAction extends ActionSupport {
 
     private BookService bookService = new BookService();
     private BookClient bookClient = bookService.getBookPort();
-
     private UserService userService = new UserService();
     private UserClient userClient = userService.getUserPort();
 
     public GestionUserAction() throws DatatypeConfigurationException {
     }
+
 
     // ==================== Getters/Setters ====================
     public Integer getId() {
@@ -127,7 +127,6 @@ public class GestionUserAction extends ActionSupport {
     public String getStatusUser() {
         return statusUser;
     }
-
     public void setStatusUser(String statusUser) {
         this.statusUser = statusUser;
     }

@@ -67,7 +67,7 @@ public class BookBorrowedDaoImpl extends AbstractDao implements BookBorrowedDao 
                     "SELECT * FROM book " +
                             "INNER JOIN borrow ON borrow.id_book = book.id \n " +
                             "LEFT JOIN editor ON book.editor_id = editor.id \n " +
-                            "WHERE id_borrower = " + id;
+                            "WHERE is_returned = false AND id_borrower = " + id;
 
             JdbcTemplate jdbcTemplate = new JdbcTemplate(getDataSource());
             List<BookBorrowed> vListBook = jdbcTemplate.query(vSQL, bookBorrowedRM);

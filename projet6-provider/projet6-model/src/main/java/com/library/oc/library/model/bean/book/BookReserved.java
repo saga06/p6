@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+
 import java.util.List;
 
 public class BookReserved {
@@ -21,6 +22,7 @@ public class BookReserved {
         private Integer idReservation;
 
         private Calendar dateOfReservation;
+
 
         private Integer idUser;
 
@@ -43,6 +45,7 @@ public class BookReserved {
 
 
     // ==================== Constructeurs ====================
+
         /**
          * Constructeur par défaut.
          */
@@ -64,6 +67,7 @@ public class BookReserved {
     public Integer getId() {
         return id;
     }
+
     public void setId(Integer id) {
         this.id = id;
     }
@@ -74,9 +78,11 @@ public class BookReserved {
     public Calendar getDateOfReservation() { return dateOfReservation; }
     public void setDateOfReservation(Calendar dateOfReservation) { this.dateOfReservation = dateOfReservation; }
 
+
     public Integer getIdUser() {
         return idUser;
     }
+
     public void setIdUser(Integer idUser) {
         this.idUser = idUser;
     }
@@ -84,6 +90,7 @@ public class BookReserved {
     public Integer getIdBook() {
         return idBook;
     }
+
     public void setIdBook(Integer idBook) {
         this.idBook = idBook;
     }
@@ -108,5 +115,6 @@ public class BookReserved {
 
     public Integer getPosition() { return position; }
     public void setPosition(Integer position) { this.position = position; }
+
 }
 

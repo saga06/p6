@@ -11,6 +11,7 @@ import com.library.oc.library.model.bean.user.User;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.sql.Types;
@@ -23,6 +24,7 @@ import java.util.List;
 public class BookReservedDaoImpl extends AbstractDao implements BookReservedDao {
 
     //----- INJECTION OF DEPENDENCIES -----
+
 
     @Inject
     UserDao userDaoImpl;
@@ -44,7 +46,6 @@ public class BookReservedDaoImpl extends AbstractDao implements BookReservedDao 
         getvParams().addValue("book_id", book.getId(), Types.INTEGER);
         getvNamedParameterJdbcTemplate().update(vSQL, getvParams());
     }
-
 
     // Method used to know if there is a reservation for a book (book id) -> get the list of active reservation, and check if one is for this book
     @Override

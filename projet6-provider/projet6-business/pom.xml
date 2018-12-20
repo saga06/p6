@@ -33,6 +33,7 @@
         <dependency>
             <groupId>com.library.oc</groupId>
             <artifactId>projet6-model</artifactId>
+
         </dependency>
         <!-- =========   External librairies    ========= -->
         <dependency>

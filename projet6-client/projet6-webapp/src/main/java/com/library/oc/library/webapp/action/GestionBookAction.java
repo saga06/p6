@@ -64,9 +64,6 @@ public class GestionBookAction extends ActionSupport {
         this.themes = themes;
     }
 
-/*    public Editor getEditor() {return editor;}
-    public void setEditor(Editor pEditor) {editor=pEditor;}*/
-
     public Integer getIdUser() { return idUser; }
     public void setIdUser(Integer idUser) { this.idUser = idUser; }
 

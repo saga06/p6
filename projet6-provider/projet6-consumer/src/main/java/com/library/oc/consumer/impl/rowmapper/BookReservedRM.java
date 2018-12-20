@@ -10,9 +10,9 @@ package com.library.oc.consumer.impl.rowmapper;
         import java.sql.Timestamp;
         import java.util.Calendar;
 
+
 @Named
 public class BookReservedRM implements RowMapper<BookReserved> {
-
 
 
 

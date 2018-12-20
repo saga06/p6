@@ -189,14 +189,7 @@
         </s:iterator>
         </tbody>
     </table>
-
-
-
-
-
     <h3 style="margin-top: 60px;"><s:text name="myListReservedBook"/></h3>
-
-
     <table id="table" class="table table-dark">
         <thead class="thead-dark">
         <tr>

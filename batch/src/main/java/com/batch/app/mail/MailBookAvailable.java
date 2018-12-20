@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import com.library.oc.library.business.contract.manager.ReservationWithEmail;
+
 import com.library.oc.library.business.contract.manager.User;
 import org.apache.commons.mail.DefaultAuthenticator;
 import org.apache.commons.mail.EmailException;
@@ -25,6 +26,7 @@ public class MailBookAvailable {
     private String password;
 
     public void send(ReservationWithEmail resa) {
+
         // Create the email message
 
 
@@ -37,6 +39,7 @@ public class MailBookAvailable {
         try {
             email.addTo(resa.getEmail(), "Lecteur");
             email.setFrom(mail, "Bibliotheque OC");
+
             email.setSubject("Ouvrage de nouveau disponible");
 
             // set the html message
@@ -47,6 +50,7 @@ public class MailBookAvailable {
             message += "<br>Vous avez 48H pour venir le r&eacutecup&eacuterer, pass&eacute ce d&eacutelai, votre r&eacuteservation sera annul&eacutee.<br>";
             message += "<br>Cordialement";
             message += "<br>Votre Biblioth&egrave;que OC<br>";
+
 
 
             email.setHtmlMsg(message);
@@ -63,3 +67,4 @@ public class MailBookAvailable {
         }
     }
 }
+

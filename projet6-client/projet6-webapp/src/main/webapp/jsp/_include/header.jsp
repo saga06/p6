@@ -7,6 +7,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
+<jsp:useBean id="now" class="java.util.Date"/>
+
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
